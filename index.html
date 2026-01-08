@@ -1,90 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lunacy Media</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      color: #fff;
-      font-family: "Georgia", serif;
-      text-align: center;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 100vh;
-      gap: 2rem;
-      padding: 0 2rem;
-    }
-    h1 {
-      font-size: 4rem;
-      letter-spacing: 1px;
-      margin: 0;
-    }
-    .tagline {
-      font-size: 1.3rem;
-      font-style: italic;
-      opacity: 0.9;
-    }
-    .body {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .works {
-      font-family: Arial, sans-serif;
-      font-size: 0.95rem;
-      letter-spacing: 0.6px;
-      opacity: 0.85;
-    }
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-    a:hover {
-      opacity: 0.75;
-    }
-    .footer {
-      font-size: 0.8rem;
-      opacity: 0.6;
-      margin-top: 3rem;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/style.css"/>
 </head>
 <body>
-  <div class="container">
-    <h1>LUNACY MEDIA</h1>
+  <div class="gridBg"></div>
 
-    <div class="tagline">Your Forever Endeavour</div>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="logo">
+        <div class="mark" aria-hidden="true"></div>
+        <div>Lunacy Media</div>
+      </div>
 
-    <div class="body">
-      A creative media universe exploring music, myth, memory, and ritual.
+      <nav class="nav">
+        <a href="/obeah.html">OBEAH</a>
+        <a href="/press.html">Press</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="navRight">
+        <a class="btn" href="/press.html">Press / Grants</a>
+        <a class="btn btnPrimary" href="#contact">Join</a>
+      </div>
+    </header>
+
+    <div class="hairline"></div>
+
+    <section class="hero">
+      <div>
+        <div class="badge"><span class="badgeDot"></span> Lunacy Media</div>
+
+        <h1 class="h1">Your Forever Endeavour</h1>
+
+        <div class="sub">
+          A creative studio building original worlds across music, story,
+          and interactive experience.
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="/obeah.html">Explore OBEAH</a>
+          <a class="btn" href="/press.html">Press / Grants</a>
+        </div>
+      </div>
+
+      <div class="visual" aria-hidden="true">
+        <div class="chromeBar">
+          <div class="chromeDot"></div><div class="chromeDot"></div><div class="chromeDot"></div>
+          <div class="chromePill"></div>
+        </div>
+        <div class="shape s1"></div>
+        <div class="shape s2"></div>
+        <div class="shape s3"></div>
+        <div class="shape s4"></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section">
+    <div class="sectionInner">
+      <div class="badge" style="display:inline-flex;"><span class="badgeDot"></span> Studio Overview</div>
+      <div class="sectionTitle">Key Benefits</div>
+      <div class="sectionSub">
+        A quiet, scalable foundation for releases, grants, and collaborators — built to expand with the universe.
+      </div>
+
+      <div class="grid">
+        <a class="card" href="/obeah.html">
+          <div class="cardTop">
+            <div class="icon">◎</div>
+            <div class="cardTitle">OBEAH</div>
+          </div>
+          <p class="cardBody">
+            Graphic novel in active development: <strong>The Rogue Witch</strong>.
+          </p>
+        </a>
+
+        <a class="card" href="/press.html">
+          <div class="cardTop">
+            <div class="icon">▦</div>
+            <div class="cardTitle">Press / Grants</div>
+          </div>
+          <p class="cardBody">
+            Clean context for funders and partners — fast, clear, and current.
+          </p>
+        </a>
+
+        <a class="card" href="#contact">
+          <div class="cardTop">
+            <div class="icon">⟡</div>
+            <div class="cardTitle">Join the Orbit</div>
+          </div>
+          <p class="cardBody">
+            Updates on releases, chapters, and what’s being built next.
+          </p>
+        </a>
+      </div>
     </div>
+  </section>
 
-    <div class="works">
-      Music · OBEAH · Tammy · Lunacy Objects
-    </div>
+  <div class="wrap">
+    <section class="contact" id="contact">
+      <div class="badge" style="display:inline-flex;"><span class="badgeDot"></span> Updates</div>
+      <div class="sectionTitle" style="margin-top:12px;">Join the Orbit</div>
+      <div class="sectionSub">No spam. Just progress.</div>
 
-    <div class="body">
-      Currently Building:<br>
-      <strong>OBEAH — The Rogue Witch</strong>
-    </div>
+      <!-- Netlify Forms -->
+      <form name="orbit" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="orbit"/>
+        <div class="formRow">
+          <input class="input" type="email" name="email" placeholder="your@email.com" required />
+          <button class="btn btnPrimary" type="submit">Join</button>
+        </div>
+      </form>
 
-    <div>
-      <a href="mailto:contact@lunacymedia.ca">contact@lunacymedia.ca</a>
-    </div>
+      <div class="small">
+        Or email: <a href="mailto:contact@lunacymedia.ca">contact@lunacymedia.ca</a>
+      </div>
+    </section>
 
-    <div class="footer">
-      © Lunacy Media
-    </div>
+    <footer class="footer">
+      <div>© Lunacy Media</div>
+      <div><a href="/press.html">Press</a> · <a href="/obeah.html">OBEAH</a></div>
+    </footer>
   </div>
 </body>
 </html>

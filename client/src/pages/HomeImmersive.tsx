@@ -4,6 +4,8 @@ import { Loader2 } from "lucide-react";
 import { getLoginUrl } from "@/const";
 import { MoonAnimation } from "@/components/MoonAnimation";
 import { SectionTransitionOverlay } from "@/components/SectionTransitionOverlay";
+import { AnimatedHeading } from "@/components/AnimatedHeading";
+import { AnimatedText } from "@/components/AnimatedText";
 import { useState, useEffect } from "react";
 
 /**
@@ -113,12 +115,12 @@ export default function HomeImmersive() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-20">
             <p className="text-sm font-light tracking-widest text-gray-500 mb-6 uppercase">Our Approach</p>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8 leading-tight">
+            <AnimatedHeading level="h2" className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8 leading-tight" type="slideUp" delay={0}>
               What We Do
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed">
+            </AnimatedHeading>
+            <AnimatedText className="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed" type="fade" delay={200} as="p">
               We create experiential campaigns and visual systems that increase engagement, cultural relevance, and audience retention. Our work moves people and builds lasting cultural impact.
-            </p>
+            </AnimatedText>
           </div>
 
           {/* Services Grid */}
@@ -200,9 +202,9 @@ export default function HomeImmersive() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-20">
             <p className="text-sm font-light tracking-widest text-gray-500 mb-6 uppercase">Creative Universe</p>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8 leading-tight">
+            <AnimatedHeading level="h2" className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8 leading-tight" type="slideUp" delay={0}>
               Creative Projects
-            </h2>
+            </AnimatedHeading>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -250,9 +252,9 @@ export default function HomeImmersive() {
         data-blur="0"
       >
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight">
+          <AnimatedHeading level="h2" className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight" type="slideUp" delay={0}>
             Join the Orbit
-          </h2>
+          </AnimatedHeading>
           <p className="text-lg md:text-xl text-gray-300 mb-16 leading-relaxed">
             Get updates on new projects, campaigns, and creative collaborations.
           </p>

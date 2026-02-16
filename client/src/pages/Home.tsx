@@ -2,8 +2,8 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Instagram, Linkedin, Facebook } from "lucide-react";
-import { useState } from "react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useState, useRef } from "react";
+import { useScrollReveal, type RevealConfig } from "@/hooks/useScrollReveal";
 import { trackEvent, trackSocialClick } from "@/lib/analytics";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
@@ -14,7 +14,8 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const subscribeRef = useScrollReveal();
+  const subscribeRef = useRef<HTMLElement>(null);
+  const { style: subscribeStyle } = useScrollReveal(subscribeRef, { type: 'slideUp', duration: 800 });
 
   const subscribeMutation = trpc.newsletter.subscribe.useMutation();
 

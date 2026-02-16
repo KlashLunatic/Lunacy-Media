@@ -7,7 +7,8 @@ import { trackEvent } from "@/lib/analytics";
 
 export default function Services() {
   const [, setLocation] = useLocation();
-  const containerRef = useScrollReveal();
+  const containerRef = useRef<HTMLElement>(null);
+  const { style: containerStyle } = useScrollReveal(containerRef, { type: 'slideUp', duration: 800 });
 
   const services = [
     {

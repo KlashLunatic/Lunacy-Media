@@ -1,14 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function Contact() {
-  const formRef = useScrollReveal();
+  const formRef = useRef<HTMLElement>(null);
+  const { style: formStyle } = useScrollReveal(formRef, { type: 'slideUp', duration: 800 });
   const contactMutation = trpc.contact.submit.useMutation();
 
   const [formData, setFormData] = useState({

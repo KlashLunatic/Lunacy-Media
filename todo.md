@@ -119,3 +119,10 @@
 - [x] Integrate ambient audio that transitions with orbital sections
 - [x] Test all enhancements across devices
 - [x] Optimize performance and audio loading
+
+
+## Phase 11: Moon Phase Visibility Cycling
+- [x] Update MoonAnimation to support phase visibility control
+- [x] Create phase-to-section mapping for visibility timing
+- [x] Implement opacity and clickability based on phase proximity
+- [x] Test moon phase cycling and interactions

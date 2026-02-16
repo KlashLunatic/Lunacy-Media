@@ -19,9 +19,11 @@ const MOON_PHASES: MoonPhase[] = [
 
 interface MoonAnimationProps {
   scrollProgress?: number;
+  phaseVisibility?: number; // 0-1, controls opacity based on proximity to phase
+  isClickable?: boolean;
 }
 
-export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
+export function MoonAnimation({ scrollProgress = 0, phaseVisibility = 1, isClickable = false }: MoonAnimationProps = {}) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const phaseRef = useRef<number>(0);
   const animationRef = useRef<number | undefined>(undefined);
@@ -48,19 +50,69 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
 
     // Draw functions for each object
     const drawVoid = () => {
-      // Dark void with subtle marks
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(centerX - radius, centerY - radius, radius * 2, radius * 2);
+      ctx.strokeStyle = '#444444';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(centerX - radius, centerY - radius, radius * 2, radius * 2);
+    };
+
+    const drawCD = () => {
+      ctx.fillStyle = '#cccccc';
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#999999';
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius * 0.7, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#cccccc';
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius * 0.3, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.strokeStyle = '#666666';
+      ctx.lineWidth = 2;
+      for (let i = 0.4; i < 1; i += 0.15) {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius * i, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    };
+
+    const drawVinyl = () => {
       ctx.fillStyle = '#1a1a1a';
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
       ctx.fill();
 
-      // Symbolic marks
-      ctx.strokeStyle = '#404040';
-      ctx.lineWidth = 1;
-      for (let i = 0; i < 3; i++) {
-        const angle = (i * Math.PI * 2) / 3;
-        const x1 = centerX + Math.cos(angle) * radius * 0.6;
-        const y1 = centerY + Math.sin(angle) * radius * 0.6;
+      ctx.strokeStyle = '#444444';
+      ctx.lineWidth = 2;
+      for (let i = 0.2; i < 1; i += 0.12) {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius * i, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      ctx.fillStyle = '#333333';
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius * 0.25, 0, Math.PI * 2);
+      ctx.fill();
+    };
+
+    const drawFilmReel = () => {
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      for (let i = 0; i < 8; i++) {
+        const angle = (i / 8) * Math.PI * 2;
+        const x1 = centerX + Math.cos(angle) * radius * 0.4;
+        const y1 = centerY + Math.sin(angle) * radius * 0.4;
         const x2 = centerX + Math.cos(angle) * radius * 0.8;
         const y2 = centerY + Math.sin(angle) * radius * 0.8;
         ctx.beginPath();
@@ -68,76 +120,21 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
         ctx.lineTo(x2, y2);
         ctx.stroke();
       }
-    };
 
-    const drawCD = () => {
-      // CD/Full Moon
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+      ctx.arc(centerX, centerY, radius * 0.2, 0, Math.PI * 2);
       ctx.fill();
-
-      // CD rings
-      ctx.strokeStyle = '#000000';
-      ctx.lineWidth = 2;
-      for (let i = 1; i <= 4; i++) {
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, (radius / 5) * i, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-
-      // Center hole
-      ctx.fillStyle = '#000000';
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius * 0.15, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Reflective highlight
-      ctx.strokeStyle = '#cccccc';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.arc(centerX - radius * 0.3, centerY - radius * 0.3, radius * 0.2, 0, Math.PI * 2);
-      ctx.stroke();
-    };
-
-    const drawVinyl = () => {
-      // Vinyl Record
-      ctx.fillStyle = '#000000';
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Vinyl grooves
-      ctx.strokeStyle = '#333333';
-      ctx.lineWidth = 1;
-      for (let i = 1; i <= 6; i++) {
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, (radius / 7) * i, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-
-      // Label
-      ctx.fillStyle = '#ffffff';
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius * 0.35, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Label text
-      ctx.fillStyle = '#000000';
-      ctx.font = 'bold 10px Arial';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('LUNACY', centerX, centerY - 5);
-      ctx.font = '8px Arial';
-      ctx.fillText('MEDIA', centerX, centerY + 5);
     };
 
     const drawHeadphones = () => {
-      // Headphones
       ctx.strokeStyle = '#ffffff';
       ctx.lineWidth = 3;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
+
+      // Headband
+      ctx.beginPath();
+      ctx.arc(centerX, centerY - radius * 0.2, radius * 0.6, 0, Math.PI);
+      ctx.stroke();
 
       // Left ear cup
       ctx.beginPath();
@@ -147,11 +144,6 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
       // Right ear cup
       ctx.beginPath();
       ctx.arc(centerX + radius * 0.4, centerY, radius * 0.25, 0, Math.PI * 2);
-      ctx.stroke();
-
-      // Headband
-      ctx.beginPath();
-      ctx.arc(centerX, centerY - radius * 0.3, radius * 0.5, 0, Math.PI);
       ctx.stroke();
 
       // Connection points
@@ -167,20 +159,17 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
     };
 
     const drawBook = () => {
-      // Open book
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(centerX - radius * 0.6, centerY - radius * 0.5, radius * 1.2, radius);
       ctx.strokeStyle = '#000000';
       ctx.lineWidth = 2;
       ctx.strokeRect(centerX - radius * 0.6, centerY - radius * 0.5, radius * 1.2, radius);
 
-      // Spine
       ctx.beginPath();
       ctx.moveTo(centerX, centerY - radius * 0.5);
       ctx.lineTo(centerX, centerY + radius * 0.5);
       ctx.stroke();
 
-      // Pages
       ctx.strokeStyle = '#cccccc';
       ctx.lineWidth = 1;
       for (let i = 1; i <= 3; i++) {
@@ -198,56 +187,19 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
       }
     };
 
-    const drawFilmReel = () => {
-      // Film reel
+    const drawCrescentNotes = () => {
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
       ctx.fill();
 
-      // Outer ring
-      ctx.strokeStyle = '#000000';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-      ctx.stroke();
-
-      // Film holes
-      ctx.fillStyle = '#000000';
-      for (let i = 0; i < 12; i++) {
-        const angle = (i * Math.PI * 2) / 12;
-        const x = centerX + Math.cos(angle) * radius * 0.75;
-        const y = centerY + Math.sin(angle) * radius * 0.75;
-        ctx.beginPath();
-        ctx.rect(x - 3, y - 5, 6, 10);
-        ctx.fill();
-      }
-
-      // Center hub
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius * 0.2, 0, Math.PI * 2);
-      ctx.fill();
-    };
-
-    const drawCrescents = () => {
-      // Crescent moon with musical notes
-      ctx.fillStyle = '#ffffff';
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Shadow for crescent effect
       ctx.fillStyle = '#000000';
       ctx.beginPath();
-      ctx.arc(centerX + radius * 0.4, centerY, radius * 0.9, 0, Math.PI * 2);
+      ctx.arc(centerX + radius * 0.5, centerY, radius * 0.8, 0, Math.PI * 2);
       ctx.fill();
 
-      // Musical notes
       ctx.strokeStyle = '#000000';
       ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-
-      // Note 1
       ctx.beginPath();
       ctx.moveTo(centerX - radius * 0.3, centerY - radius * 0.2);
       ctx.lineTo(centerX - radius * 0.3, centerY + radius * 0.2);
@@ -257,7 +209,6 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
       ctx.arc(centerX - radius * 0.25, centerY + radius * 0.25, radius * 0.1, 0, Math.PI * 2);
       ctx.fill();
 
-      // Note 2
       ctx.beginPath();
       ctx.moveTo(centerX + radius * 0.1, centerY - radius * 0.15);
       ctx.lineTo(centerX + radius * 0.1, centerY + radius * 0.25);
@@ -267,7 +218,6 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
       ctx.arc(centerX + radius * 0.15, centerY + radius * 0.3, radius * 0.1, 0, Math.PI * 2);
       ctx.fill();
 
-      // Connecting beam
       ctx.beginPath();
       ctx.moveTo(centerX - radius * 0.3, centerY - radius * 0.2);
       ctx.lineTo(centerX + radius * 0.1, centerY - radius * 0.15);
@@ -275,13 +225,11 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
     };
 
     const drawCrescent = () => {
-      // Simple crescent
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
       ctx.fill();
 
-      // Shadow for crescent
       ctx.fillStyle = '#000000';
       ctx.beginPath();
       ctx.arc(centerX + radius * 0.5, centerY, radius * 0.8, 0, Math.PI * 2);
@@ -293,6 +241,9 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
       // Clear canvas
       ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Apply global opacity based on phase visibility
+      ctx.globalAlpha = phaseVisibility;
 
       // Get current phase
       const phase = MOON_PHASES[Math.floor(phaseRef.current) % MOON_PHASES.length];
@@ -308,24 +259,25 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
         case 'vinyl':
           drawVinyl();
           break;
+        case 'filmReel':
+          drawFilmReel();
+          break;
         case 'headphones':
           drawHeadphones();
           break;
         case 'book':
           drawBook();
           break;
-        case 'filmReel':
-          drawFilmReel();
-          break;
         case 'crescentNotes':
-          drawCrescents();
+          drawCrescentNotes();
           break;
         case 'crescent':
           drawCrescent();
           break;
       }
 
-      // Phase is now controlled by scrollProgress prop
+      // Reset global alpha
+      ctx.globalAlpha = 1;
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -337,8 +289,9 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
+      ctx.globalAlpha = 1;
     };
-  }, [scrollProgress]);
+  }, [scrollProgress, phaseVisibility]);
 
   // Update phase based on scroll progress prop
   useEffect(() => {
@@ -348,7 +301,7 @@ export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-full"
+      className={`w-full h-full transition-opacity duration-300 ${isClickable ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`}
       style={{
         display: 'block',
         background: '#000000',

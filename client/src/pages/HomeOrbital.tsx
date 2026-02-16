@@ -6,6 +6,8 @@ import { useAuth } from '@/_core/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { MoonAnimation } from '@/components/MoonAnimation';
 
+const MOON_PHASES_COUNT = 8;
+
 const ORBITAL_SECTIONS = [
   {
     title: 'Build Culture',
@@ -182,9 +184,35 @@ export default function HomeOrbital() {
                 zIndex: 10,
               }}
             >
-              <div className="w-80 h-80 cursor-pointer hover:opacity-80 transition-opacity">
-                <MoonAnimation scrollProgress={easedProgress} />
-              </div>
+              {/* Calculate phase visibility: each phase is fully visible in its section */}
+              {(() => {
+                const sectionIndex = Math.floor(easedProgress * ORBITAL_SECTIONS.length);
+                const phaseInSection = easedProgress * MOON_PHASES_COUNT;
+                const currentPhase = Math.floor(phaseInSection) % MOON_PHASES_COUNT;
+                const phaseProgress = phaseInSection % 1;
+                
+                // Visibility: 0 before section, ramp up to 1 in section, ramp down after
+                let visibility = 0;
+                if (sectionIndex === currentPhase) {
+                  // In the section: fade in first half, peak in middle, fade out second half
+                  visibility = Math.sin(phaseProgress * Math.PI) * 0.8 + 0.2;
+                } else if (sectionIndex === (currentPhase + 1) % MOON_PHASES_COUNT) {
+                  // Transitioning to next section
+                  visibility = Math.max(0, 1 - phaseProgress) * 0.3;
+                }
+                
+                const isClickable = visibility > 0.5;
+                
+                return (
+                  <div className="w-80 h-80">
+                    <MoonAnimation
+                      scrollProgress={easedProgress}
+                      phaseVisibility={Math.max(0, Math.min(1, visibility))}
+                      isClickable={isClickable}
+                    />
+                  </div>
+                );
+              })()}
             </div>
 
             {/* Orbital sections */}

@@ -57,7 +57,7 @@ export default function HomeImmersive() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
         {/* Canvas Moon Background */}
         <div className="absolute inset-0 w-full h-full">
-          <MoonAnimation />
+          <MoonAnimation scrollProgress={scrollProgress} />
         </div>
 
         {/* Hero Content Overlay */}

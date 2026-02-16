@@ -63,3 +63,12 @@
 - [x] Sync animations with moon phase progression
 - [x] Test animations across all sections
 - [x] Optimize animation performance
+
+
+## Phase 5: Scroll-Linked Moon Phase Animations
+- [x] Create scroll position tracking hook
+- [x] Update MoonAnimation to accept scroll progress
+- [x] Implement scroll-linked phase transitions
+- [x] Sync moon phases with page sections
+- [x] Test scroll animations across all sections
+- [x] Optimize performance and smoothness

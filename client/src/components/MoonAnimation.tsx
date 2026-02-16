@@ -17,7 +17,11 @@ const MOON_PHASES: MoonPhase[] = [
   { name: 'Waning Crescent', illumination: 0.25, object: 'crescentNotes' },
 ];
 
-export function MoonAnimation() {
+interface MoonAnimationProps {
+  scrollProgress?: number;
+}
+
+export function MoonAnimation({ scrollProgress = 0 }: MoonAnimationProps = {}) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const phaseRef = useRef<number>(0);
   const animationRef = useRef<number | undefined>(undefined);
@@ -321,29 +325,25 @@ export function MoonAnimation() {
           break;
       }
 
-      // Slowly advance phase based on scroll
-      phaseRef.current += 0.001;
+      // Phase is now controlled by scrollProgress prop
 
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    // Handle scroll to update phase
-    const handleScroll = () => {
-      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-      phaseRef.current = scrollPercent * MOON_PHASES.length;
-    };
-
-    window.addEventListener('scroll', handleScroll);
     animate();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateCanvasSize);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [scrollProgress]);
+
+  // Update phase based on scroll progress prop
+  useEffect(() => {
+    phaseRef.current = scrollProgress * MOON_PHASES.length;
+  }, [scrollProgress]);
 
   return (
     <canvas

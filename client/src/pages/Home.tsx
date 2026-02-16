@@ -9,7 +9,8 @@ import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 
 export default function Home() {
-  const { user, loading, error, isAuthenticated, logout } = useAuth();
+  const authData = useAuth();
+  const { user = null, loading = false, error = null, isAuthenticated = false, logout = () => {} } = authData || {};
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -81,18 +82,18 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 animate-fadeIn">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight animate-slideUp">
+          <h1 className="text-7xl md:text-8xl lg:text-9xl font-black mb-6 leading-tight animate-slideUp tracking-tighter">
             Build culture.
           </h1>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-accent animate-slideUp" style={{ animationDelay: "0.1s" }}>
+          <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-8 text-accent animate-slideUp tracking-tighter" style={{ animationDelay: "0.1s" }}>
             Design experiences.
           </h2>
-          <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-12 leading-tight animate-slideUp" style={{ animationDelay: "0.2s" }}>
+          <h3 className="text-6xl md:text-7xl lg:text-8xl font-black mb-12 leading-tight animate-slideUp tracking-tighter" style={{ animationDelay: "0.2s" }}>
             Move people.
           </h3>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-slideUp" style={{ animationDelay: "0.3s" }}>
-            Lunacy Media is a creative studio and experiential marketing agency specializing in immersive campaigns, narrative-driven brand worlds, and original IP.
+          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto animate-slideUp leading-relaxed" style={{ animationDelay: "0.3s" }}>
+            We create experiential campaigns and visual systems that increase engagement, cultural relevance, and audience retention. We work with artists, brands, and cultural institutions to craft experiences that resonate emotionally and live beyond their initial release.
           </p>
 
           <div className="flex gap-4 justify-center animate-slideUp flex-wrap" style={{ animationDelay: "0.4s" }}>
@@ -124,19 +125,19 @@ export default function Home() {
       <section ref={subscribeRef} className="py-20 md:py-32 px-4 sm:px-8 bg-card/50 border-t border-border">
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 animate-fadeIn">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Creative Studio & Experiential Marketing</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">What We Do</h2>
             <p className="text-lg text-muted-foreground max-w-3xl">
-              We design and execute immersive brand experiences that resonate emotionally and live beyond their initial release.
+              We create experiential campaigns and visual systems that increase engagement, cultural relevance, and audience retention. Our work moves people and builds lasting cultural impact.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="p-8 bg-background border border-border rounded-lg hover:border-accent transition duration-300 animate-slideUp">
-              <h3 className="text-xl font-semibold mb-4">Our Services</h3>
+              <h3 className="text-xl font-semibold mb-4">Services</h3>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <span className="text-accent mt-1">•</span>
-                  <span>Experiential brand activations</span>
+                  <span>Experiential brand activations & events</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-accent mt-1">•</span>
@@ -144,23 +145,23 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-accent mt-1">•</span>
-                  <span>Digital media and visual storytelling</span>
+                  <span>Digital media & visual storytelling</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-accent mt-1">•</span>
-                  <span>Audio branding and sonic identity</span>
+                  <span>Audio branding & sonic identity</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-accent mt-1">•</span>
-                  <span>Narrative-driven brand worlds</span>
+                  <span>Social media strategy & management</span>
                 </li>
               </ul>
             </div>
 
             <div className="p-8 bg-background border border-border rounded-lg hover:border-accent transition duration-300 animate-slideUp" style={{ animationDelay: "0.1s" }}>
-              <h3 className="text-xl font-semibold mb-4">Available For</h3>
+              <h3 className="text-xl font-semibold mb-4">Outcomes</h3>
               <p className="text-muted-foreground mb-6">
-                We work with artists, brands, and cultural institutions to create experiences that resonate emotionally.
+                Increased engagement. Cultural relevance. Audience retention. We work with artists, brands, and cultural institutions to create experiences that move people and drive measurable results.
               </p>
               <div className="flex gap-3 flex-wrap">
                 <Button

@@ -12,7 +12,7 @@ export default function Services() {
   const services = [
     {
       title: "Experiential Marketing & Event Design",
-      description: "Create immersive brand experiences that captivate audiences and leave lasting impressions.",
+      description: "Increase audience engagement and brand loyalty through immersive, memorable experiences that drive cultural relevance and measurable business results.",
       items: [
         "Guerilla marketing activations",
         "Pop-up experiences and installations",
@@ -23,7 +23,7 @@ export default function Services() {
     },
     {
       title: "Digital Media Production",
-      description: "Craft compelling visual narratives that drive engagement across all digital platforms.",
+      description: "Boost audience engagement and retention through strategic visual content that strengthens brand identity and drives measurable platform growth.",
       items: [
         "Campaign visuals and creative direction",
         "Video production and editing",
@@ -34,7 +34,7 @@ export default function Services() {
     },
     {
       title: "Audio Branding & Sound Design",
-      description: "Develop sonic identities that amplify your brand's emotional impact.",
+      description: "Create distinctive sonic identities that increase brand recall, emotional connection, and audience loyalty through strategic sound design.",
       items: [
         "Custom sound design for campaigns",
         "Original music composition",
@@ -45,7 +45,7 @@ export default function Services() {
     },
     {
       title: "Social Media Strategy & Execution",
-      description: "Build authentic connections with your audience through strategic social presence.",
+      description: "Drive audience growth, engagement, and cultural relevance through strategic content direction and community-focused social campaigns.",
       items: [
         "Social-first campaign development",
         "Content direction and production",
@@ -56,7 +56,7 @@ export default function Services() {
     },
     {
       title: "Creative Direction & Brand Worldbuilding",
-      description: "Construct cohesive brand universes that resonate with your target audience.",
+      description: "Build distinctive brand universes that increase market differentiation, audience loyalty, and long-term cultural impact across all touchpoints.",
       items: [
         "Narrative-driven brand identity",
         "Concept design and campaign architecture",

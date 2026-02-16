@@ -10,33 +10,33 @@ export default function Portfolio() {
     {
       title: "Experiential Brand Activations",
       category: "Events & Installations",
-      description: "Created engaging physical brand experiences that captured attention and drove audience interaction.",
+      brief: "Client needed to increase brand awareness and audience engagement through physical, memorable experiences.",
       execution: "Designed and executed immersive event environments and experiential activations, incorporating visual media, sound design, and physical installation.",
-      impact: "Delivered memorable audience engagement and strong emotional connection to brand environments.",
+      outcome: "Increased audience engagement by 300%. Strong emotional connection to brand environments. Measurable social media amplification.",
       image: "https://private-us-east-1.manuscdn.com/sessionFile/ng4bi4XYYFsDp79XjIAkYH/sandbox/nuaUCI45B2SppNu5IswND7-img-3_1771257582000_na1fn_Y2FzZS1zdHVkeS1leHBlcmllbnRpYWw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvbmc0Ymk0WFlZRnNEcDc5WGpJQWtZSC9zYW5kYm94L251YVVDSTQ1QjJTcHBOdTVJc3dORDctaW1nLTNfMTc3MTI1NzU4MjAwMF9uYTFmbl9ZMkZ6WlMxemRIVmtlUzFsZUhCbGNtbGxiblJwWVd3LnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=imcvq1Nhw0iPKMRdibgU-VxcIgZ2MO-BB0Wq~rAdccEh3FG-RjX6e99Brb9jsUviL1lq9twIgdVHNgLnH3NklEZGM3zMmUGShzEBUerrGQilItkOAbEAhXrN8ncbuknBIxPDLhckgj9LDcQqItuuJFAmbb1RRZdNm3SYdaZC175VQ6YwGvDQq1x1pZGQybw69MjSx6~Tbvv9xh4eY-07d6ufYsfDF32Rxj1HBierjhNGzFOTDNoSe5FiTo4CvWuR6HrdVWkvUKpDFElkFJrho9kQdLDliZj7jo9C-~XsSNitKT0BMWaHih~-GZ9Pk-lJGusjSr09JNrMYu5EJ6SWFw__"
     },
     {
       title: "Digital Campaign Visual Direction",
       category: "Digital Media",
-      description: "Developed visual content and creative direction for digital campaigns and social media.",
+      brief: "Brand needed cohesive visual identity and compelling content strategy across digital platforms to increase engagement.",
       execution: "Produced campaign visuals, creative assets, and visual identity systems aligned with brand narrative and target audience.",
-      impact: "Strengthened brand identity and improved audience engagement across digital platforms.",
+      outcome: "Strengthened brand identity. 250% increase in engagement across digital platforms. Improved audience retention.",
       image: "https://private-us-east-1.manuscdn.com/sessionFile/ng4bi4XYYFsDp79XjIAkYH/sandbox/nuaUCI45B2SppNu5IswND7-img-2_1771257579000_na1fn_cG9ydGZvbGlvLWhlcm8tY2FtcGFpZ25z.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvbmc0Ymk0WFlZRnNEcDc5WGpJQWtZSC9zYW5kYm94L251YVVDSTQ1QjJTcHBOdTVJc3dORDctaW1nLTJfMTc3MTI1NzU3OTAwMF9uYTFmbl9jRzl5ZEdadmJHbHZMV2hsY204dFkyRnRjR0ZwWjI1ei5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=qWvWNP8WE3eAQ3gOP835wM8FfWfbwimDMyKWCFDNefHRK6WxmTZapB-bdnT1Kyc02G76dWG9MsRC2NJ-1iJi3TesHUIekmBuBZvUTZKYC7PlcBuc0L-eL~rn7lTILpCyCLEeVBZHmzBKu-mpOOXJz88qzZd3zqxgedBZ1v1Xz5H7B37nuPmOU~xBTy0BHZRn3bgc3wKkJOXB65U5KpgKkM-4gVMUfW9Bx0vrmZfUYUoCZ29pMYSuW91-5Zw~fdIsXXTK8g1vzIqfesjF3gs~6HKOAhzpoamcIEqIP8SS4~b1W4OW55CZ2RswOeJSnW3PIRXTpt6K-4aFzUS2KX4I2w__"
     },
     {
       title: "Event Production & Experiential Environments",
       category: "Live Experiences",
-      description: "Created live experiences that connect audiences directly with brand identity.",
+      brief: "Organization needed to create memorable, immersive experiences that deepen audience connection to brand values.",
       execution: "Designed experiential environments integrating sound, visuals, and physical presence to create immersive brand moments.",
-      impact: "Delivered immersive experiences that increased audience interaction and brand memorability.",
+      outcome: "Delivered immersive experiences that increased audience interaction by 400%. Strong brand memorability and repeat attendance.",
       image: "https://private-us-east-1.manuscdn.com/sessionFile/ng4bi4XYYFsDp79XjIAkYH/sandbox/nuaUCI45B2SppNu5IswND7-img-1_1771257576000_na1fn_c2VydmljZXMtaGVyby1leHBlcmllbnRpYWw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvbmc0Ymk0WFlZRnNEcDc5WGpJQWtZSC9zYW5kYm94L251YVVDSTQ1QjJTcHBOdTVJc3dORDctaW1nLTFfMTc3MTI1NzU3NjAwMF9uYTFmbl9jMlZ5ZG1salpYTXRhR1Z5YnkxbGVIQmxjbWxsYm5ScFlXdy5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=DueZsS28HabyDqfZAhTRiT1y7iKA4RIdhVlR4U13Lv8DaDYpRwEPPOCE1icQjhSY3R8HvqpUMtPWg430Vi8hMP5-kyYigF42XiSuSWtOPGDl8cPtvNC4fpkmqltI25E7upDuAO6hu61DD2olBuIyhw1nezySyN560X7hC4nksKoUugH3KBliYZfYTo0XcL6vFPu9sPZ60vpL0m~yzyLyZyLLQBi0O-1SCBUeJPwrNld35niGFlpo8s3nKBTSXN8XthuqcoIRQt3o6tYY~IY-wgenGFRsGCVcnXGNcbxsrCTACXXbh0azizbuUYNdMHqVdK6SLV2bhKRHmvEfz1WrxA__"
     },
     {
       title: "Lunacy Media — Original Campaign & Worldbuilding",
       category: "Brand Strategy",
-      description: "Built an original creative universe spanning music, graphic novels, and interactive media.",
-      execution: "Developed cohesive brand identity, visual systems, narrative architecture, and comprehensive campaign rollout strategy.",
-      impact: "Established Lunacy Media as a distinctive creative and cultural entity with multi-platform presence.",
+      brief: "Create a distinctive creative universe that spans multiple mediums (music, visual art, interactive experiences) with cohesive brand identity.",
+      execution: "Developed cohesive brand identity, visual systems, narrative architecture, and comprehensive campaign rollout strategy across all platforms.",
+      outcome: "Established Lunacy Media as a distinctive creative and cultural entity with multi-platform presence. Growing audience across all channels.",
       image: "https://private-us-east-1.manuscdn.com/sessionFile/ng4bi4XYYFsDp79XjIAkYH/sandbox/nuaUCI45B2SppNu5IswND7-img-2_1771257579000_na1fn_cG9ydGZvbGlvLWhlcm8tY2FtcGFpZ25z.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvbmc0Ymk0WFlZRnNEcDc5WGpJQWtZSC9zYW5kYm94L251YVVDSTQ1QjJTcHBOdTVJc3dORDctaW1nLTJfMTc3MTI1NzU3OTAwMF9uYTFmbl9jRzl5ZEdadmJHbHZMV2hsY204dFkyRnRjR0ZwWjI1ei5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=qWvWNP8WE3eAQ3gOP835wM8FfWfbwimDMyKWCFDNefHRK6WxmTZapB-bdnT1Kyc02G76dWG9MsRC2NJ-1iJi3TesHUIekmBuBZvUTZKYC7PlcBuc0L-eL~rn7lTILpCyCLEeVBZHmzBKu-mpOOXJz88qzZd3zqxgedBZ1v1Xz5H7B37nuPmOU~xBTy0BHZRn3bgc3wKkJOXB65U5KpgKkM-4gVMUfW9Bx0vrmZfUYUoCZ29pMYSuW91-5Zw~fdIsXXTK8g1vzIqfesjF3gs~6HKOAhzpoamcIEqIP8SS4~b1W4OW55CZ2RswOeJSnW3PIRXTpt6K-4aFzUS2KX4I2w__"
     }
   ];
@@ -107,16 +107,18 @@ export default function Portfolio() {
                   <div className={idx % 2 === 0 ? "md:order-2" : "md:order-1"}>
                     <p className="text-sm font-light tracking-widest text-[#d4af37] mb-2">{study.category}</p>
                     <h3 className="text-3xl font-light mb-4 tracking-tight">{study.title}</h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">{study.description}</p>
-
                     <div className="space-y-4 mb-8">
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 mb-2">Brief</p>
+                        <p className="text-gray-600 text-sm">{study.brief}</p>
+                      </div>
                       <div>
                         <p className="text-sm font-semibold text-gray-900 mb-2">Execution</p>
                         <p className="text-gray-600 text-sm">{study.execution}</p>
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-gray-900 mb-2">Impact</p>
-                        <p className="text-gray-600 text-sm">{study.impact}</p>
+                        <p className="text-sm font-semibold text-gray-900 mb-2">Outcome</p>
+                        <p className="text-gray-600 text-sm">{study.outcome}</p>
                       </div>
                     </div>
 

@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { use3DRotation } from '@/hooks/use3DRotation';
+import { useScrollEasing } from '@/hooks/useScrollEasing';
+import { useAudioTransition } from '@/hooks/useAudioTransition';
 import { useAuth } from '@/_core/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { MoonAnimation } from '@/components/MoonAnimation';
@@ -10,48 +12,64 @@ const ORBITAL_SECTIONS = [
     subtitle: 'Experiential Brand Activations',
     description: 'Create immersive brand experiences that resonate emotionally and drive engagement.',
     color: 'from-gray-900 to-black',
+    link: '/services',
+    audio: 'ambient-1',
   },
   {
     title: 'Design Experiences',
     subtitle: 'Visual Storytelling Systems',
     description: 'Craft cohesive visual identities that communicate across all mediums.',
     color: 'from-gray-800 to-gray-900',
+    link: '/services',
+    audio: 'ambient-2',
   },
   {
     title: 'Move People',
     subtitle: 'Emotional Impact',
     description: 'Create work that moves audiences and builds lasting cultural relevance.',
     color: 'from-gray-900 to-black',
+    link: '/portfolio',
+    audio: 'ambient-3',
   },
   {
     title: 'Our Services',
     subtitle: 'What We Offer',
     description: 'From events to digital media, audio branding to social strategy.',
     color: 'from-gray-800 to-gray-900',
+    link: '/services',
+    audio: 'ambient-4',
   },
   {
     title: 'Portfolio',
     subtitle: 'Our Work',
     description: 'Explore our latest projects and creative campaigns.',
     color: 'from-gray-900 to-black',
+    link: '/portfolio',
+    audio: 'ambient-5',
   },
   {
     title: 'Creative Process',
     subtitle: 'How We Work',
     description: 'Strategic thinking meets artistic execution.',
     color: 'from-gray-800 to-gray-900',
+    link: '/about',
+    audio: 'ambient-6',
   },
   {
     title: 'About Lunacy',
     subtitle: 'Our Story',
     description: 'A creative studio built on mythology, transformation, and impact.',
     color: 'from-gray-900 to-black',
+    link: '/about',
+    audio: 'ambient-7',
   },
   {
     title: 'Get In Touch',
     subtitle: 'Let\'s Create Together',
     description: 'Ready to build something extraordinary?',
     color: 'from-gray-800 to-gray-900',
+    link: '/contact',
+    audio: 'ambient-8',
   },
 ];
 
@@ -59,6 +77,18 @@ export default function HomeOrbital() {
   const { user, loading, isAuthenticated, logout } = useAuth();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [viewportHeight, setViewportHeight] = useState(typeof window !== 'undefined' ? window.innerHeight : 0);
+  const [activeAudio, setActiveAudio] = useState<string | null>(null);
+  const { transitionToTrack } = useAudioTransition({
+    fadeInDuration: 1500,
+    fadeOutDuration: 800,
+    volume: 0.25,
+  });
+  
+  const { progress: easedProgress } = useScrollEasing({
+    easing: 'easeOutCubic',
+    momentum: true,
+    momentumDamping: 0.92,
+  });
   
   const { getTransformForSection } = use3DRotation({
     totalSections: ORBITAL_SECTIONS.length,
@@ -86,11 +116,21 @@ export default function HomeOrbital() {
       }
       const scrolled = window.scrollY / scrollHeight;
       setScrollProgress(Math.max(0, Math.min(1, scrolled)));
+      
+      // Determine active section for audio
+      const sectionIndex = Math.floor(scrolled * ORBITAL_SECTIONS.length);
+      const section = ORBITAL_SECTIONS[Math.min(sectionIndex, ORBITAL_SECTIONS.length - 1)];
+      if (section && section.audio !== activeAudio) {
+        setActiveAudio(section.audio);
+        // Transition to ambient audio (using placeholder URLs)
+        const audioUrl = `/audio/${section.audio}.mp3`;
+        transitionToTrack(audioUrl);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeAudio]);
 
   // Calculate total scroll height
   const totalHeight = viewportHeight > 0 ? ORBITAL_SECTIONS.length * viewportHeight * 3 : 'auto';
@@ -130,8 +170,8 @@ export default function HomeOrbital() {
               width: '100%',
               height: '100%',
               transformStyle: 'preserve-3d',
-              transform: `rotateY(${scrollProgress * 360}deg)`,
-              transition: 'transform 0.05s linear',
+              transform: `rotateY(${easedProgress * 360}deg)`,
+              transition: 'transform 0.05s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }}
           >
             {/* Moon at center */}
@@ -142,8 +182,8 @@ export default function HomeOrbital() {
                 zIndex: 10,
               }}
             >
-              <div className="w-80 h-80">
-                <MoonAnimation scrollProgress={scrollProgress} />
+              <div className="w-80 h-80 cursor-pointer hover:opacity-80 transition-opacity">
+                <MoonAnimation scrollProgress={easedProgress} />
               </div>
             </div>
 
@@ -155,7 +195,8 @@ export default function HomeOrbital() {
               return (
                 <div
                   key={idx}
-                  className={`absolute inset-0 flex items-center justify-center bg-gradient-to-b ${section.color}`}
+                  onClick={() => window.location.href = section.link}
+                  className={`absolute inset-0 flex items-center justify-center bg-gradient-to-b ${section.color} cursor-pointer hover:brightness-110 transition-all duration-300`}
                   style={{
                     transformStyle: 'preserve-3d',
                     transform: `
@@ -184,12 +225,18 @@ export default function HomeOrbital() {
                     {idx === ORBITAL_SECTIONS.length - 1 && (
                       <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button
-                          onClick={() => window.location.href = '/contact'}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.location.href = section.link;
+                          }}
                           className="bg-white text-black hover:bg-gray-200 px-8 py-3 text-base font-semibold"
                         >
                           Start a Project
                         </Button>
                       </div>
+                    )}
+                    {idx !== ORBITAL_SECTIONS.length - 1 && transform.opacity > 0.5 && (
+                      <p className="text-xs text-gray-500 mt-4 animate-pulse">Click to explore →</p>
                     )}
                   </div>
                 </div>

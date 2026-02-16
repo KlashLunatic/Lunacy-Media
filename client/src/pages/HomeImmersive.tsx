@@ -6,7 +6,9 @@ import { MoonAnimation } from "@/components/MoonAnimation";
 import { SectionTransitionOverlay } from "@/components/SectionTransitionOverlay";
 import { AnimatedHeading } from "@/components/AnimatedHeading";
 import { AnimatedText } from "@/components/AnimatedText";
+import { ParallaxCard } from "@/components/ParallaxCard";
 import { useState, useEffect } from "react";
+import { useParallax } from "@/hooks/useParallax";
 
 /**
  * Immersive Home Page with Canvas Moon Animation
@@ -21,6 +23,11 @@ import { useState, useEffect } from "react";
 export default function HomeImmersive() {
   const { user, loading, isAuthenticated, logout } = useAuth();
   const [scrollProgress, setScrollProgress] = useState(0);
+  
+  // Parallax effects for hero elements
+  const { ref: heroTitleRef, transform: heroTitleTransform } = useParallax({ speed: 0.3 });
+  const { ref: heroTextRef, transform: heroTextTransform } = useParallax({ speed: 0.4 });
+  const { ref: heroButtonsRef, transform: heroButtonsTransform } = useParallax({ speed: 0.5 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +69,7 @@ export default function HomeImmersive() {
 
         {/* Hero Content Overlay */}
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-8">
-          <div className="animate-fadeIn">
+          <div className="animate-fadeIn" style={{ transform: `translateY(${heroTitleTransform.y}px)` }} ref={heroTitleRef}>
             <p className="text-sm font-light tracking-widest text-gray-400 mb-8 uppercase">
               Creative Studio
             </p>
@@ -71,11 +78,11 @@ export default function HomeImmersive() {
               Design Experiences.<br />
               Move People.
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed" style={{ transform: `translateY(${heroTextTransform.y}px)` }} ref={heroTextRef}>
               We create experiential campaigns and visual systems that increase engagement, cultural relevance, and audience retention. We work with artists, brands, and cultural institutions to craft experiences that resonate emotionally and live beyond their initial release.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center" style={{ transform: `translateY(${heroButtonsTransform.y}px)` }} ref={heroButtonsRef}>
               <Button
                 onClick={() => window.location.href = '/services'}
                 className="bg-white text-black hover:bg-gray-200 px-8 py-3 text-base font-semibold"
@@ -125,7 +132,7 @@ export default function HomeImmersive() {
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="p-8 border border-gray-800 rounded-lg hover:border-gray-600 transition-all duration-300">
+            <ParallaxCard speed={0.3}>
               <h3 className="text-3xl md:text-4xl font-black mb-4 text-white">Services</h3>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-start gap-3">
@@ -149,9 +156,9 @@ export default function HomeImmersive() {
                   <span>Social media strategy & management</span>
                 </li>
               </ul>
-            </div>
+            </ParallaxCard>
 
-            <div className="p-8 border border-gray-800 rounded-lg hover:border-gray-600 transition-all duration-300">
+            <ParallaxCard speed={0.4}>
               <h3 className="text-3xl md:text-4xl font-black mb-4 text-white">Outcomes</h3>
               <p className="text-gray-300 mb-6 leading-relaxed">
                 Increased engagement. Cultural relevance. Audience retention. We work with artists, brands, and cultural institutions to create experiences that move people and drive measurable results.
@@ -170,7 +177,7 @@ export default function HomeImmersive() {
                   <p className="text-gray-400 text-sm">Memorable experiences that drive retention</p>
                 </div>
               </div>
-            </div>
+            </ParallaxCard>
           </div>
 
           <div className="mt-12 flex gap-4">
@@ -224,11 +231,15 @@ export default function HomeImmersive() {
                 description: 'Immersive digital experiences and interactive storytelling',
                 link: '/',
               },
-            ].map((project, idx) => (
+            ].map((project, idx) => {
+              const { ref, transform } = useParallax({ speed: 0.2 + idx * 0.1 });
+              return (
               <a
                 key={idx}
+                ref={ref as any}
                 href={project.link}
                 className="group p-8 border border-gray-800 rounded-lg hover:border-gray-600 transition-all duration-300 hover:bg-gray-900/50"
+                style={{ transform: `translateY(${transform.y}px)` }}
               >
                 <h3 className="text-2xl md:text-3xl font-black mb-3 text-white group-hover:text-gray-300 transition-colors">
                   {project.title}
@@ -238,7 +249,8 @@ export default function HomeImmersive() {
                   Explore →
                 </p>
               </a>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>
@@ -255,9 +267,9 @@ export default function HomeImmersive() {
           <AnimatedHeading level="h2" className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight" type="slideUp" delay={0}>
             Join the Orbit
           </AnimatedHeading>
-          <p className="text-lg md:text-xl text-gray-300 mb-16 leading-relaxed">
+          <AnimatedText className="text-lg md:text-xl text-gray-300 mb-16 leading-relaxed" type="fade" delay={200} as="p">
             Get updates on new projects, campaigns, and creative collaborations.
-          </p>
+          </AnimatedText>
 
           <form className="space-y-4">
             <input

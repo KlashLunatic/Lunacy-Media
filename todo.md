@@ -72,3 +72,12 @@
 - [x] Sync moon phases with page sections
 - [x] Test scroll animations across all sections
 - [x] Optimize performance and smoothness
+
+
+## Phase 6: Parallax Effects with Depth
+- [x] Create useParallax hook for scroll-based transforms
+- [x] Implement parallax on hero section elements
+- [x] Add parallax to service cards and project cards
+- [x] Apply parallax to text and content sections
+- [x] Test parallax effects across all sections
+- [x] Optimize performance and smoothness

@@ -1,7 +1,10 @@
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { trpc } from "@/lib/trpc";
+import { toast } from "sonner";
 
 /**
  * Design Philosophy: Luxury Minimal (Apple-Inspired)
@@ -14,17 +17,28 @@ import { useState } from "react";
  */
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  let { user, loading, error, isAuthenticated, logout } = useAuth();
+
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const subscribeMutation = trpc.newsletter.subscribe.useMutation();
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    if (!email) return;
+
+    try {
+      const result = await subscribeMutation.mutateAsync({ email });
+      if (result.alreadySubscribed) {
+        toast.info("You're already in the Orbit!");
+      } else {
+        toast.success("Welcome to the Orbit! Check your email to confirm.");
+      }
       setEmail("");
-      alert("Welcome to the Orbit!");
-    }, 1000);
+    } catch (error: any) {
+      toast.error(error.message || "Failed to subscribe. Please try again.");
+    }
   };
 
   return (
@@ -216,10 +230,10 @@ export default function Home() {
             />
             <Button
               type="submit"
-              disabled={isSubmitting}
-              className="bg-[#d4af37] text-black font-medium px-8 whitespace-nowrap hover:bg-[#c9a02d] transition duration-200 rounded-lg"
+              disabled={subscribeMutation.isPending}
+              className="bg-[#d4af37] text-black font-medium px-8 whitespace-nowrap hover:bg-[#c9a02d] transition duration-200 rounded-lg disabled:opacity-50"
             >
-              {isSubmitting ? "Joining..." : "Join"}
+              {subscribeMutation.isPending ? "Joining..." : "Join"}
             </Button>
           </form>
 

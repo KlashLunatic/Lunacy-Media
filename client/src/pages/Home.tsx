@@ -37,6 +37,9 @@ export default function Home() {
             <span>Lunacy</span>
           </a>
           <div className="flex gap-8 items-center text-sm">
+            <a href="/about" className="hover:text-[#d4af37] transition duration-200">
+              About
+            </a>
             <a href="#projects" className="hover:text-[#d4af37] transition duration-200">
               Projects
             </a>

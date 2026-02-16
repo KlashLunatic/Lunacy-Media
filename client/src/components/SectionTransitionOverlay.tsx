@@ -13,7 +13,7 @@ interface Section {
 export function SectionTransitionOverlay() {
   const [sections, setSections] = useState<Section[]>([]);
   const [transition, setTransition] = useState({
-    backgroundColor: 'rgb(0, 0, 0)',
+    backgroundColor: 'transparent',
     backdropFilter: 'blur(0px)',
   });
 
@@ -45,6 +45,29 @@ export function SectionTransitionOverlay() {
     });
 
     setSections(newSections);
+    
+    // Trigger initial scroll handler to set correct initial state
+    setTimeout(() => {
+      const scrollY = window.scrollY;
+      for (const section of newSections) {
+        if (scrollY >= section.startY && scrollY <= section.endY) {
+          const progress = (scrollY - section.startY) / (section.endY - section.startY);
+          const fromRGB = parseRGB(section.fromColor);
+          const toRGB = parseRGB(section.toColor);
+          const r = Math.round(fromRGB.r + (toRGB.r - fromRGB.r) * progress);
+          const g = Math.round(fromRGB.g + (toRGB.g - fromRGB.g) * progress);
+          const b = Math.round(fromRGB.b + (toRGB.b - fromRGB.b) * progress);
+          const blurStart = 0;
+          const blurEnd = section.blur || 0;
+          const blur = blurStart + (blurEnd - blurStart) * progress;
+          setTransition({
+            backgroundColor: `rgb(${r}, ${g}, ${b})`,
+            backdropFilter: blur > 0 ? `blur(${blur}px)` : 'blur(0px)',
+          });
+          break;
+        }
+      }
+    }, 0);
   }, []);
 
   useEffect(() => {
@@ -85,7 +108,7 @@ export function SectionTransitionOverlay() {
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-40"
+      className="fixed inset-0 pointer-events-none -z-10"
       style={{
         backgroundColor: transition.backgroundColor,
         backdropFilter: transition.backdropFilter,
@@ -95,7 +118,7 @@ export function SectionTransitionOverlay() {
   );
 }
 
-function parseRGB(color: string): { r: number; g: number; b: number } {
+export function parseRGB(color: string): { r: number; g: number; b: number } {
   const match = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
   if (match) {
     return {

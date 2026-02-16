@@ -1,17 +1,29 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useTexture, OrbitControls } from '@react-three/drei';
-import { useRef, useMemo, Suspense } from 'react';
+import { useTexture } from '@react-three/drei';
+import { useRef, useMemo, Suspense, Component, type ReactNode } from 'react';
 import * as THREE from 'three';
+
+// Error boundary to catch texture loading failures
+class Moon3DErrorBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: true }; }
+  render() {
+    if (this.state.hasError) return this.props.fallback;
+    return this.props.children;
+  }
+}
 
 interface MoonSphereProps {
   scrollProgress: number;
   phaseVisibility: number;
 }
 
+const MOON_TEXTURE_URL = 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/GrnfiChkLPEblyKd.jpg';
+
 function MoonSphere({ scrollProgress, phaseVisibility }: MoonSphereProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const lightRef = useRef<THREE.DirectionalLight>(null);
-  const texture = useTexture('https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/GrnfiChkLPEblyKd.jpg');
+  const texture = useTexture(MOON_TEXTURE_URL);
 
   // Slow rotation
   useFrame((_, delta) => {
@@ -127,6 +139,34 @@ interface Moon3DProps {
   className?: string;
 }
 
+// Fallback moon using simple geometry (no texture)
+function FallbackMoon({ scrollProgress, phaseVisibility }: MoonSphereProps) {
+  const meshRef = useRef<THREE.Mesh>(null);
+  const lightRef = useRef<THREE.DirectionalLight>(null);
+
+  useFrame((_, delta) => {
+    if (meshRef.current) meshRef.current.rotation.y += delta * 0.05;
+  });
+
+  useFrame(() => {
+    if (lightRef.current) {
+      const angle = scrollProgress * Math.PI * 2;
+      lightRef.current.position.set(Math.sin(angle) * 5, 1, Math.cos(angle) * 5);
+    }
+  });
+
+  return (
+    <group>
+      <directionalLight ref={lightRef} intensity={2.5} color="#ffffff" position={[5, 1, 0]} />
+      <ambientLight intensity={0.08} color="#334466" />
+      <mesh ref={meshRef}>
+        <sphereGeometry args={[2, 64, 64]} />
+        <meshStandardMaterial color="#888888" roughness={1} metalness={0} transparent opacity={phaseVisibility} />
+      </mesh>
+    </group>
+  );
+}
+
 export function Moon3D({
   scrollProgress = 0,
   phaseVisibility = 1,
@@ -134,20 +174,36 @@ export function Moon3D({
 }: Moon3DProps) {
   return (
     <div className={`w-full h-full ${className}`}>
-      <Canvas
-        camera={{ position: [0, 0, 5.5], fov: 45 }}
-        gl={{ antialias: true, alpha: true }}
-        style={{ background: 'transparent' }}
+      <Moon3DErrorBoundary
+        fallback={
+          <Canvas
+            camera={{ position: [0, 0, 5.5], fov: 45 }}
+            gl={{ antialias: true, alpha: true }}
+            style={{ background: 'transparent' }}
+          >
+            <Suspense fallback={null}>
+              <CameraController scrollProgress={scrollProgress} />
+              <FallbackMoon scrollProgress={scrollProgress} phaseVisibility={phaseVisibility} />
+              <StarField />
+            </Suspense>
+          </Canvas>
+        }
       >
-        <Suspense fallback={null}>
-          <CameraController scrollProgress={scrollProgress} />
-          <MoonSphere
-            scrollProgress={scrollProgress}
-            phaseVisibility={phaseVisibility}
-          />
-          <StarField />
-        </Suspense>
-      </Canvas>
+        <Canvas
+          camera={{ position: [0, 0, 5.5], fov: 45 }}
+          gl={{ antialias: true, alpha: true }}
+          style={{ background: 'transparent' }}
+        >
+          <Suspense fallback={null}>
+            <CameraController scrollProgress={scrollProgress} />
+            <MoonSphere
+              scrollProgress={scrollProgress}
+              phaseVisibility={phaseVisibility}
+            />
+            <StarField />
+          </Suspense>
+        </Canvas>
+      </Moon3DErrorBoundary>
     </div>
   );
 }

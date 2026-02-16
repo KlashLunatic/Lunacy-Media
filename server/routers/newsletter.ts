@@ -9,9 +9,9 @@ import { ENV } from "../_core/env";
 
 export const newsletterRouter = router({
   subscribe: publicProcedure
-    .input(z.object({ email: z.string().email() }))
+    .input(z.object({ email: z.string().email(), firstName: z.string().optional() }))
     .mutation(async ({ input }) => {
-      const { email } = input;
+      const { email, firstName } = input;
       const apiKey = ENV.mailchimpApiKey;
       const audienceId = ENV.mailchimpAudienceId;
 
@@ -38,6 +38,7 @@ export const newsletterRouter = router({
             email_address: email,
             status: "pending", // Use "pending" for double opt-in, "subscribed" for immediate
             tags: ["lunacy-orbit"],
+            merge_fields: firstName ? { FNAME: firstName } : {},
           }),
         });
 

@@ -22,6 +22,8 @@ export default function Home() {
   let { user, loading, error, isAuthenticated, logout } = useAuth();
 
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
   const subscribeMutation = trpc.newsletter.subscribe.useMutation();
 
   const handleSubscribe = async (e: React.FormEvent) => {
@@ -29,13 +31,16 @@ export default function Home() {
     if (!email) return;
 
     try {
-      const result = await subscribeMutation.mutateAsync({ email });
+      const result = await subscribeMutation.mutateAsync({ email, firstName });
       if (result.alreadySubscribed) {
         toast.info("You're already in the Orbit!");
       } else {
-        toast.success("Welcome to the Orbit! Check your email to confirm.");
+        setShowSuccess(true);
+        setEmail("");
+        setFirstName("");
+        // Hide success message after 5 seconds
+        setTimeout(() => setShowSuccess(false), 5000);
       }
-      setEmail("");
     } catch (error: any) {
       toast.error(error.message || "Failed to subscribe. Please try again.");
     }
@@ -219,7 +224,25 @@ export default function Home() {
             No spam. Just progress. Releases, chapters, prototypes, and collaborator calls.
           </p>
 
+          {showSuccess && firstName && (
+            <div className="mb-8 p-6 bg-[#d4af37]/10 border border-[#d4af37] rounded-lg animate-in fade-in duration-300">
+              <p className="text-lg font-light text-foreground">
+                Welcome to the Orbit, <span className="font-medium text-[#d4af37]">{firstName}</span>.
+              </p>
+              <p className="text-sm text-muted mt-2 font-light">
+                Check your email to confirm your subscription. You'll hear from us soon.
+              </p>
+            </div>
+          )}
+
           <form onSubmit={handleSubscribe} className="flex gap-3 flex-col sm:flex-row">
+            <Input
+              type="text"
+              placeholder="Your name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              className="bg-secondary border-border text-foreground placeholder:text-muted/60 rounded-lg"
+            />
             <Input
               type="email"
               placeholder="your@email.com"

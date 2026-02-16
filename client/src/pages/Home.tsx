@@ -81,18 +81,18 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 animate-fadeIn">
-          <h1 className="text-7xl md:text-8xl lg:text-9xl font-black mb-6 leading-tight animate-slideUp tracking-tighter">
+        <div className="relative z-10 text-center max-w-5xl mx-auto px-4 animate-fadeIn">
+          <h1 className="text-8xl md:text-9xl lg:text-[11rem] font-black mb-8 leading-none animate-slideUp tracking-tighter">
             Build culture.
           </h1>
-          <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-8 text-accent animate-slideUp tracking-tighter" style={{ animationDelay: "0.1s" }}>
+          <h2 className="text-7xl md:text-8xl lg:text-9xl font-black mb-10 text-accent animate-slideUp tracking-tighter" style={{ animationDelay: "0.1s" }}>
             Design experiences.
           </h2>
-          <h3 className="text-6xl md:text-7xl lg:text-8xl font-black mb-12 leading-tight animate-slideUp tracking-tighter" style={{ animationDelay: "0.2s" }}>
+          <h3 className="text-7xl md:text-8xl lg:text-9xl font-black mb-16 leading-none animate-slideUp tracking-tighter" style={{ animationDelay: "0.2s" }}>
             Move people.
           </h3>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto animate-slideUp leading-relaxed" style={{ animationDelay: "0.3s" }}>
+          <p className="text-lg md:text-xl text-muted-foreground mb-16 max-w-3xl mx-auto animate-slideUp leading-relaxed" style={{ animationDelay: "0.3s" }}>
             We create experiential campaigns and visual systems that increase engagement, cultural relevance, and audience retention. We work with artists, brands, and cultural institutions to craft experiences that resonate emotionally and live beyond their initial release.
           </p>
 
@@ -124,9 +124,9 @@ export default function Home() {
       {/* Services Overview */}
       <section ref={subscribeRef} className="py-20 md:py-32 px-4 sm:px-8 bg-card/50 border-t border-border">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-16 animate-fadeIn">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">What We Do</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl">
+          <div className="mb-24 animate-fadeIn">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight">What We Do</h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
               We create experiential campaigns and visual systems that increase engagement, cultural relevance, and audience retention. Our work moves people and builds lasting cultural impact.
             </p>
           </div>
@@ -189,9 +189,9 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 md:py-32 px-4 sm:px-8">
+      <section className="py-24 md:py-40 px-4 sm:px-8">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 animate-fadeIn">Creative Projects</h2>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-24 animate-fadeIn leading-tight">Creative Projects</h2>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -220,10 +220,10 @@ export default function Home() {
                   window.location.href = project.link;
                 }}
               >
-                <h3 className="text-2xl font-semibold mb-3 group-hover:text-accent transition duration-200">
+                <h3 className="text-3xl md:text-4xl font-black mb-4 group-hover:text-accent transition duration-200 leading-tight">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground mb-6">{project.description}</p>
+                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">{project.description}</p>
                 <span className="text-accent font-medium flex items-center gap-2 group-hover:gap-3 transition duration-200">
                   Explore <ArrowRight className="w-4 h-4" />
                 </span>
@@ -234,10 +234,10 @@ export default function Home() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-20 md:py-32 px-4 sm:px-8 bg-card/50 border-t border-border">
+      <section className="py-24 md:py-40 px-4 sm:px-8 bg-card/50 border-t border-border">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fadeIn">Join the Orbit</h2>
-          <p className="text-lg text-muted-foreground mb-12 animate-fadeIn">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 animate-fadeIn leading-tight">Join the Orbit</h2>
+          <p className="text-lg md:text-xl text-muted-foreground mb-16 animate-fadeIn leading-relaxed">
             Get updates on new projects, campaigns, and creative collaborations.
           </p>
 

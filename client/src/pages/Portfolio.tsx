@@ -65,20 +65,20 @@ export default function Portfolio() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 sm:py-32">
+      <section className="relative overflow-hidden py-24 sm:py-40">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{
-            backgroundImage: "url('https://private-us-east-1.manuscdn.com/sessionFile/ng4bi4XYYFsDp79XjIAkYH/sandbox/nuaUCI45B2SppNu5IswND7-img-2_1771257579000_na1fn_cG9ydGZvbGlvLWhlcm8tY2FtcGFpZ25z.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvbmc0Ymk0WFlZRnNEcDc5WGpJQWtZSC9zYW5kYm94L251YVVDSTQ1QjJTcHBOdTVJc3dORDctaW1nLTJfMTc3MTI1NzU3OTAwMF9uYTFmbl9jRzl5ZEdadmJHbHZMV2hsY204dFkyRnRjR0ZwWjI1ei5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=qWvWNP8WE3eAQ3gOP835wM8FfWfbwimDMyKWCFDNefHRK6WxmTZapB-bdnT1Kyc02G76dWG9MsRC2NJ-1iJi3TesHUIekmBuBZvUTZKYC7PlcBuc0L-eL~rn7lTILpCyCLEeVBZHmzBKu-mpOOXJz88qzZd3zqxgedBZ1v1Xz5H7B37nuPmOU~xBTy0BHZRn3bgc3wKkJOXB65U5KpgKkM-4gVMUfW9Bx0vrmZfUYUoCZ29pMYSuW91-5Zw~fdIsXXTK8g1vzIqfesjF3gs~6HKOAhzpoamcIEqIP8SS4~b1W4OW55CZ2RswOeJSnW3PIRXTpt6K-4aFzUS2KX4I2w__')"
+            backgroundImage: "url('https://private-us-east-1.manuscdn.com/sessionFile/ng4bi4XYYFsDp79XjIAkYH/sandbox/nuaUCI45B2SppNu5IswND7-img-2_1771257579000_na1fn_cG9ydGZvbGlvLWhlcm8tY2FtcGFpZ25z.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvbmc0Ymk0WFlZRnNEcDc5WGpJQWtZSC9zYW5kYm94L251YVVDSTQ1QjJTcHBOdTVJc3dORDctaW1nLTJfMTc3MTI1NzU3OTAwMF9uYTFmbl9jRzl5ZEdadmJHbHZMV2hsY204dFkyRnRjR0ZwWjI1ei5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=qWvWNP8WE3eAQ3gOP835wM8FfWfbwimDMyKWCFDNefHRK6WxmTZapB-bdnT1Kyc02G76dWG9MsRC2NJ-1iJi3TesHUIekmBuBZvUTZKYC7PlcBuc0L-eL~rn7lTILpCyCLEeVBZHmzBKu-mpOOXJz88qzZd3zqxgedBZ1v1Xz5H7B37nuPmOU~xBTy0BHZRn3bgc3wKkJOXB65U5KpgKkM-4gVMUfW9Bx0vrmZfUYUoCZ29pMYSuW91-5Zw~fdIsXXTK8g1vzIqfesjF3gs~6HKOAhzpoamcIEqIP8SS4~b1W4OW55CZ2RswOeJSnW3PIRXTpt6K-4aFzUS2KX4I2w__'"
           }}
         />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-8 text-center">
           <div className="animate-fade-in-up">
-            <p className="text-sm font-light tracking-widest text-[#d4af37] mb-4">CASE STUDIES</p>
-            <h1 className="text-5xl sm:text-7xl font-light tracking-tight mb-6">
+            <p className="text-sm font-light tracking-widest text-[#d4af37] mb-6">CASE STUDIES</p>
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight mb-8 leading-tight">
               Our Work
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
               A selection of campaigns, activations, and creative projects that showcase our approach to building culturally resonant brand experiences.
             </p>
           </div>
@@ -86,9 +86,9 @@ export default function Portfolio() {
       </section>
 
       {/* Case Studies */}
-      <section className="py-20 sm:py-32 bg-white">
+      <section className="py-24 sm:py-40 bg-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-8">
-          <div className="space-y-24">
+          <div className="space-y-32">
             {caseStudies.map((study, idx) => (
               <div key={idx} className="animate-fade-in-up" style={{ animationDelay: `${idx * 100}ms` }}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -105,8 +105,8 @@ export default function Portfolio() {
 
                   {/* Content */}
                   <div className={idx % 2 === 0 ? "md:order-2" : "md:order-1"}>
-                    <p className="text-sm font-light tracking-widest text-[#d4af37] mb-2">{study.category}</p>
-                    <h3 className="text-3xl font-light mb-4 tracking-tight">{study.title}</h3>
+                    <p className="text-sm font-light tracking-widest text-[#d4af37] mb-4">{study.category}</p>
+                    <h3 className="text-4xl md:text-5xl font-black mb-6 tracking-tight leading-tight">{study.title}</h3>
                     <div className="space-y-4 mb-8">
                       <div>
                         <p className="text-sm font-semibold text-gray-900 mb-2">Brief</p>

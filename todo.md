@@ -126,3 +126,12 @@
 - [x] Create phase-to-section mapping for visibility timing
 - [x] Implement opacity and clickability based on phase proximity
 - [x] Test moon phase cycling and interactions
+
+
+## Phase 12: 3D Moon & Dimensional Sections
+- [x] Install Three.js and @react-three/fiber + @react-three/drei
+- [x] Create 3D moon sphere with realistic surface texture
+- [x] Implement scroll-linked lunar phase lighting (sunlight angle)
+- [x] Redesign orbital sections from flat squares to curved 3D panels
+- [x] Integrate 3D scene into HomeOrbital
+- [x] Test 3D rendering and scroll interactions

@@ -168,12 +168,14 @@ export default function Home() {
                 Graphic novel development: <em>The Rogue Witch</em>. Chapter pipeline, lore, visuals, and release plan.
               </p>
             </div>
-            <Button
-              variant="ghost"
-              className="text-sm font-medium text-[#d4af37] hover:text-[#c9a02d] p-0 h-auto"
-            >
-              Explore OBEAH →
-            </Button>
+            <a href="/obeah">
+              <Button
+                variant="ghost"
+                className="text-sm font-medium text-[#d4af37] hover:text-[#c9a02d] p-0 h-auto"
+              >
+                Explore OBEAH →
+              </Button>
+            </a>
           </div>
 
           {/* Releases Card */}
@@ -187,12 +189,14 @@ export default function Home() {
                 Singles, arcs, and rollouts — built as chapters of a larger universe, not one-off drops.
               </p>
             </div>
-            <Button
-              variant="ghost"
-              className="text-sm font-medium text-[#d4af37] hover:text-[#c9a02d] p-0 h-auto"
-            >
-              See current slate →
-            </Button>
+            <a href="/releases">
+              <Button
+                variant="ghost"
+                className="text-sm font-medium text-[#d4af37] hover:text-[#c9a02d] p-0 h-auto"
+              >
+                See current slate →
+              </Button>
+            </a>
           </div>
 
           {/* Interactive Worlds Card */}
@@ -206,12 +210,14 @@ export default function Home() {
                 Prototype experiences (TAMMY + beyond) designed for Gen Z clarity and funder-ready deliverables.
               </p>
             </div>
-            <Button
-              variant="ghost"
-              className="text-sm font-medium text-[#d4af37] hover:text-[#c9a02d] p-0 h-auto"
-            >
-              Collaborate →
-            </Button>
+            <a href="/interactive-worlds">
+              <Button
+                variant="ghost"
+                className="text-sm font-medium text-[#d4af37] hover:text-[#c9a02d] p-0 h-auto"
+              >
+                Collaborate →
+              </Button>
+            </a>
           </div>
         </div>
       </section>

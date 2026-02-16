@@ -135,3 +135,13 @@
 - [x] Redesign orbital sections from flat squares to curved 3D panels
 - [x] Integrate 3D scene into HomeOrbital
 - [x] Test 3D rendering and scroll interactions
+
+
+## Phase 13: Enhanced Orbital Experience v2
+- [x] Fix moon surface texture on 3D sphere (procedural texture, no CORS issues)
+- [x] Create branded loading screen with moon particle animation
+- [x] Implement CSS scroll snap for orbital sections
+- [x] Add visual content depth to panels (icons, stats, tags, descriptions)
+- [x] Fix moon z-index layering (behind text, visible through panel)
+- [x] Adjust panel transparency for moon visibility
+- [x] Test all enhancements across pages

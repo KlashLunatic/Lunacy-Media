@@ -2,6 +2,84 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/_core/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Moon3D } from '@/components/Moon3D';
+import { LoadingScreen } from '@/components/LoadingScreen';
+
+// Icons as simple SVG components for section visual depth
+function IconEvents() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 text-white/20">
+      <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M16 20h16M16 28h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="24" cy="14" r="3" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+function IconVisual() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 text-white/20">
+      <rect x="8" y="10" width="32" height="28" rx="3" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="18" cy="22" r="4" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M8 32l10-8 6 4 8-10 8 6" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function IconImpact() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 text-white/20">
+      <path d="M24 6v36M6 24h36" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="24" cy="24" r="10" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+    </svg>
+  );
+}
+function IconServices() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 text-white/20">
+      <rect x="6" y="6" width="16" height="16" rx="3" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="26" y="6" width="16" height="16" rx="3" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="6" y="26" width="16" height="16" rx="3" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="26" y="26" width="16" height="16" rx="3" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+function IconPortfolio() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 text-white/20">
+      <rect x="4" y="12" width="40" height="28" rx="3" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M16 12V10a6 6 0 0112 0v2" stroke="currentColor" strokeWidth="1.5" />
+      <line x1="4" y1="22" x2="44" y2="22" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+function IconProcess() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 text-white/20">
+      <circle cx="12" cy="24" r="6" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="36" cy="24" r="6" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M18 24h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M24 10v8M24 30v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="3 3" />
+    </svg>
+  );
+}
+function IconAbout() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 text-white/20">
+      <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M24 14a4 4 0 110 8 4 4 0 010-8z" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M16 34c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+function IconContact() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 text-white/20">
+      <rect x="4" y="10" width="40" height="28" rx="3" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M4 14l20 14 20-14" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+const SECTION_ICONS = [IconEvents, IconVisual, IconImpact, IconServices, IconPortfolio, IconProcess, IconAbout, IconContact];
 
 const ORBITAL_SECTIONS = [
   {
@@ -9,55 +87,81 @@ const ORBITAL_SECTIONS = [
     subtitle: 'Experiential Brand Activations',
     description: 'Create immersive brand experiences that resonate emotionally and drive engagement.',
     link: '/services',
+    tags: ['Events', 'Activations', 'Live Experiences'],
+    stat: '300%',
+    statLabel: 'Avg. Engagement Increase',
   },
   {
     title: 'Design Experiences',
     subtitle: 'Visual Storytelling Systems',
     description: 'Craft cohesive visual identities that communicate across all mediums.',
     link: '/services',
+    tags: ['Branding', 'Identity', 'Visual Systems'],
+    stat: '50+',
+    statLabel: 'Projects Delivered',
   },
   {
     title: 'Move People',
     subtitle: 'Emotional Impact',
     description: 'Create work that moves audiences and builds lasting cultural relevance.',
     link: '/portfolio',
+    tags: ['Campaigns', 'Content', 'Strategy'],
+    stat: '1M+',
+    statLabel: 'Audience Reached',
   },
   {
     title: 'Our Services',
     subtitle: 'What We Offer',
     description: 'From events to digital media, audio branding to social strategy.',
     link: '/services',
+    tags: ['Events', 'Digital', 'Audio', 'Social'],
+    stat: '5',
+    statLabel: 'Core Disciplines',
   },
   {
     title: 'Portfolio',
     subtitle: 'Our Work',
     description: 'Explore our latest projects and creative campaigns.',
     link: '/portfolio',
+    tags: ['Case Studies', 'Campaigns', 'Results'],
+    stat: '12',
+    statLabel: 'Featured Projects',
   },
   {
     title: 'Creative Process',
     subtitle: 'How We Work',
     description: 'Strategic thinking meets artistic execution.',
     link: '/about',
+    tags: ['Strategy', 'Execution', 'Iteration'],
+    stat: '4',
+    statLabel: 'Phase Process',
   },
   {
     title: 'About Lunacy',
     subtitle: 'Our Story',
     description: 'A creative studio built on mythology, transformation, and impact.',
     link: '/about',
+    tags: ['Founded 2020', 'Toronto', 'Independent'],
+    stat: '∞',
+    statLabel: 'Creative Vision',
   },
   {
     title: 'Get In Touch',
     subtitle: "Let's Create Together",
     description: 'Ready to build something extraordinary?',
     link: '/contact',
+    tags: ['Consultation', 'Collaboration', 'Partnership'],
+    stat: '24h',
+    statLabel: 'Response Time',
   },
 ];
 
 export default function HomeOrbital() {
-  const { user, loading, isAuthenticated, logout } = useAuth();
+  const { user, loading: authLoading, isAuthenticated, logout } = useAuth();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [viewportHeight, setViewportHeight] = useState(800);
+  const [sceneReady, setSceneReady] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
 
   // Track viewport height
   useEffect(() => {
@@ -67,7 +171,7 @@ export default function HomeOrbital() {
     return () => window.removeEventListener('resize', updateHeight);
   }, []);
 
-  // Track scroll progress
+  // Track scroll progress with snap behavior
   useEffect(() => {
     const handleScroll = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -92,8 +196,8 @@ export default function HomeOrbital() {
   // Moon phase visibility: peaks in center of each section
   const phaseVisibility = Math.sin(sectionProgress * Math.PI) * 0.7 + 0.3;
 
-  // Total scroll height: each section gets 3 viewport heights
-  const totalHeight = ORBITAL_SECTIONS.length * viewportHeight * 3;
+  // Total scroll height: each section gets 2.5 viewport heights for snappier feel
+  const totalHeight = ORBITAL_SECTIONS.length * viewportHeight * 2.5;
 
   // Get section transform based on its relation to active section
   const getSectionTransform = useCallback(
@@ -101,24 +205,14 @@ export default function HomeOrbital() {
       const totalSections = ORBITAL_SECTIONS.length;
       const currentFloat = scrollProgress * totalSections;
 
-      // Distance from active position (wrapping)
       let dist = idx - currentFloat;
       if (dist > totalSections / 2) dist -= totalSections;
       if (dist < -totalSections / 2) dist += totalSections;
 
-      // Rotation around Y axis
       const rotateY = dist * 45;
-
-      // Push sections away from center
       const translateZ = -Math.abs(dist) * 300 - 200;
-
-      // Opacity: fade out distant sections
       const opacity = Math.max(0, 1 - Math.abs(dist) * 0.5);
-
-      // Scale: shrink distant sections
       const scale = Math.max(0.6, 1 - Math.abs(dist) * 0.15);
-
-      // Tilt for 3D depth
       const rotateX = dist * 5;
 
       return { rotateY, translateZ, opacity, scale, rotateX };
@@ -126,8 +220,24 @@ export default function HomeOrbital() {
     [scrollProgress]
   );
 
+  const handleMoonReady = useCallback(() => {
+    setSceneReady(true);
+  }, []);
+
+  const handleLoadingComplete = useCallback(() => {
+    setShowLoading(false);
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Loading Screen */}
+      {showLoading && (
+        <LoadingScreen
+          isLoading={!sceneReady}
+          onComplete={handleLoadingComplete}
+        />
+      )}
+
       {/* Fixed Navigation */}
       <header className="fixed top-0 z-50 w-full border-b border-gray-800/50 bg-black/60 backdrop-blur-xl">
         <nav className="mx-auto max-w-7xl px-4 sm:px-8 py-4 flex items-center justify-between">
@@ -148,37 +258,46 @@ export default function HomeOrbital() {
         </nav>
       </header>
 
-      {/* Scroll container */}
-      <div style={{ height: `${totalHeight}px` }}>
+      {/* Scroll container with snap */}
+      <div
+        style={{
+          height: `${totalHeight}px`,
+          scrollSnapType: 'y proximity',
+        }}
+      >
         {/* Fixed 3D viewport */}
         <div
           className="fixed inset-0 top-16 overflow-hidden"
           style={{ perspective: '1800px', height: 'calc(100vh - 4rem)' }}
         >
-          {/* 3D Moon at center */}
+          {/* 3D Moon at center - behind panel text but visible through panel bg */}
           <div
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{
-              width: '340px',
-              height: '340px',
-              zIndex: 5,
+              width: '280px',
+              height: '280px',
+              zIndex: 2,
               pointerEvents: phaseVisibility > 0.5 ? 'auto' : 'none',
+              filter: `brightness(${0.6 + phaseVisibility * 0.4})`,
+              transition: 'filter 0.3s ease',
             }}
           >
             <Moon3D
               scrollProgress={scrollProgress}
               phaseVisibility={phaseVisibility}
+              onReady={handleMoonReady}
             />
           </div>
 
           {/* Orbital sections - curved panels in 3D space */}
           <div
             className="absolute inset-0"
-            style={{ transformStyle: 'preserve-3d' }}
+            style={{ transformStyle: 'preserve-3d', zIndex: 3 }}
           >
             {ORBITAL_SECTIONS.map((section, idx) => {
               const t = getSectionTransform(idx);
               const isActive = idx === activeSectionIndex;
+              const SectionIcon = SECTION_ICONS[idx];
 
               return (
                 <div
@@ -210,11 +329,10 @@ export default function HomeOrbital() {
                     `}
                     style={{
                       background: isActive
-                        ? 'linear-gradient(135deg, rgba(30,30,30,0.95), rgba(10,10,10,0.98))'
-                        : 'linear-gradient(135deg, rgba(20,20,20,0.7), rgba(5,5,5,0.8))',
+                        ? 'linear-gradient(135deg, rgba(20,20,20,0.85), rgba(8,8,8,0.9))'
+                        : 'linear-gradient(135deg, rgba(15,15,15,0.6), rgba(5,5,5,0.7))',
                       padding: '4rem 3rem',
                       transformStyle: 'preserve-3d',
-                      // Subtle curve effect via perspective on the panel itself
                       transform: `perspective(800px) rotateY(${isActive ? 0 : t.rotateY * 0.05}deg)`,
                     }}
                   >
@@ -229,13 +347,38 @@ export default function HomeOrbital() {
                       }}
                     />
 
-                    {/* Content */}
-                    <div className="relative z-10 text-center">
-                      <p className="text-xs font-light tracking-[0.3em] text-gray-500 mb-6 uppercase">
+                    {/* Content with visual depth */}
+                    <div className="relative z-10">
+                      {/* Top row: icon + tags */}
+                      <div
+                        className="flex items-center justify-between mb-8"
+                        style={{
+                          opacity: isActive ? 1 : 0,
+                          transform: isActive ? 'translateY(0)' : 'translateY(-10px)',
+                          transition: 'opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s',
+                        }}
+                      >
+                        <SectionIcon />
+                        <div className="flex gap-2">
+                          {section.tags.map((tag, tagIdx) => (
+                            <span
+                              key={tagIdx}
+                              className="text-[10px] tracking-[0.15em] uppercase text-gray-500 border border-white/[0.08] rounded-full px-3 py-1"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Subtitle */}
+                      <p className="text-xs font-light tracking-[0.3em] text-gray-500 mb-4 uppercase text-center">
                         {section.subtitle}
                       </p>
+
+                      {/* Main heading */}
                       <h2
-                        className="text-5xl sm:text-6xl lg:text-8xl font-black tracking-tight mb-8 leading-[0.9]"
+                        className="text-5xl sm:text-6xl lg:text-8xl font-black tracking-tight mb-6 leading-[0.9] text-center"
                         style={{
                           opacity: isActive ? 1 : 0.4,
                           transition: 'opacity 0.5s ease',
@@ -243,8 +386,10 @@ export default function HomeOrbital() {
                       >
                         {section.title}
                       </h2>
+
+                      {/* Description */}
                       <p
-                        className="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed max-w-xl mx-auto"
+                        className="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed max-w-xl mx-auto text-center"
                         style={{
                           opacity: isActive ? 1 : 0,
                           transform: isActive ? 'translateY(0)' : 'translateY(20px)',
@@ -254,9 +399,34 @@ export default function HomeOrbital() {
                         {section.description}
                       </p>
 
+                      {/* Stat highlight */}
+                      <div
+                        className="flex items-center justify-center gap-4 mb-8"
+                        style={{
+                          opacity: isActive ? 1 : 0,
+                          transform: isActive ? 'translateY(0)' : 'translateY(15px)',
+                          transition: 'opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s',
+                        }}
+                      >
+                        <div className="text-center">
+                          <p className="text-3xl sm:text-4xl font-black text-white/90 tracking-tight">
+                            {section.stat}
+                          </p>
+                          <p className="text-[10px] tracking-[0.2em] uppercase text-gray-600 mt-1">
+                            {section.statLabel}
+                          </p>
+                        </div>
+                      </div>
+
                       {/* CTA for last section */}
                       {idx === ORBITAL_SECTIONS.length - 1 && isActive && (
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div
+                          className="flex flex-col sm:flex-row gap-4 justify-center"
+                          style={{
+                            opacity: isActive ? 1 : 0,
+                            transition: 'opacity 0.5s ease 0.2s',
+                          }}
+                        >
                           <Button
                             onClick={(e) => {
                               e.stopPropagation();
@@ -271,7 +441,7 @@ export default function HomeOrbital() {
 
                       {/* Explore prompt */}
                       {idx !== ORBITAL_SECTIONS.length - 1 && isActive && (
-                        <p className="text-xs text-gray-600 mt-6 animate-pulse tracking-widest">
+                        <p className="text-xs text-gray-600 mt-4 animate-pulse tracking-widest text-center">
                           SCROLL TO EXPLORE
                         </p>
                       )}
@@ -303,17 +473,31 @@ export default function HomeOrbital() {
         </div>
       </div>
 
-      {/* Phase indicator dots */}
+      {/* Phase indicator dots - clickable for scroll snap */}
       <div className="fixed left-8 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3">
-        {ORBITAL_SECTIONS.map((_, idx) => (
-          <div
+        {ORBITAL_SECTIONS.map((section, idx) => (
+          <button
             key={idx}
-            className="w-2 h-2 rounded-full transition-all duration-300"
-            style={{
-              backgroundColor: idx === activeSectionIndex ? '#ffffff' : 'rgba(255,255,255,0.15)',
-              transform: idx === activeSectionIndex ? 'scale(1.5)' : 'scale(1)',
+            onClick={() => {
+              const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+              const targetScroll = (idx / ORBITAL_SECTIONS.length) * scrollHeight;
+              window.scrollTo({ top: targetScroll, behavior: 'smooth' });
             }}
-          />
+            className="group relative flex items-center"
+            title={section.title}
+          >
+            <div
+              className="w-2 h-2 rounded-full transition-all duration-300"
+              style={{
+                backgroundColor: idx === activeSectionIndex ? '#ffffff' : 'rgba(255,255,255,0.15)',
+                transform: idx === activeSectionIndex ? 'scale(1.5)' : 'scale(1)',
+              }}
+            />
+            {/* Tooltip on hover */}
+            <span className="absolute left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[10px] tracking-[0.15em] uppercase text-gray-400 whitespace-nowrap pointer-events-none">
+              {section.title}
+            </span>
+          </button>
         ))}
       </div>
     </div>

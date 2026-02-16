@@ -91,3 +91,12 @@
 - [x] Add glow effects to project cards
 - [x] Test hover effects across all cards
 - [x] Optimize animations and performance
+
+
+## Phase 8: Scroll-Linked Hero Fade-Out
+- [x] Create scroll-linked opacity hook
+- [x] Update hero headline with fade-out effect
+- [x] Update hero description with fade-out effect
+- [x] Sync fade timing with scroll progress
+- [x] Test fade effects across devices
+- [x] Optimize fade timing and smoothness

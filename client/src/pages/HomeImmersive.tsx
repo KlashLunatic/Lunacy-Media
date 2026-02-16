@@ -1,4 +1,3 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { getLoginUrl } from "@/const";
@@ -9,6 +8,8 @@ import { AnimatedText } from "@/components/AnimatedText";
 import { ParallaxCard } from "@/components/ParallaxCard";
 import { useState, useEffect } from "react";
 import { useParallax } from "@/hooks/useParallax";
+import { useScrollOpacity } from "@/hooks/useScrollOpacity";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 /**
  * Immersive Home Page with Canvas Moon Animation
@@ -28,6 +29,16 @@ export default function HomeImmersive() {
   const { ref: heroTitleRef, transform: heroTitleTransform } = useParallax({ speed: 0.3 });
   const { ref: heroTextRef, transform: heroTextTransform } = useParallax({ speed: 0.4 });
   const { ref: heroButtonsRef, transform: heroButtonsTransform } = useParallax({ speed: 0.5 });
+  
+  // Fade-out effects for hero content
+  const { ref: heroHeadlineRef, opacity: headlineOpacity } = useScrollOpacity({
+    startOffset: 0,
+    endOffset: 400,
+  });
+  const { ref: heroDescriptionRef, opacity: descriptionOpacity } = useScrollOpacity({
+    startOffset: 100,
+    endOffset: 500,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +80,7 @@ export default function HomeImmersive() {
 
         {/* Hero Content Overlay */}
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-8">
-          <div className="animate-fadeIn" style={{ transform: `translateY(${heroTitleTransform.y}px)` }} ref={heroTitleRef}>
+          <div className="animate-fadeIn" style={{ transform: `translateY(${heroTitleTransform.y}px)`, opacity: headlineOpacity, transition: 'opacity 0.1s linear' }} ref={heroHeadlineRef as any}>
             <p className="text-sm font-light tracking-widest text-gray-400 mb-8 uppercase">
               Creative Studio
             </p>
@@ -78,6 +89,8 @@ export default function HomeImmersive() {
               Design Experiences.<br />
               Move People.
             </h1>
+          </div>
+          <div style={{ opacity: descriptionOpacity, transition: 'opacity 0.1s linear' }} ref={heroDescriptionRef as any}>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed" style={{ transform: `translateY(${heroTextTransform.y}px)` }} ref={heroTextRef}>
               We create experiential campaigns and visual systems that increase engagement, cultural relevance, and audience retention. We work with artists, brands, and cultural institutions to craft experiences that resonate emotionally and live beyond their initial release.
             </p>

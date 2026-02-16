@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { getLoginUrl } from "@/const";
 import { MoonAnimation } from "@/components/MoonAnimation";
+import { SectionTransitionOverlay } from "@/components/SectionTransitionOverlay";
 import { useState, useEffect } from "react";
 
 /**
@@ -32,6 +33,7 @@ export default function HomeImmersive() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
+      <SectionTransitionOverlay />
       {/* Navigation */}
       <header className="fixed top-0 z-50 w-full border-b border-gray-800 bg-black/80 backdrop-blur-md">
         <nav className="mx-auto max-w-7xl px-4 sm:px-8 py-4 flex items-center justify-between">
@@ -101,7 +103,13 @@ export default function HomeImmersive() {
       </section>
 
       {/* What We Do Section */}
-      <section className="relative py-24 sm:py-40 px-4 sm:px-8 bg-black border-t border-gray-800">
+      <section 
+        className="relative py-24 sm:py-40 px-4 sm:px-8 bg-black border-t border-gray-800"
+        data-transition="what-we-do"
+        data-from-color="rgb(0, 0, 0)"
+        data-to-color="rgb(15, 15, 15)"
+        data-blur="2"
+      >
         <div className="mx-auto max-w-6xl">
           <div className="mb-20">
             <p className="text-sm font-light tracking-widest text-gray-500 mb-6 uppercase">Our Approach</p>
@@ -182,7 +190,13 @@ export default function HomeImmersive() {
       </section>
 
       {/* Creative Projects Section */}
-      <section className="relative py-24 sm:py-40 px-4 sm:px-8 bg-black border-t border-gray-800">
+      <section 
+        className="relative py-24 sm:py-40 px-4 sm:px-8 bg-black border-t border-gray-800"
+        data-transition="creative-projects"
+        data-from-color="rgb(15, 15, 15)"
+        data-to-color="rgb(10, 10, 10)"
+        data-blur="1"
+      >
         <div className="mx-auto max-w-6xl">
           <div className="mb-20">
             <p className="text-sm font-light tracking-widest text-gray-500 mb-6 uppercase">Creative Universe</p>
@@ -228,7 +242,13 @@ export default function HomeImmersive() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="relative py-24 sm:py-40 px-4 sm:px-8 bg-black border-t border-gray-800">
+      <section 
+        className="relative py-24 sm:py-40 px-4 sm:px-8 bg-black border-t border-gray-800"
+        data-transition="newsletter"
+        data-from-color="rgb(10, 10, 10)"
+        data-to-color="rgb(0, 0, 0)"
+        data-blur="0"
+      >
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight">
             Join the Orbit
@@ -259,7 +279,12 @@ export default function HomeImmersive() {
       </section>
 
       {/* Footer */}
-      <footer className="relative py-16 px-4 sm:px-8 bg-black border-t border-gray-800">
+      <footer 
+        className="relative py-16 px-4 sm:px-8 bg-black border-t border-gray-800"
+        data-transition="footer"
+        data-from-color="rgb(0, 0, 0)"
+        data-to-color="rgb(0, 0, 0)"
+      >
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>

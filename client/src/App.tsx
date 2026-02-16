@@ -4,7 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
+import HomeImmersive from "./pages/HomeImmersive";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
@@ -17,7 +17,7 @@ function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      <Route path={"/"} component={HomeImmersive} />
       <Route path={"/about"} component={About} />
       <Route path={"/services"} component={Services} />
       <Route path={"/portfolio"} component={Portfolio} />

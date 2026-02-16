@@ -52,7 +52,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
         <nav className="mx-auto max-w-6xl px-4 sm:px-8 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2 font-semibold text-base tracking-tight">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#d4af37]"></div>
+            <img src="/lunacy-logo.png" alt="Lunacy Media" className="w-6 h-6" />
             <span>Lunacy</span>
           </a>
           <div className="flex gap-8 items-center text-sm">

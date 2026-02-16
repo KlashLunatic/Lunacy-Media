@@ -6,6 +6,7 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import { trackSocialClick, trackProjectCTA, trackNewsletterSubscribe } from "@/lib/analytics";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 /**
  * Design Philosophy: Luxury Minimal (Apple-Inspired)
@@ -26,6 +27,12 @@ export default function Home() {
   const [firstName, setFirstName] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
   const subscribeMutation = trpc.newsletter.subscribe.useMutation();
+  
+  // Scroll reveal refs
+  const heroRef = useScrollReveal();
+  const studioRef = useScrollReveal();
+  const projectsRef = useScrollReveal();
+  const contactRef = useScrollReveal();
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,7 +80,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section ref={heroRef} className="relative overflow-hidden scroll-reveal animate-fade-in-up">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -87,22 +94,24 @@ export default function Home() {
           <p className="text-xs uppercase tracking-widest text-muted mb-6 font-medium">
             Your Forever Endeavour
           </p>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-light mb-6 leading-tight tracking-tight">
-            Build worlds.<br />Release art.<br />Leave receipts.
+          <h1 className="text-5xl sm:text-6xl font-light mb-6 tracking-tight leading-tight">
+            <span className="inline-block animate-fade-in-up" style={{animationDelay: '0.1s'}}>Build worlds.</span><br />
+            <span className="inline-block animate-fade-in-up" style={{animationDelay: '0.2s'}}>Release art.</span><br />
+            <span className="inline-block animate-fade-in-up" style={{animationDelay: '0.3s'}}>Leave receipts.</span>
           </h1>
-          <p className="text-lg text-muted max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+          <p className="text-lg text-muted mb-8 max-w-2xl leading-relaxed font-light animate-fade-in-up" style={{animationDelay: '0.4s'}}>
             Lunacy Media is a multidisciplinary studio building original IP across music, story, and interactive experience. We design worlds first — then translate them into albums, chapters, visuals, and prototypes you can ship, scale, and fund.
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div className="flex gap-4 justify-center flex-wrap animate-fade-in-up" style={{animationDelay: '0.5s'}}>
             <Button
-              className="bg-[#d4af37] text-black font-medium px-8 py-6 rounded-lg hover:bg-[#c9a02d] transition duration-200 shadow-sm"
+              className="bg-[#d4af37] text-black font-medium px-8 py-6 rounded-lg hover:bg-[#c9a02d] hover:scale-105 transition duration-200 shadow-sm"
               onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
             >
               Explore Projects <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
             <Button
               variant="outline"
-              className="border-border px-8 py-6 rounded-lg hover:bg-secondary transition duration-200"
+              className="border-border px-8 py-6 rounded-lg hover:bg-secondary hover:scale-105 transition duration-200"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
               Get in Touch
@@ -156,13 +165,13 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="mx-auto max-w-5xl px-4 sm:px-8 py-24 border-t border-border">
+      <section ref={projectsRef} id="projects" className="mx-auto max-w-5xl px-4 sm:px-8 py-24 border-t border-border scroll-reveal animate-fade-in-up">
         <h2 className="text-3xl font-light mb-16 tracking-tight">What we're building</h2>
 
         <div className="grid md:grid-cols-3 gap-8">
           {/* OBEAH Card */}
-          <div className="group">
-            <div className="mb-4 pb-4 border-b border-border">
+          <div className="group hover-lift hover-glow p-6 rounded-lg transition-all duration-300">
+            <div className="mb-4 pb-4 border-b border-border group-hover:border-[#d4af37]/30 transition-colors">
               <div className="flex items-start justify-between mb-3">
                 <h3 className="text-lg font-medium">OBEAH</h3>
                 <span className="text-xs text-[#d4af37] uppercase tracking-widest font-medium">In production</span>
@@ -182,8 +191,8 @@ export default function Home() {
           </div>
 
           {/* Releases Card */}
-          <div className="group">
-            <div className="mb-4 pb-4 border-b border-border">
+          <div className="group hover-lift hover-glow p-6 rounded-lg transition-all duration-300">
+            <div className="mb-4 pb-4 border-b border-border group-hover:border-[#d4af37]/30 transition-colors">
               <div className="flex items-start justify-between mb-3">
                 <h3 className="text-lg font-medium">Lunacy Releases</h3>
                 <span className="text-xs text-[#d4af37] uppercase tracking-widest font-medium">In progress</span>
@@ -203,8 +212,8 @@ export default function Home() {
           </div>
 
           {/* Interactive Worlds Card */}
-          <div className="group">
-            <div className="mb-4 pb-4 border-b border-border">
+          <div className="group hover-lift hover-glow p-6 rounded-lg transition-all duration-300">
+            <div className="mb-4 pb-4 border-b border-border group-hover:border-[#d4af37]/30 transition-colors">
               <div className="flex items-start justify-between mb-3">
                 <h3 className="text-lg font-medium">Interactive Worlds</h3>
                 <span className="text-xs text-[#d4af37] uppercase tracking-widest font-medium">In development</span>
@@ -225,8 +234,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="mx-auto max-w-5xl px-4 sm:px-8 py-24 border-t border-border">
+       {/* Join the Orbit */}
+      <section ref={contactRef} id="contact" className="mx-auto max-w-5xl px-4 sm:px-8 py-24 border-t border-border scroll-reveal animate-fade-in-up">
         <div className="max-w-2xl">
           <h2 className="text-3xl font-light mb-6 tracking-tight">Join the Orbit</h2>
           <p className="text-muted mb-12 font-light leading-relaxed">

@@ -1,7 +1,7 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Instagram, Facebook, Linkedin } from "lucide-react";
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
@@ -19,7 +19,7 @@ import { toast } from "sonner";
 export default function Home() {
   // The userAuth hooks provides authentication state
   // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
+  const { user, loading, error, isAuthenticated, logout } = useAuth();
 
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -277,9 +277,45 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-border bg-secondary/30">
-        <div className="mx-auto max-w-5xl px-4 sm:px-8 py-12 flex justify-between items-center flex-wrap gap-4 text-xs text-muted font-light">
-          <span>© {new Date().getFullYear()} Lunacy Media</span>
-          <span>Your Forever Endeavour</span>
+        <div className="mx-auto max-w-5xl px-4 sm:px-8 py-12">
+          <div className="flex justify-between items-center flex-wrap gap-8 mb-8">
+            <div className="text-xs text-muted font-light">
+              <p>© {new Date().getFullYear()} Lunacy Media</p>
+              <p>Your Forever Endeavour</p>
+            </div>
+            <div className="flex gap-6 items-center">
+              <a
+                href="https://www.instagram.com/lunacy_media/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted hover:text-[#d4af37] transition duration-200"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61577277770199"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted hover:text-[#d4af37] transition duration-200"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/lunacy-media/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted hover:text-[#d4af37] transition duration-200"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+          <div className="border-t border-border pt-6 text-center text-xs text-muted font-light">
+            <p>Based in Toronto • Global scope</p>
+          </div>
         </div>
       </footer>
     </div>

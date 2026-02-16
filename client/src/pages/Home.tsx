@@ -5,6 +5,7 @@ import { ArrowRight, Instagram, Facebook, Linkedin } from "lucide-react";
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
+import { trackSocialClick, trackProjectCTA, trackNewsletterSubscribe } from "@/lib/analytics";
 
 /**
  * Design Philosophy: Luxury Minimal (Apple-Inspired)
@@ -32,6 +33,7 @@ export default function Home() {
 
     try {
       const result = await subscribeMutation.mutateAsync({ email, firstName });
+      trackNewsletterSubscribe(!result.alreadySubscribed);
       if (result.alreadySubscribed) {
         toast.info("You're already in the Orbit!");
       } else {
@@ -42,6 +44,7 @@ export default function Home() {
         setTimeout(() => setShowSuccess(false), 5000);
       }
     } catch (error: any) {
+      trackNewsletterSubscribe(false);
       toast.error(error.message || "Failed to subscribe. Please try again.");
     }
   };
@@ -168,7 +171,7 @@ export default function Home() {
                 Graphic novel development: <em>The Rogue Witch</em>. Chapter pipeline, lore, visuals, and release plan.
               </p>
             </div>
-            <a href="/obeah">
+            <a href="/obeah" onClick={() => trackProjectCTA('OBEAH', 'Explore')}>
               <Button
                 variant="ghost"
                 className="text-sm font-medium text-[#d4af37] hover:text-[#c9a02d] p-0 h-auto"
@@ -189,7 +192,7 @@ export default function Home() {
                 Singles, arcs, and rollouts — built as chapters of a larger universe, not one-off drops.
               </p>
             </div>
-            <a href="/releases">
+            <a href="/releases" onClick={() => trackProjectCTA('Releases', 'See Slate')}>
               <Button
                 variant="ghost"
                 className="text-sm font-medium text-[#d4af37] hover:text-[#c9a02d] p-0 h-auto"
@@ -210,7 +213,7 @@ export default function Home() {
                 Prototype experiences (TAMMY + beyond) designed for Gen Z clarity and funder-ready deliverables.
               </p>
             </div>
-            <a href="/interactive-worlds">
+            <a href="/interactive-worlds" onClick={() => trackProjectCTA('Interactive Worlds', 'Collaborate')}>
               <Button
                 variant="ghost"
                 className="text-sm font-medium text-[#d4af37] hover:text-[#c9a02d] p-0 h-auto"
@@ -290,6 +293,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-muted hover:text-[#d4af37] transition duration-200"
                 aria-label="Instagram"
+                onClick={() => trackSocialClick('instagram')}
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -299,6 +303,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-muted hover:text-[#d4af37] transition duration-200"
                 aria-label="Facebook"
+                onClick={() => trackSocialClick('facebook')}
               >
                 <Facebook className="w-5 h-5" />
               </a>
@@ -308,6 +313,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-muted hover:text-[#d4af37] transition duration-200"
                 aria-label="LinkedIn"
+                onClick={() => trackSocialClick('linkedin')}
               >
                 <Linkedin className="w-5 h-5" />
               </a>

@@ -19,7 +19,7 @@ const MOON_PHASES: MoonPhase[] = [
 
 interface MoonAnimationProps {
   scrollProgress?: number;
-  phaseVisibility?: number; // 0-1, controls opacity based on proximity to phase
+  phaseVisibility?: number;
   isClickable?: boolean;
 }
 
@@ -28,27 +28,45 @@ export function MoonAnimation({ scrollProgress = 0, phaseVisibility = 1, isClick
   const phaseRef = useRef<number>(0);
   const animationRef = useRef<number | undefined>(undefined);
 
+  // Update phase based on scroll progress
+  useEffect(() => {
+    phaseRef.current = scrollProgress * MOON_PHASES.length;
+  }, [scrollProgress]);
+
+  // Main animation loop - separate from canvas setup
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D | null;
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
-    const updateCanvasSize = () => {
-      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    // Setup canvas size once
+    const setupCanvas = () => {
+      const w = canvas.offsetWidth;
+      const h = canvas.offsetHeight;
+      const dpr = window.devicePixelRatio || 1;
+
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+
+      // Reset and set transform properly
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+
+      return { w, h, dpr };
     };
-    updateCanvasSize();
-    window.addEventListener('resize', updateCanvasSize);
 
-    const centerX = canvas.width / (2 * window.devicePixelRatio);
-    const centerY = canvas.height / (2 * window.devicePixelRatio);
-    const radius = Math.min(centerX, centerY) * 0.35;
+    let canvasSize = setupCanvas();
+    window.addEventListener('resize', () => {
+      canvasSize = setupCanvas();
+    });
 
-    // Draw functions for each object
+    const centerX = canvasSize.w / 2;
+    const centerY = canvasSize.h / 2;
+    const radius = Math.min(canvasSize.w, canvasSize.h) * 0.35;
+
+    // Draw functions
     const drawVoid = () => {
       ctx.fillStyle = '#000000';
       ctx.fillRect(centerX - radius, centerY - radius, radius * 2, radius * 2);
@@ -131,22 +149,18 @@ export function MoonAnimation({ scrollProgress = 0, phaseVisibility = 1, isClick
       ctx.strokeStyle = '#ffffff';
       ctx.lineWidth = 3;
 
-      // Headband
       ctx.beginPath();
       ctx.arc(centerX, centerY - radius * 0.2, radius * 0.6, 0, Math.PI);
       ctx.stroke();
 
-      // Left ear cup
       ctx.beginPath();
       ctx.arc(centerX - radius * 0.4, centerY, radius * 0.25, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Right ear cup
       ctx.beginPath();
       ctx.arc(centerX + radius * 0.4, centerY, radius * 0.25, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Connection points
       ctx.beginPath();
       ctx.moveTo(centerX - radius * 0.4, centerY - radius * 0.15);
       ctx.lineTo(centerX - radius * 0.4, centerY - radius * 0.5);
@@ -236,13 +250,13 @@ export function MoonAnimation({ scrollProgress = 0, phaseVisibility = 1, isClick
       ctx.fill();
     };
 
-    // Main animation loop
+    // Animation loop
     const animate = () => {
       // Clear canvas
       ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, canvasSize.w, canvasSize.h);
 
-      // Apply global opacity based on phase visibility
+      // Apply visibility
       ctx.globalAlpha = phaseVisibility;
 
       // Get current phase
@@ -276,7 +290,6 @@ export function MoonAnimation({ scrollProgress = 0, phaseVisibility = 1, isClick
           break;
       }
 
-      // Reset global alpha
       ctx.globalAlpha = 1;
 
       animationRef.current = requestAnimationFrame(animate);
@@ -285,23 +298,19 @@ export function MoonAnimation({ scrollProgress = 0, phaseVisibility = 1, isClick
     animate();
 
     return () => {
-      window.removeEventListener('resize', updateCanvasSize);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-      ctx.globalAlpha = 1;
+      window.removeEventListener('resize', () => {
+        canvasSize = setupCanvas();
+      });
     };
-  }, [scrollProgress, phaseVisibility]);
-
-  // Update phase based on scroll progress prop
-  useEffect(() => {
-    phaseRef.current = scrollProgress * MOON_PHASES.length;
-  }, [scrollProgress]);
+  }, [phaseVisibility]); // Only depend on visibility, not scrollProgress
 
   return (
     <canvas
       ref={canvasRef}
-      className={`w-full h-full transition-opacity duration-300 ${isClickable ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`}
+      className={`w-full h-full ${isClickable ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`}
       style={{
         display: 'block',
         background: '#000000',

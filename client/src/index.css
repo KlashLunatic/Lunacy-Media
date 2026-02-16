@@ -483,3 +483,57 @@ a::before, button::before {
 a:hover::before, button:hover::before {
   width: 100%;
 }
+
+
+/* Glow Effect Animations */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(212, 175, 55, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+@keyframes glowHover {
+  0% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3), inset 0 0 10px rgba(212, 175, 55, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.2);
+  }
+}
+
+@keyframes glowBorder {
+  0% {
+    border-color: rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    border-color: rgba(212, 175, 55, 0.8);
+  }
+  100% {
+    border-color: rgba(212, 175, 55, 0.3);
+  }
+}
+
+/* Glow Effect Utility Classes */
+.glow-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-hover:hover {
+  animation: glowHover 0.6s ease-out forwards;
+  border-color: rgba(212, 175, 55, 0.6);
+  transform: translateY(-2px);
+}
+
+.glow-pulse {
+  animation: glowPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.glow-border {
+  animation: glowBorder 2s ease-in-out infinite;
+}

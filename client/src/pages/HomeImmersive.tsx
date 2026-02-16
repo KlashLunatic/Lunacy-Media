@@ -238,7 +238,7 @@ export default function HomeImmersive() {
                 key={idx}
                 ref={ref as any}
                 href={project.link}
-                className="group p-8 border border-gray-800 rounded-lg hover:border-gray-600 transition-all duration-300 hover:bg-gray-900/50"
+                className="group p-8 border border-gray-800 rounded-lg glow-hover"
                 style={{ transform: `translateY(${transform.y}px)` }}
               >
                 <h3 className="text-2xl md:text-3xl font-black mb-3 text-white group-hover:text-gray-300 transition-colors">

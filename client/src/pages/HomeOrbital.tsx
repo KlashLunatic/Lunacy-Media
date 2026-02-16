@@ -1,19 +1,8 @@
-import { Orbital3DContainer, Orbital3DSection } from '@/components/Orbital3DContainer';
-import { MoonAnimation } from '@/components/MoonAnimation';
 import { useState, useEffect } from 'react';
 import { use3DRotation } from '@/hooks/use3DRotation';
 import { useAuth } from '@/_core/hooks/useAuth';
 import { Button } from '@/components/ui/button';
-
-/**
- * Orbital Home Page - 360° Immersive Experience
- * 
- * Design Philosophy: Viewer orbits around moon at center
- * - 8 content sections positioned around invisible center
- * - Each section rotates in dramatic 3D space
- * - Full 360° rotation as user scrolls through page
- * - Moon animation at center of orbital experience
- */
+import { MoonAnimation } from '@/components/MoonAnimation';
 
 const ORBITAL_SECTIONS = [
   {
@@ -69,25 +58,42 @@ const ORBITAL_SECTIONS = [
 export default function HomeOrbital() {
   const { user, loading, isAuthenticated, logout } = useAuth();
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(typeof window !== 'undefined' ? window.innerHeight : 0);
+  
   const { getTransformForSection } = use3DRotation({
     totalSections: ORBITAL_SECTIONS.length,
     radius: 1000,
     perspective: 1200,
   });
 
+  // Initialize and track viewport height
+  useEffect(() => {
+    const updateHeight = () => {
+      setViewportHeight(window.innerHeight);
+    };
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, []);
+
+  // Track scroll progress safely
   useEffect(() => {
     const handleScroll = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight <= 0) {
+        setScrollProgress(0);
+        return;
+      }
       const scrolled = window.scrollY / scrollHeight;
-      setScrollProgress(scrolled);
+      setScrollProgress(Math.max(0, Math.min(1, scrolled)));
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Calculate total scroll height needed for full 360° rotation
-  const totalHeight = ORBITAL_SECTIONS.length * window.innerHeight * 3;
+  // Calculate total scroll height
+  const totalHeight = viewportHeight > 0 ? ORBITAL_SECTIONS.length * viewportHeight * 3 : 'auto';
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -108,18 +114,14 @@ export default function HomeOrbital() {
         </nav>
       </header>
 
-      {/* Orbital Container */}
-      <div
-        style={{
-          height: `${totalHeight}px`,
-          perspective: '1200px',
-        }}
-      >
-        {/* Fixed viewport for 3D orbital experience */}
+      {/* Scroll container */}
+      <div style={{ height: typeof totalHeight === 'number' ? `${totalHeight}px` : totalHeight }}>
+        {/* Fixed 3D viewport */}
         <div
           className="fixed inset-0 top-16 overflow-hidden"
           style={{
             perspective: '1200px',
+            height: 'calc(100vh - 4rem)',
           }}
         >
           {/* Rotating viewport */}
@@ -140,7 +142,7 @@ export default function HomeOrbital() {
                 zIndex: 10,
               }}
             >
-              <div className="w-96 h-96">
+              <div className="w-80 h-80">
                 <MoonAnimation scrollProgress={scrollProgress} />
               </div>
             </div>

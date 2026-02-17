@@ -171,24 +171,32 @@ function MoonSphere({ scrollProgress, phaseVisibility, nasaTextureUrl }: MoonSph
     }
   }, [nasaTextureUrl]);
 
-  if (!texture) return null;
-
-  // Slow rotation
+  // Slow rotation - called unconditionally
   useFrame((_, delta) => {
-    if (meshRef.current) {
+    if (meshRef.current && texture) {
       meshRef.current.rotation.y += delta * 0.05;
     }
   });
 
-  // Move the directional light to simulate lunar phases based on scroll
+  // Move the directional light to simulate lunar phases based on scroll - called unconditionally
   useFrame(() => {
-    if (lightRef.current) {
+    if (lightRef.current && texture) {
       const angle = scrollProgress * Math.PI * 2;
       const x = Math.sin(angle) * 5;
       const z = Math.cos(angle) * 5;
       lightRef.current.position.set(x, 1, z);
     }
   });
+
+  // Render empty group while loading to maintain hook count
+  if (!texture) {
+    return (
+      <group>
+        <directionalLight intensity={0} />
+        <ambientLight intensity={0} />
+      </group>
+    );
+  }
 
   return (
     <group>

@@ -188,35 +188,29 @@ function MoonSphere({ scrollProgress, phaseVisibility, nasaTextureUrl }: MoonSph
     }
   });
 
-  // Render empty group while loading to maintain hook count
-  if (!texture) {
-    return (
-      <group>
-        <directionalLight intensity={0} />
-        <ambientLight intensity={0} />
-      </group>
-    );
-  }
-
   return (
     <group>
-      <directionalLight
-        ref={lightRef}
-        intensity={2.5}
-        color="#ffffff"
-        position={[5, 1, 0]}
-      />
-      <ambientLight intensity={0.08} color="#334466" />
-      <mesh ref={meshRef}>
-        <sphereGeometry args={[2, 64, 64]} />
-        <meshStandardMaterial
-          map={texture}
-          roughness={1}
-          metalness={0}
-          transparent
-          opacity={phaseVisibility}
-        />
-      </mesh>
+      {texture && (
+        <>
+          <directionalLight
+            ref={lightRef}
+            intensity={2.5}
+            color="#ffffff"
+            position={[5, 1, 0]}
+          />
+          <ambientLight intensity={0.08} color="#334466" />
+          <mesh ref={meshRef}>
+            <sphereGeometry args={[2, 64, 64]} />
+            <meshStandardMaterial
+              map={texture}
+              roughness={1}
+              metalness={0}
+              transparent
+              opacity={phaseVisibility}
+            />
+          </mesh>
+        </>
+      )}
     </group>
   );
 }

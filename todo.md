@@ -145,3 +145,11 @@
 - [x] Fix moon z-index layering (behind text, visible through panel)
 - [x] Adjust panel transparency for moon visibility
 - [x] Test all enhancements across pages
+
+
+## Phase 14: Orbital Experience Enhancements
+- [x] NASA moon texture via server proxy (tRPC endpoint fetches texture server-side, bypasses CORS)
+- [x] Keyboard navigation (arrow keys up/down/left/right to rotate between orbital sections)
+- [x] Ambient sound design (8 unique generated audio tracks, one per section, with crossfade transitions)
+- [x] Write tests for new features (moon router tests passing)
+- [x] Verify all enhancements work together (17 tests passing)

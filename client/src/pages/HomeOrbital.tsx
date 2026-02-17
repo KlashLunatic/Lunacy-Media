@@ -3,6 +3,7 @@ import { useAuth } from '@/_core/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Moon3D } from '@/components/Moon3D';
 import { LoadingScreen } from '@/components/LoadingScreen';
+import { useAudioTransition } from '@/hooks/useAudioTransition';
 
 // Icons as simple SVG components for section visual depth
 function IconEvents() {
@@ -80,6 +81,18 @@ function IconContact() {
 }
 
 const SECTION_ICONS = [IconEvents, IconVisual, IconImpact, IconServices, IconPortfolio, IconProcess, IconAbout, IconContact];
+
+// Ambient audio tracks for each section
+const AMBIENT_TRACKS = [
+  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/tzaAJaTFqMIVCBoC.wav', // Build Culture
+  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/KnUBauXILXPJzoMI.wav', // Design Experiences
+  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/RSIpIgLwsICCnkyD.wav', // Move People
+  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/WaaVnlpuFGOlYEeX.wav', // Our Services
+  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/SBhPIYBBPmrSpyyc.wav', // Portfolio
+  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/HwkdssaixtMWXnTD.wav', // Creative Process
+  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/VNflvApTaTeBnhZC.wav', // About Lunacy
+  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/RwdiKHIByDwJicde.wav', // Get In Touch
+];
 
 const ORBITAL_SECTIONS = [
   {
@@ -162,6 +175,14 @@ export default function HomeOrbital() {
   const [viewportHeight, setViewportHeight] = useState(800);
   const [sceneReady, setSceneReady] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
+  const [audioEnabled, setAudioEnabled] = useState(false);
+
+  // Audio transition hook
+  const { transitionToTrack, stopAudio } = useAudioTransition({
+    fadeInDuration: 2000,
+    fadeOutDuration: 1500,
+    volume: 0.15,
+  });
 
   // Track viewport height
   useEffect(() => {
@@ -192,6 +213,38 @@ export default function HomeOrbital() {
     ORBITAL_SECTIONS.length - 1
   );
   const sectionProgress = (scrollProgress * ORBITAL_SECTIONS.length) % 1;
+
+  // Keyboard navigation: arrow keys to rotate between sections
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if user is typing in an input
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight <= 0) return;
+
+      let targetSection = activeSectionIndex;
+
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        targetSection = Math.min(activeSectionIndex + 1, ORBITAL_SECTIONS.length - 1);
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        targetSection = Math.max(activeSectionIndex - 1, 0);
+      } else {
+        return; // Not an arrow key
+      }
+
+      // Smooth scroll to target section
+      const targetScroll = (targetSection / ORBITAL_SECTIONS.length) * scrollHeight;
+      window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeSectionIndex]);
 
   // Moon phase visibility: peaks in center of each section
   const phaseVisibility = Math.sin(sectionProgress * Math.PI) * 0.7 + 0.3;
@@ -226,6 +279,33 @@ export default function HomeOrbital() {
 
   const handleLoadingComplete = useCallback(() => {
     setShowLoading(false);
+  }, []);
+
+  // Transition audio based on active section
+  useEffect(() => {
+    if (audioEnabled && activeSectionIndex >= 0 && activeSectionIndex < AMBIENT_TRACKS.length) {
+      transitionToTrack(AMBIENT_TRACKS[activeSectionIndex]);
+    }
+  }, [activeSectionIndex, audioEnabled, transitionToTrack]);
+
+  // Enable audio on first user interaction
+  useEffect(() => {
+    const enableAudio = () => {
+      setAudioEnabled(true);
+      document.removeEventListener('click', enableAudio);
+      document.removeEventListener('keydown', enableAudio);
+      document.removeEventListener('scroll', enableAudio);
+    };
+
+    document.addEventListener('click', enableAudio, { once: true });
+    document.addEventListener('keydown', enableAudio, { once: true });
+    document.addEventListener('scroll', enableAudio, { once: true });
+
+    return () => {
+      document.removeEventListener('click', enableAudio);
+      document.removeEventListener('keydown', enableAudio);
+      document.removeEventListener('scroll', enableAudio);
+    };
   }, []);
 
   return (

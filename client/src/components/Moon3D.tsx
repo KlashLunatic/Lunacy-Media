@@ -1,6 +1,7 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useRef, useMemo, Suspense, Component, type ReactNode, useState, useEffect, useCallback } from 'react';
 import * as THREE from 'three';
+import { trpc } from '@/lib/trpc';
 
 // Error boundary to catch WebGL/texture failures
 class Moon3DErrorBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, { hasError: boolean }> {
@@ -140,14 +141,37 @@ function generateMoonTexture(): THREE.CanvasTexture {
 interface MoonSphereProps {
   scrollProgress: number;
   phaseVisibility: number;
+  nasaTextureUrl?: string;
 }
 
-function MoonSphere({ scrollProgress, phaseVisibility }: MoonSphereProps) {
+function MoonSphere({ scrollProgress, phaseVisibility, nasaTextureUrl }: MoonSphereProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const lightRef = useRef<THREE.DirectionalLight>(null);
+  const [texture, setTexture] = useState<THREE.Texture | null>(null);
 
-  // Generate procedural texture once
-  const texture = useMemo(() => generateMoonTexture(), []);
+  // Load NASA texture or fallback to procedural
+  useEffect(() => {
+    if (nasaTextureUrl) {
+      const loader = new THREE.TextureLoader();
+      loader.load(
+        nasaTextureUrl,
+        (loadedTexture) => {
+          loadedTexture.colorSpace = THREE.SRGBColorSpace;
+          setTexture(loadedTexture);
+        },
+        undefined,
+        (error) => {
+          console.warn('Failed to load NASA texture, using procedural:', error);
+          setTexture(generateMoonTexture());
+        }
+      );
+    } else {
+      // No NASA texture provided, use procedural
+      setTexture(generateMoonTexture());
+    }
+  }, [nasaTextureUrl]);
+
+  if (!texture) return null;
 
   // Slow rotation
   useFrame((_, delta) => {
@@ -253,6 +277,7 @@ interface Moon3DProps {
   phaseVisibility?: number;
   className?: string;
   onReady?: () => void;
+  useNasaTexture?: boolean;
 }
 
 // Fallback 2D moon for when WebGL fails
@@ -279,10 +304,18 @@ export function Moon3D({
   phaseVisibility = 1,
   className = '',
   onReady,
+  useNasaTexture = true,
 }: Moon3DProps) {
   const [webglSupported, setWebglSupported] = useState(true);
   const onReadyRef = useRef(onReady);
   onReadyRef.current = onReady;
+
+  // Fetch NASA texture via tRPC proxy
+  const { data: nasaData } = trpc.moon.getTexture.useQuery(undefined, {
+    enabled: useNasaTexture,
+    staleTime: Infinity, // Cache forever
+    retry: false,
+  });
 
   // Check WebGL support
   useEffect(() => {
@@ -324,6 +357,7 @@ export function Moon3D({
             <MoonSphere
               scrollProgress={scrollProgress}
               phaseVisibility={phaseVisibility}
+              nasaTextureUrl={nasaData?.dataUrl}
             />
             <StarField />
           </Suspense>

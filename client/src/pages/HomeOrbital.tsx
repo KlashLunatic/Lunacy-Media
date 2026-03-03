@@ -82,17 +82,8 @@ function IconContact() {
 
 const SECTION_ICONS = [IconEvents, IconVisual, IconImpact, IconServices, IconPortfolio, IconProcess, IconAbout, IconContact];
 
-// Ambient audio tracks for each section
-const AMBIENT_TRACKS = [
-  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/tzaAJaTFqMIVCBoC.wav', // Build Culture
-  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/KnUBauXILXPJzoMI.wav', // Design Experiences
-  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/RSIpIgLwsICCnkyD.wav', // Move People
-  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/WaaVnlpuFGOlYEeX.wav', // Our Services
-  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/SBhPIYBBPmrSpyyc.wav', // Portfolio
-  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/HwkdssaixtMWXnTD.wav', // Creative Process
-  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/VNflvApTaTeBnhZC.wav', // About Lunacy
-  'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/RwdiKHIByDwJicde.wav', // Get In Touch
-];
+// Ambient audio track - plays across all sections
+const AMBIENT_TRACK = 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/dRqGVUuMpRpPIowT.mp3';
 
 const ORBITAL_SECTIONS = [
   {
@@ -281,12 +272,12 @@ export default function HomeOrbital() {
     setShowLoading(false);
   }, []);
 
-  // Transition audio based on active section
+  // Play ambient track when audio is enabled
   useEffect(() => {
-    if (audioEnabled && activeSectionIndex >= 0 && activeSectionIndex < AMBIENT_TRACKS.length) {
-      transitionToTrack(AMBIENT_TRACKS[activeSectionIndex]);
+    if (audioEnabled) {
+      transitionToTrack(AMBIENT_TRACK);
     }
-  }, [activeSectionIndex, audioEnabled, transitionToTrack]);
+  }, [audioEnabled, transitionToTrack]);
 
   // Enable audio on first user interaction
   useEffect(() => {

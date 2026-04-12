@@ -3,36 +3,73 @@ import { ChevronRight, Sparkles } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 
 export default function Home() {
-  const projects = [
-    {
-      title: 'Tammy',
-      description: 'Interactive narrative exploring identity and transformation.',
-      category: 'Original IP'
-    },
-    {
-      title: 'Obeah',
-      description: 'Graphic novel blending Caribbean mythology with contemporary storytelling.',
-      category: 'Original IP'
-    },
-    {
-      title: 'Mulligan',
-      description: 'Complete brand identity and campaign for creative collective.',
-      category: 'Branding'
-    }
-  ];
 
   return (
     <div className="min-h-screen flex flex-col">
       <HeroSection />
 
-      {/* BRAND STRIP */}
-      <section className="bg-charcoal border-y border-subtle py-8 mt-0">
+      {/* WHAT WE DO SECTION */}
+      <section className="section-padding bg-void border-b border-subtle">
         <div className="container">
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-center">
-            {['Creative Studio', 'Media House', 'Brand Strategy', 'Storytelling', 'Digital Experiences', 'Culture Building'].map((item, idx) => (
-              <div key={idx} className="flex items-center gap-4 md:gap-8">
-                <span className="text-xs font-inter text-subtle uppercase tracking-widest">{item}</span>
-                {idx < 5 && <span className="text-subtle opacity-30">·</span>}
+          <div className="text-center mb-20">
+            <h2 className="text-6xl md:text-7xl font-cinzel font-bold text-accent glow-text-gold">WHAT WE DO</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              {
+                title: 'Brand Strategy',
+                description: 'We build positioning, identity, and narrative systems for brands and founders.'
+              },
+              {
+                title: 'Creative Campaigns',
+                description: 'We create campaigns, visuals, and storytelling experiences that move audiences.'
+              },
+              {
+                title: 'Digital Experiences',
+                description: 'We design websites, pitch decks, and immersive media properties.'
+              }
+            ].map((service, idx) => (
+              <div key={idx} className="space-y-6 text-center">
+                <h3 className="text-2xl font-cinzel font-bold text-off-white">{service.title}</h3>
+                <p className="text-lg text-muted font-inter leading-relaxed">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SELECTED WORLDS SECTION */}
+      <section className="section-padding bg-charcoal/50 border-b border-subtle">
+        <div className="container">
+          <div className="text-center mb-20">
+            <h2 className="text-6xl md:text-7xl font-cinzel font-bold text-accent glow-text-gold">SELECTED WORLDS</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              {
+                title: 'Tammy',
+                description: 'Interactive narrative exploring identity and transformation.'
+              },
+              {
+                title: 'Obeah',
+                description: 'Graphic novel blending Caribbean mythology with contemporary storytelling.'
+              },
+              {
+                title: 'Mulligan',
+                description: 'Complete brand identity and campaign for creative collective.'
+              }
+            ].map((world, idx) => (
+              <div key={idx} className="group cursor-pointer">
+                <div className="aspect-square bg-gradient-to-br from-purple-glow/30 to-accent-glow/20 rounded-sm mb-6 flex items-center justify-center border border-subtle group-hover:border-accent transition-all duration-300">
+                  <Sparkles className="text-accent/40 group-hover:text-accent/80 transition-colors duration-300" size={64} />
+                </div>
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-300">{world.title}</h3>
+                  <p className="text-muted font-inter leading-relaxed">{world.description}</p>
+                  <div className="flex items-center gap-2 text-accent text-sm font-inter pt-2 group-hover:gap-3 transition-all duration-300">
+                    View Project <ChevronRight size={16} />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -40,7 +77,7 @@ export default function Home() {
       </section>
 
       {/* MANIFESTO SECTION */}
-      <section className="section-padding bg-gradient-dark relative overflow-hidden mt-0">
+      <section className="section-padding bg-gradient-dark relative overflow-hidden mt-0 border-t border-subtle">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-accent-glow rounded-full blur-3xl"></div>
         </div>
@@ -58,64 +95,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES SECTION */}
-      <section className="section-padding mt-0">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-cinzel font-bold mb-6">What we build</h2>
-            <p className="text-lg text-muted font-inter">Six core services designed for ambitious creators and forward-thinking brands.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: 'Brand Strategy', desc: 'Positioning, messaging, identity systems, and long-term growth direction.' },
-              { title: 'Creative Direction', desc: 'Campaign concepts, visual storytelling, artistic world-building, and execution.' },
-              { title: 'Marketing & Campaigns', desc: 'Launch strategy, social storytelling, audience development, and conversion.' },
-              { title: 'Web & Digital', desc: 'Beautiful, responsive websites and immersive digital storytelling platforms.' },
-              { title: 'Pitch Decks & Materials', desc: 'Professional decks, grant applications, sponsorship materials, and presentations.' },
-              { title: 'Artist & Media Dev', desc: 'Creative support for music, storytelling IP, and culture-led brands.' }
-            ].map((service, idx) => (
-              <div key={idx} className="card group">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-cinzel font-bold text-accent group-hover:text-off-white transition-colors duration-300">{service.title}</h3>
-                  <p className="text-muted font-inter text-sm leading-relaxed">{service.desc}</p>
-                  <div className="flex items-center gap-2 text-accent text-sm font-inter pt-2 group-hover:gap-3 transition-all duration-300">
-                    Learn more <ChevronRight size={16} />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* FEATURED WORK SECTION */}
-      <section className="section-padding bg-charcoal/50 border-y border-subtle mt-0">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-cinzel font-bold mb-6">Selected Worlds</h2>
-            <p className="text-lg text-muted font-inter">A glimpse into the stories, brands, and experiences we've brought to life.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, idx) => (
-              <Link key={idx} href="/work" className="group card overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-purple-glow to-accent-glow flex items-center justify-center mb-6 rounded-sm">
-                  <Sparkles className="text-accent/40 group-hover:text-accent/60 transition-colors duration-300" size={48} />
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-start justify-between">
-                    <h3 className="text-xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-300">{project.title}</h3>
-                    <span className="text-xs font-inter text-accent bg-accent/10 px-2 py-1 rounded-sm whitespace-nowrap">{project.category}</span>
-                  </div>
-                  <p className="text-muted font-inter text-sm leading-relaxed">{project.description}</p>
-                  <div className="flex items-center gap-2 text-accent text-sm font-inter pt-2 group-hover:gap-3 transition-all duration-300">
-                    View Case Study <ChevronRight size={16} />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* WHY LUNACY SECTION */}
       <section className="section-padding bg-gradient-dark relative overflow-hidden mt-0">

@@ -1,51 +1,102 @@
-import { Mail, Phone } from 'lucide-react';
+import { Link } from 'wouter';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer className="bg-charcoal border-t border-subtle">
+      <div className="container py-16 md:py-20">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-lg font-cinzel font-bold text-accent">LUNACY</h3>
-            <p className="text-sm text-foreground/60 font-inter">
-              Building worlds. Crafting mythology. Creating impact.
+            <h3 className="text-xl font-cinzel font-bold text-accent glow-text-gold">LUNACY</h3>
+            <p className="text-sm text-muted font-inter leading-relaxed">
+              Building brands, campaigns, and original artistic universes that leave a lasting imprint.
             </p>
           </div>
 
-          {/* Navigation */}
+          {/* Studio */}
           <div className="space-y-4">
-            <h4 className="text-sm font-cinzel font-bold text-foreground">NAVIGATE</h4>
-            <ul className="space-y-2 text-sm font-inter text-foreground/60">
-              <li><a href="/studio" className="hover:text-accent transition-colors">Studio</a></li>
-              <li><a href="/worlds" className="hover:text-accent transition-colors">Worlds</a></li>
-              <li><a href="/work" className="hover:text-accent transition-colors">Work</a></li>
-              <li><a href="/mythology" className="hover:text-accent transition-colors">Mythology</a></li>
+            <h4 className="text-sm font-cinzel font-bold text-accent uppercase">Studio</h4>
+            <ul className="space-y-3 text-sm text-muted font-inter">
+              <li>
+                <Link href="/studio" className="hover:text-accent transition-colors duration-300">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/work" className="hover:text-accent transition-colors duration-300">
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-accent transition-colors duration-300">
+                  Initiate
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Worlds */}
           <div className="space-y-4">
-            <h4 className="text-sm font-cinzel font-bold text-foreground">CONNECT</h4>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <Mail size={16} className="text-accent" />
-                <a href="mailto:hello@lunacymedia.com" className="text-sm text-foreground/60 hover:text-accent transition-colors font-inter">
-                  hello@lunacymedia.com
+            <h4 className="text-sm font-cinzel font-bold text-accent uppercase">Worlds</h4>
+            <ul className="space-y-3 text-sm text-muted font-inter">
+              <li>
+                <Link href="/worlds" className="hover:text-accent transition-colors duration-300">
+                  Original IP
+                </Link>
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors duration-300">
+                  Tammy
                 </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone size={16} className="text-accent" />
-                <a href="tel:+1234567890" className="text-sm text-foreground/60 hover:text-accent transition-colors font-inter">
-                  +1 (234) 567-890
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors duration-300">
+                  Obeah
                 </a>
-              </div>
-            </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Connect */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-cinzel font-bold text-accent uppercase">Connect</h4>
+            <ul className="space-y-3 text-sm text-muted font-inter">
+              <li>
+                <a href="mailto:hello@lunacymedia.ca" className="hover:text-accent transition-colors duration-300">
+                  Email
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors duration-300">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors duration-300">
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-border mt-12 pt-8 text-center text-sm text-foreground/40 font-inter">
-          <p>&copy; 2026 Lunacy Media. All rights reserved.</p>
+        {/* Divider */}
+        <div className="divider"></div>
+
+        {/* Bottom Footer */}
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 text-xs text-subtle font-inter">
+          <p>&copy; {currentYear} Lunacy Media. All rights reserved.</p>
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <a href="#" className="hover:text-accent transition-colors duration-300">
+              Privacy
+            </a>
+            <a href="#" className="hover:text-accent transition-colors duration-300">
+              Terms
+            </a>
+          </div>
         </div>
       </div>
     </footer>

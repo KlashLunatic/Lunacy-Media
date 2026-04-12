@@ -1,10 +1,8 @@
 import { Link } from 'wouter';
 import { ChevronRight, Sparkles } from 'lucide-react';
-
+import HeroSection from '../components/HeroSection';
 
 export default function Home() {
-
-
   const projects = [
     {
       title: 'Tammy',
@@ -24,47 +22,11 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col pt-20">
-      {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-dark">
-        {/* Atmospheric background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-glow rounded-full blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-glow rounded-full blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
-        </div>
-
-        <div className="container max-w-4xl mx-auto text-center space-y-12 relative z-10 px-6">
-          {/* Main headline */}
-          <div className="space-y-6">
-            <h1 className="text-6xl md:text-8xl font-cinzel font-bold leading-tight">
-              Where stories
-              <br />
-              <span className="text-accent glow-text-gold">become worlds.</span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted font-inter max-w-2xl mx-auto leading-relaxed">
-              Lunacy Media is a multidisciplinary creative studio building brands, campaigns, digital experiences, and original artistic universes that leave a lasting imprint.
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col md:flex-row gap-6 justify-center pt-8">
-            <Link href="/studio" className="btn-primary">
-              Work With Us <ChevronRight size={20} />
-            </Link>
-            <Link href="/work" className="btn-secondary">
-              View Projects <ChevronRight size={20} />
-            </Link>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="pt-12 animate-bounce">
-            <div className="text-xs text-subtle font-inter tracking-widest">SCROLL</div>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen flex flex-col">
+      <HeroSection />
 
       {/* BRAND STRIP */}
-      <section className="bg-charcoal border-y border-subtle py-8">
+      <section className="bg-charcoal border-y border-subtle py-8 mt-0">
         <div className="container">
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-center">
             {['Creative Studio', 'Media House', 'Brand Strategy', 'Storytelling', 'Digital Experiences', 'Culture Building'].map((item, idx) => (
@@ -78,7 +40,7 @@ export default function Home() {
       </section>
 
       {/* MANIFESTO SECTION */}
-      <section className="section-padding bg-gradient-dark relative overflow-hidden">
+      <section className="section-padding bg-gradient-dark relative overflow-hidden mt-0">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-accent-glow rounded-full blur-3xl"></div>
         </div>
@@ -97,7 +59,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="section-padding">
+      <section className="section-padding mt-0">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-cinzel font-bold mb-6">What we build</h2>
@@ -127,7 +89,7 @@ export default function Home() {
       </section>
 
       {/* FEATURED WORK SECTION */}
-      <section className="section-padding bg-charcoal/50 border-y border-subtle">
+      <section className="section-padding bg-charcoal/50 border-y border-subtle mt-0">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-cinzel font-bold mb-6">Selected Worlds</h2>
@@ -156,7 +118,7 @@ export default function Home() {
       </section>
 
       {/* WHY LUNACY SECTION */}
-      <section className="section-padding bg-gradient-dark relative overflow-hidden">
+      <section className="section-padding bg-gradient-dark relative overflow-hidden mt-0">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-glow rounded-full blur-3xl"></div>
         </div>
@@ -175,7 +137,7 @@ export default function Home() {
       </section>
 
       {/* FINAL CTA SECTION */}
-      <section className="section-padding bg-charcoal border-t border-subtle">
+      <section className="section-padding bg-charcoal border-t border-subtle mt-0">
         <div className="container max-w-3xl mx-auto text-center space-y-8">
           <h2 className="text-5xl md:text-6xl font-cinzel font-bold leading-tight">
             Let's build something

@@ -1,5 +1,5 @@
-import { Link } from 'wouter';
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'wouter';
 
 export default function Studio() {
   const services = [
@@ -31,43 +31,43 @@ export default function Studio() {
 
   return (
     <div className="min-h-screen flex flex-col pt-16">
-      {/* Hero */}
-      <section className="section-padding bg-gradient-to-b from-accent/5 to-background">
-        <div className="container max-w-3xl mx-auto text-center space-y-6">
-          <h1 className="text-5xl md:text-6xl font-cinzel font-bold text-foreground">
+      {/* Hero - Enhanced */}
+      <section className="section-padding-lg bg-gradient-to-b from-accent/5 to-void border-b border-subtle">
+        <div className="container max-w-3xl mx-auto text-center space-y-8">
+          <h1 className="text-7xl md:text-8xl font-cinzel font-bold text-off-white glow-text-gold">
             Studio Services
           </h1>
-          <p className="text-lg text-foreground/70 font-inter leading-relaxed">
+          <p className="text-xl text-muted font-inter leading-relaxed font-light">
             We offer comprehensive creative services designed to build your brand, amplify your message, and create lasting impact.
           </p>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="section-padding">
+      {/* Services Grid - Premium presentation */}
+      <section className="section-padding-lg bg-void">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {services.map((service, i) => (
-              <div key={i} className="bg-card border border-border rounded-sm p-8 space-y-6 hover:border-accent transition-colors">
+              <div key={i} className="bg-charcoal/50 border border-subtle rounded-sm p-10 space-y-8 hover:border-accent transition-all duration-500 group hover:shadow-lg hover:shadow-accent/10">
                 <div>
-                  <h3 className="text-2xl font-cinzel font-bold text-foreground mb-3">{service.title}</h3>
-                  <p className="text-foreground/70 font-inter">{service.description}</p>
+                  <h3 className="text-3xl font-cinzel font-bold text-off-white mb-6 group-hover:text-accent transition-colors duration-500">{service.title}</h3>
+                  <p className="text-lg text-muted font-inter font-light leading-relaxed">{service.description}</p>
                 </div>
                 
                 <div>
-                  <p className="text-sm font-inter text-foreground/60 mb-3">INCLUDES:</p>
-                  <ul className="space-y-2">
+                  <p className="text-sm font-inter text-subtle mb-4 tracking-widest uppercase font-semibold">Includes:</p>
+                  <ul className="space-y-3">
                     {service.includes.map((item, j) => (
-                      <li key={j} className="flex items-center gap-2 text-foreground/70 font-inter text-sm">
-                        <span className="w-1 h-1 bg-accent rounded-full"></span>
+                      <li key={j} className="flex items-center gap-3 text-muted font-inter text-base">
+                        <span className="w-1.5 h-1.5 bg-accent rounded-full group-hover:animate-glow-pulse"></span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="pt-4 border-t border-border">
-                  <p className="text-accent font-cinzel font-bold">{service.pricing}</p>
+                <div className="pt-6 border-t border-subtle">
+                  <p className="text-accent font-cinzel font-bold text-2xl">{service.pricing}</p>
                 </div>
               </div>
             ))}
@@ -75,22 +75,25 @@ export default function Studio() {
         </div>
       </section>
 
-      {/* The Process */}
-      <section className="section-padding bg-card/30 border-t border-border">
-        <div className="container max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-cinzel font-bold mb-12 text-center">The Process</h2>
-          <div className="space-y-8">
+      {/* The Process - Enhanced */}
+      <section className="section-padding-lg bg-gradient-dark border-t border-subtle relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/2 right-0 w-96 h-96 bg-accent-glow rounded-full blur-3xl animate-glow-shift"></div>
+        </div>
+        <div className="container max-w-3xl mx-auto relative z-10">
+          <h2 className="text-7xl md:text-8xl font-cinzel font-bold mb-20 text-center text-accent glow-text-gold">The Process</h2>
+          <div className="space-y-12">
             {[
               { step: '01', title: 'Discovery', desc: 'We listen deeply to understand your vision, values, and goals. This phase establishes the foundation for all creative work.' },
               { step: '02', title: 'Strategy', desc: 'We develop a strategic framework that guides all creative decisions, ensuring alignment with your objectives.' },
               { step: '03', title: 'Creation', desc: 'Our team executes the vision with precision and artistry, bringing the strategy to life through multiple disciplines.' },
               { step: '04', title: 'Refinement', desc: 'We iterate based on feedback, ensuring the final deliverables exceed expectations and serve your goals.' },
             ].map((item, i) => (
-              <div key={i} className="flex gap-6">
-                <div className="text-4xl font-cinzel font-bold text-accent/30 flex-shrink-0">{item.step}</div>
-                <div className="space-y-2">
-                  <h3 className="text-xl font-cinzel font-bold text-foreground">{item.title}</h3>
-                  <p className="text-foreground/70 font-inter">{item.desc}</p>
+              <div key={i} className="flex gap-8 group">
+                <div className="text-5xl font-cinzel font-bold text-accent/40 flex-shrink-0 group-hover:text-accent/80 transition-colors duration-500">{item.step}</div>
+                <div className="space-y-3 flex-grow border-l border-subtle/50 pl-8 group-hover:border-accent/30 transition-colors duration-500">
+                  <h3 className="text-2xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-500">{item.title}</h3>
+                  <p className="text-lg text-muted font-inter font-light leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -98,15 +101,18 @@ export default function Studio() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-padding">
-        <div className="container max-w-3xl mx-auto text-center space-y-8">
-          <h2 className="text-4xl md:text-5xl font-cinzel font-bold">Ready to Begin?</h2>
-          <p className="text-lg text-foreground/70 font-inter">
+      {/* CTA - Maximum conversion */}
+      <section className="section-padding-lg bg-charcoal border-t border-subtle relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-glow rounded-full blur-3xl animate-glow-shift"></div>
+        </div>
+        <div className="container max-w-3xl mx-auto text-center space-y-12 relative z-10">
+          <h2 className="text-6xl md:text-7xl font-cinzel font-bold text-off-white">Ready to Begin?</h2>
+          <p className="text-xl text-muted font-inter font-light leading-relaxed">
             Let's discuss your project and explore how Lunacy can help you build something extraordinary.
           </p>
-          <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-            Initiate a Project <ChevronRight size={20} />
+          <Link href="/contact" className="btn-primary inline-flex items-center gap-3">
+            Initiate a Project <ChevronRight size={22} />
           </Link>
         </div>
       </section>

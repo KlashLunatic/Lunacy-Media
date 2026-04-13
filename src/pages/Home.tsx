@@ -113,8 +113,95 @@ export default function Home() {
         </div>
       </section>
 
+      {/* WHY CLIENTS WORK WITH US - Credibility & Trust */}
+      <section className="section-padding-lg bg-void border-b border-subtle">
+        <div className="container">
+          <div className="text-center mb-32">
+            <h2 className="text-7xl md:text-8xl font-cinzel font-bold text-accent glow-text-gold mb-8">WHY CLIENTS WORK WITH US</h2>
+            <p className="text-xl text-muted font-inter max-w-2xl mx-auto leading-relaxed">
+              We combine strategic thinking, creative excellence, and proven execution
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-16">
+            {[
+              {
+                title: 'Narrative-Driven Strategy',
+                description: 'We combine artistic storytelling with strategic business thinking.'
+              },
+              {
+                title: 'Multi-Disciplinary Execution',
+                description: 'From music and media to websites and investor materials, we build across mediums.'
+              },
+              {
+                title: 'Culture-First Design',
+                description: 'Our work is designed to resonate emotionally and create lasting audience connection.'
+              }
+            ].map((reason, idx) => (
+              <div key={idx} className="space-y-10 text-center group">
+                <div className="h-56 bg-gradient-to-br from-accent-glow/30 to-purple-glow/15 rounded-sm flex items-center justify-center border border-subtle group-hover:border-accent transition-all duration-500 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <Sparkles className="text-accent/40 group-hover:text-accent/80 transition-colors duration-500 relative z-10" size={56} />
+                </div>
+                <div className="space-y-6">
+                  <h3 className="text-3xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-500">{reason.title}</h3>
+                  <p className="text-lg text-muted font-inter leading-relaxed font-light">{reason.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OUR PROCESS - Strategic Clarity */}
+      <section className="section-padding-lg bg-charcoal/50 border-b border-subtle relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/2 left-0 w-96 h-96 bg-purple-glow rounded-full blur-3xl animate-glow-shift"></div>
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent-glow rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        </div>
+        <div className="container max-w-4xl mx-auto relative z-10">
+          <div className="text-center mb-32">
+            <h2 className="text-7xl md:text-8xl font-cinzel font-bold text-accent glow-text-gold mb-8">OUR PROCESS</h2>
+            <p className="text-xl text-muted font-inter max-w-2xl mx-auto leading-relaxed">
+              A proven framework for transforming vision into reality
+            </p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              {
+                step: '01',
+                title: 'Discover',
+                description: 'We listen deeply to understand your vision, values, and goals. This phase establishes the foundation for all creative work.'
+              },
+              {
+                step: '02',
+                title: 'Strategize',
+                description: 'We develop a strategic framework that guides all creative decisions, ensuring alignment with your objectives.'
+              },
+              {
+                step: '03',
+                title: 'Build',
+                description: 'Our team executes the vision with precision and artistry, bringing the strategy to life through multiple disciplines.'
+              },
+              {
+                step: '04',
+                title: 'Launch',
+                description: 'We iterate based on feedback, ensuring the final deliverables exceed expectations and serve your goals.'
+              }
+            ].map((process, idx) => (
+              <div key={idx} className="space-y-8 group">
+                <div className="space-y-4">
+                  <div className="text-6xl font-cinzel font-bold text-accent/40 group-hover:text-accent/80 transition-colors duration-500">{process.step}</div>
+                  <h3 className="text-2xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-500">{process.title}</h3>
+                </div>
+                <p className="text-base text-muted font-inter font-light leading-relaxed">{process.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* WHY LUNACY SECTION - Emotional resonance */}
-      <section className="section-padding-lg bg-gradient-dark relative overflow-hidden">
+      <section className="section-padding-lg bg-gradient-dark relative overflow-hidden border-t border-subtle">
         <div className="absolute inset-0 opacity-15">
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-glow rounded-full blur-3xl animate-glow-shift"></div>
           <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-accent-glow rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }}></div>

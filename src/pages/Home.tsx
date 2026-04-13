@@ -8,41 +8,46 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <HeroSection />
 
-      {/* WHAT WE DO SECTION */}
+      {/* WHAT WE CREATE SECTION */}
       <section className="section-padding bg-void border-b border-subtle">
         <div className="container">
           <div className="text-center mb-20">
-            <h2 className="text-6xl md:text-7xl font-cinzel font-bold text-accent glow-text-gold">WHAT WE DO</h2>
+            <h2 className="text-6xl md:text-7xl font-cinzel font-bold text-accent glow-text-gold">WHAT WE CREATE</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-12">
             {[
               {
-                title: 'Brand Strategy',
-                description: 'We build positioning, identity, and narrative systems for brands and founders.'
+                title: 'Brand Worlds',
+                description: 'We build mythologies, identities, and emotional ecosystems for brands and artists.'
               },
               {
-                title: 'Creative Campaigns',
-                description: 'We create campaigns, visuals, and storytelling experiences that move audiences.'
+                title: 'Campaign Systems',
+                description: 'We design launch campaigns, visual storytelling, and audience-building experiences.'
               },
               {
-                title: 'Digital Experiences',
-                description: 'We design websites, pitch decks, and immersive media properties.'
+                title: 'Digital Presence',
+                description: 'We create premium websites, pitch decks, and conversion-focused brand assets.'
               }
             ].map((service, idx) => (
-              <div key={idx} className="space-y-6 text-center">
-                <h3 className="text-2xl font-cinzel font-bold text-off-white">{service.title}</h3>
-                <p className="text-lg text-muted font-inter leading-relaxed">{service.description}</p>
+              <div key={idx} className="space-y-8 text-center group">
+                <div className="h-48 bg-gradient-to-br from-purple-glow/20 to-accent-glow/10 rounded-sm flex items-center justify-center border border-subtle group-hover:border-accent transition-all duration-300">
+                  <Sparkles className="text-accent/30 group-hover:text-accent/60 transition-colors duration-300" size={48} />
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-300">{service.title}</h3>
+                  <p className="text-lg text-muted font-inter leading-relaxed">{service.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SELECTED WORLDS SECTION */}
+      {/* FEATURED PROJECTS SECTION */}
       <section className="section-padding bg-charcoal/50 border-b border-subtle">
         <div className="container">
           <div className="text-center mb-20">
-            <h2 className="text-6xl md:text-7xl font-cinzel font-bold text-accent glow-text-gold">SELECTED WORLDS</h2>
+            <h2 className="text-6xl md:text-7xl font-cinzel font-bold text-accent glow-text-gold">FEATURED PROJECTS</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-12">
             {[
@@ -58,17 +63,21 @@ export default function Home() {
                 title: 'Mulligan',
                 description: 'Complete brand identity and campaign for creative collective.'
               }
-            ].map((world, idx) => (
+            ].map((project, idx) => (
               <div key={idx} className="group cursor-pointer">
-                <div className="aspect-square bg-gradient-to-br from-purple-glow/30 to-accent-glow/20 rounded-sm mb-6 flex items-center justify-center border border-subtle group-hover:border-accent transition-all duration-300">
-                  <Sparkles className="text-accent/40 group-hover:text-accent/80 transition-colors duration-300" size={64} />
-                </div>
-                <div className="space-y-3">
-                  <h3 className="text-2xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-300">{world.title}</h3>
-                  <p className="text-muted font-inter leading-relaxed">{world.description}</p>
-                  <div className="flex items-center gap-2 text-accent text-sm font-inter pt-2 group-hover:gap-3 transition-all duration-300">
-                    View Project <ChevronRight size={16} />
+                <div className="aspect-video bg-gradient-to-br from-purple-glow/30 to-accent-glow/20 rounded-sm mb-8 flex items-center justify-center border border-subtle group-hover:border-accent transition-all duration-300 overflow-hidden">
+                  <div className="relative w-full h-full flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <Sparkles className="text-accent/40 group-hover:text-accent/80 transition-colors duration-300" size={64} />
                   </div>
+                </div>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-3xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-300 mb-4">{project.title}</h3>
+                    <p className="text-lg text-muted font-inter leading-relaxed">{project.description}</p>
+                  </div>
+                  <button className="inline-flex items-center gap-3 text-accent font-inter font-semibold hover:gap-4 transition-all duration-300 group-hover:text-off-white">
+                    Explore Project <ChevronRight size={18} />
+                  </button>
                 </div>
               </div>
             ))}

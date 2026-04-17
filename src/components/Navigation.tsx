@@ -26,24 +26,17 @@ const Navigation: FC<NavigationProps> = ({ scrolled }) => {
       >
         <svg
           width="48"
-          height="48"
-          viewBox="0 0 48 48"
+          height="64"
+          viewBox="0 0 200 280"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="nav-logo"
         >
-          <path
-            d="M 14 6 L 14 20 Q 14 24 18 24 L 24 24"
-            stroke="white"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-          <circle cx="32" cy="14" r="6" stroke="white" strokeWidth="3" fill="none" />
-          <line x1="8" y1="30" x2="8" y2="42" stroke="white" strokeWidth="3" strokeLinecap="round" />
-          <line x1="24" y1="30" x2="24" y2="42" stroke="white" strokeWidth="3" strokeLinecap="round" />
-          <line x1="40" y1="30" x2="40" y2="42" stroke="white" strokeWidth="3" strokeLinecap="round" />
+          <path d="M 80 20 L 80 120 Q 80 140 100 140 L 140 140" stroke="white" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="150" cy="90" r="35" stroke="white" strokeWidth="16" />
+          <path d="M 50 160 L 50 260 L 80 240" stroke="white" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 100 160 L 100 260" stroke="white" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 150 160 L 150 260 L 120 240" stroke="white" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </a>
 

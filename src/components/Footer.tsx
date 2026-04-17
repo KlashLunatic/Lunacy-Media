@@ -6,9 +6,7 @@ const Footer: FC = () => {
   return (
     <footer className="bg-black border-t border-border">
       <div className="container flex flex-col md:flex-row justify-between items-center py-10">
-        <p className="text-xs font-cinzel tracking-widest text-gold-dim uppercase">
-          LUNACY MEDIA
-        </p>
+        <img src="https://lunacy-media-assets.s3.amazonaws.com/lunacy-logo-white.png" alt="Lunacy Media" className="footer-logo" />
 
         <p className="text-sm font-cormorant italic text-muted my-4 md:my-0">
           Your Forever Endeavour

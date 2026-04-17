@@ -22,9 +22,9 @@ const Navigation: FC<NavigationProps> = ({ scrolled }) => {
           e.preventDefault();
           handleNavClick('hero');
         }}
-        className="nav-logo"
+        className="nav-logo-link"
       >
-        LUNACY MEDIA
+        <img src="https://lunacy-media-assets.s3.amazonaws.com/lunacy-logo-white.png" alt="Lunacy Media" className="nav-logo" />
       </a>
 
       <ul className="nav-links hidden md:flex gap-12 list-none">

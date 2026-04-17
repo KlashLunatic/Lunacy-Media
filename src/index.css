@@ -697,6 +697,31 @@ section.bg-black {
   letter-spacing: 0.5em;
 }
 
+.contact-cta-button {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  color: var(--white);
+  background-color: var(--gold);
+  border: 2px solid var(--gold);
+  padding: 1.3rem 3rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  box-shadow: 0 0 40px rgba(201, 168, 76, 0.4);
+}
+
+.contact-cta-button:hover {
+  background-color: var(--gold-pale);
+  border-color: var(--gold-pale);
+  box-shadow: 0 0 80px rgba(201, 168, 76, 0.8), inset 0 0 20px rgba(201, 168, 76, 0.3);
+  transform: translateY(-3px);
+  letter-spacing: 0.45em;
+}
+
 /* ============================================
    FADE-UP ANIMATION
    ============================================ */

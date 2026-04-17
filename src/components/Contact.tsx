@@ -8,19 +8,23 @@ const Contact: FC = () => {
           {/* Left column */}
           <div>
             <div className="section-eyebrow">Contact</div>
-            <h2 className="text-white mb-6">
-              Let's Build<br />
-              <span className="text-gold">Something</span><br />
-              Unforgettable.
-            </h2>
+            
+            <div className="mb-16">
+              <h2 className="text-white mb-6 leading-tight">
+                Let's Build<br />
+                <span className="text-gold text-5xl md:text-6xl">Something</span><br />
+                Unforgettable.
+              </h2>
+              <div className="w-24 h-px bg-gradient-to-r from-gold to-transparent" />
+            </div>
 
-            <p className="text-off-white mb-8">
+            <p className="text-off-white mb-12 font-cormorant text-lg leading-relaxed">
               Whether you're an artist building your world or a brand ready to tell a real story — we want to hear from you.
             </p>
 
             <a
               href="mailto:hello@lunacymedia.ca"
-              className="hero-cta inline-block"
+              className="contact-cta-button"
             >
               Start a Conversation →
             </a>

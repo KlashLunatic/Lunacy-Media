@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
+import Approach from './components/Approach';
 import Work from './components/Work';
 import Universe from './components/Universe';
 import Contact from './components/Contact';
@@ -28,6 +29,7 @@ function App() {
         <Hero />
         <About />
         <Services />
+        <Approach />
         <Work />
         <Universe />
         <Contact />

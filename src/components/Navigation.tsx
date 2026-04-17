@@ -24,7 +24,27 @@ const Navigation: FC<NavigationProps> = ({ scrolled }) => {
         }}
         className="nav-logo-link"
       >
-        <img src="https://lunacy-media-assets.s3.amazonaws.com/lunacy-logo-white.png" alt="Lunacy Media" className="nav-logo" />
+        <svg
+          width="48"
+          height="48"
+          viewBox="0 0 48 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="nav-logo"
+        >
+          <path
+            d="M 14 6 L 14 20 Q 14 24 18 24 L 24 24"
+            stroke="white"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+          <circle cx="32" cy="14" r="6" stroke="white" strokeWidth="3" fill="none" />
+          <line x1="8" y1="30" x2="8" y2="42" stroke="white" strokeWidth="3" strokeLinecap="round" />
+          <line x1="24" y1="30" x2="24" y2="42" stroke="white" strokeWidth="3" strokeLinecap="round" />
+          <line x1="40" y1="30" x2="40" y2="42" stroke="white" strokeWidth="3" strokeLinecap="round" />
+        </svg>
       </a>
 
       <ul className="nav-links hidden md:flex gap-12 list-none">

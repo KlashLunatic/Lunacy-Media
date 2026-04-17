@@ -5,7 +5,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Approach from './components/Approach';
 import Work from './components/Work';
-import ArtworkGallery from './components/ArtworkGallery';
+
 import Universe from './components/Universe';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -32,7 +32,7 @@ function App() {
         <Services />
         <Approach />
         <Work />
-        <ArtworkGallery />
+
         <Universe />
         <Contact />
       </main>

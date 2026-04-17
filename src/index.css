@@ -130,6 +130,17 @@ p {
   line-height: 1.6;
 }
 
+/* Enhanced pull quote for Universe section */
+.pull-quote-enhanced {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  line-height: 1.8;
+  color: var(--white);
+  text-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
+}
+
 /* Service numbers */
 .service-number {
   font-family: 'Cinzel', serif;
@@ -298,6 +309,28 @@ p {
 
 .card-portfolio:hover::before {
   width: 100%;
+}
+
+/* Universe project entry styles */
+.universe-project-entry {
+  border: 1px solid var(--border);
+  padding: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.universe-project-entry:hover {
+  border-color: var(--gold);
+  background-color: rgba(201, 168, 76, 0.05);
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.2), inset 0 0 20px rgba(201, 168, 76, 0.05);
+}
+
+.universe-project-entry:hover h4 {
+  color: var(--gold-pale);
+}
+
+.universe-project-entry:hover p {
+  color: var(--off-white);
 }
 
 /* ============================================

@@ -31,28 +31,28 @@ const Universe: FC = () => {
           <div>
             <div className="section-eyebrow">The Universe</div>
             <h2 className="text-white mb-8">An Original World in Progress</h2>
-            <div className="gold-rule mb-8" />
+            <div className="gold-rule mb-10" />
 
-            <p className="pull-quote border-l-4 border-gold pl-8 mb-8">
+            <p className="pull-quote-enhanced border-l-4 border-gold pl-8 mb-10">
               "Three albums. Three sisters. One mythology unfolding across music, visual art, and narrative IP."
             </p>
 
-            <p className="text-off-white mb-12">
-              Lunacy Media is not just a studio for hire — it's the production house behind an original interconnected creative universe, developed by Kailash Nehru across years of intentional world-building.
+            <p className="text-white font-cormorant text-lg leading-relaxed mb-14">
+              Lunacy Media is both a studio for hire and the production house behind an original interconnected creative universe, developed by Kailash Nehru across years of intentional world-building.
             </p>
 
             {/* Project entries */}
-            <div className="space-y-1">
+            <div className="space-y-4">
               {projects.map((project, idx) => (
                 <div
                   key={idx}
-                  className="border border-border p-4 hover:border-gold-dim hover:bg-charcoal transition-all fade-up"
+                  className="universe-project-entry fade-up"
                 >
                   <div className="flex gap-4">
-                    <span className="text-gold font-cinzel text-2xl font-bold opacity-70 w-12">{project.number}</span>
-                    <div>
-                      <h4 className="text-white font-cormorant text-lg">{project.title}</h4>
-                      <p className="text-muted text-sm">{project.subtitle}</p>
+                    <span className="text-gold font-cinzel text-2xl font-bold opacity-70 w-12 flex-shrink-0">{project.number}</span>
+                    <div className="flex-1">
+                      <h4 className="text-white font-cormorant text-lg transition-colors duration-300">{project.title}</h4>
+                      <p className="text-muted text-sm transition-colors duration-300">{project.subtitle}</p>
                     </div>
                   </div>
                 </div>

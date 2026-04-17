@@ -520,6 +520,120 @@ section.bg-black {
 }
 
 /* ============================================
+   CINEMATIC ANIMATIONS
+   ============================================ */
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20px, -15px);
+  }
+  50% {
+    transform: translate(10px, 20px);
+  }
+  75% {
+    transform: translate(-15px, -10px);
+  }
+}
+
+@keyframes drift-slow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-25px, 15px);
+  }
+  66% {
+    transform: translate(15px, -20px);
+  }
+}
+
+@keyframes drift-reverse {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-30px, 20px);
+  }
+  50% {
+    transform: translate(20px, -25px);
+  }
+  75% {
+    transform: translate(-10px, 15px);
+  }
+}
+
+@keyframes grain-shift {
+  0%, 100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes light-drift {
+  0%, 100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-drift {
+  animation: drift 20s ease-in-out infinite;
+}
+
+.animate-drift-slow {
+  animation: drift-slow 25s ease-in-out infinite;
+}
+
+.animate-drift-reverse {
+  animation: drift-reverse 22s ease-in-out infinite;
+}
+
+.animate-grain-shift {
+  animation: grain-shift 8s ease-in-out infinite;
+}
+
+.animate-light-drift {
+  animation: light-drift 12s ease-in-out infinite;
+}
+
+.glow-headline {
+  text-shadow: 0 0 30px rgba(201, 168, 76, 0.5), 0 0 60px rgba(201, 168, 76, 0.3);
+  filter: drop-shadow(0 0 20px rgba(201, 168, 76, 0.4));
+}
+
+.hero-cta-enhanced {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  color: var(--white);
+  background-color: var(--gold);
+  border: 2px solid var(--gold);
+  padding: 1.2rem 2.5rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.3);
+}
+
+.hero-cta-enhanced:hover {
+  background-color: var(--gold-pale);
+  border-color: var(--gold-pale);
+  box-shadow: 0 0 60px rgba(201, 168, 76, 0.6);
+  transform: translateY(-2px);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================
    FADE-UP ANIMATION
    ============================================ */
 

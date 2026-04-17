@@ -1,32 +1,36 @@
-import { Route, Switch } from 'wouter';
+import { useEffect, useState } from 'react';
 import Navigation from './components/Navigation';
+import Hero from './components/Hero';
+import About from './components/About';
+import Services from './components/Services';
+import Work from './components/Work';
+import Universe from './components/Universe';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import Studio from './pages/Studio';
-import Worlds from './pages/Worlds';
-import Work from './pages/Work';
-import Mythology from './pages/Mythology';
-import Contact from './pages/Contact';
 import './index.css';
 
 function App() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 60);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navigation />
+    <div className="bg-black text-white">
+      <Navigation scrolled={scrolled} />
       <main>
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/studio" component={Studio} />
-          <Route path="/worlds" component={Worlds} />
-          <Route path="/work" component={Work} />
-          <Route path="/mythology" component={Mythology} />
-          <Route path="/contact" component={Contact} />
-          <Route>
-            <div className="min-h-screen flex items-center justify-center">
-              <h1 className="text-4xl font-cinzel">404 - Page Not Found</h1>
-            </div>
-          </Route>
-        </Switch>
+        <Hero />
+        <About />
+        <Services />
+        <Work />
+        <Universe />
+        <Contact />
       </main>
       <Footer />
     </div>

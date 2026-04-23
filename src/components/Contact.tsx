@@ -19,7 +19,7 @@ const Contact: FC = () => {
             </div>
 
             <p className="text-off-white mb-12 font-cormorant text-lg leading-relaxed">
-              Whether you're an artist building your world or a brand ready to tell a real story — we want to hear from you.
+              If you've been waiting for a creative partner who actually gets it — this is the conversation. We're currently accepting new clients. Tell us what you're building.
             </p>
 
             <a

@@ -25,7 +25,7 @@ const Navigation: FC<NavigationProps> = ({ scrolled }) => {
         }}
         className="nav-logo-link flex items-center justify-center"
       >
-        <Logo width="80px" height="100px" className="nav-logo" style={{ filter: 'drop-shadow(0 0 0 transparent)' }} />
+        <Logo width="80px" height="100px" className="nav-logo" />
       </a>
 
       <ul className="nav-links hidden md:flex gap-12 list-none">

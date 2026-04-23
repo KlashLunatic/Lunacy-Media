@@ -59,7 +59,7 @@ const Hero: FC = () => {
         {/* Eyebrow */}
         <div className="flex items-center gap-4 mb-16">
           <div className="w-8 h-px bg-gold" />
-          <span className="text-xs font-cinzel tracking-widest text-gold uppercase">
+          <span className="text-xs font-cinzel tracking-widest text-gold uppercase" role="doc-subtitle">
             Creative Media & Storytelling Studio
           </span>
         </div>
@@ -90,12 +90,12 @@ const Hero: FC = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 right-12 z-10 animate-float">
+      <div className="absolute bottom-8 right-12 z-10 animate-float" aria-label="Scroll down to see more content">
         <div className="flex flex-col items-center gap-2">
-          <span className="text-xs font-cinzel tracking-widest text-muted uppercase" style={{ writingMode: 'vertical-rl' }}>
+          <span className="text-xs font-cinzel tracking-widest text-muted uppercase" style={{ writingMode: 'vertical-rl' }} aria-hidden="true">
             Scroll
           </span>
-          <div className="w-px h-8 bg-gradient-to-b from-muted to-transparent" />
+          <div className="w-px h-8 bg-gradient-to-b from-muted to-transparent" aria-hidden="true" />
         </div>
       </div>
     </section>

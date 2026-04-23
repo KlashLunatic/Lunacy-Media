@@ -25,28 +25,28 @@ const About: FC = () => {
           {/* Right column - Three pillars */}
           <div className="space-y-8">
             {/* Pillar 1 */}
-            <div className="gold-bar-left fade-up">
+            <article className="gold-bar-left fade-up">
               <h3 className="text-gold uppercase text-xs tracking-widest mb-3">Entertainment</h3>
               <p className="text-off-white text-sm">
                 Original IP, multimedia franchises, and narrative worlds built to endure — from graphic novels to immersive story universes.
               </p>
-            </div>
+            </article>
 
             {/* Pillar 2 */}
-            <div className="gold-bar-left fade-up">
+            <article className="gold-bar-left fade-up">
               <h3 className="text-gold uppercase text-xs tracking-widest mb-3">Branding</h3>
               <p className="text-off-white text-sm">
                 Identity systems, brand strategy, and creative direction rooted in storytelling — for artists and organizations ready to define their world.
               </p>
-            </div>
+            </article>
 
             {/* Pillar 3 */}
-            <div className="gold-bar-left fade-up">
+            <article className="gold-bar-left fade-up">
               <h3 className="text-gold uppercase text-xs tracking-widest mb-3">Digital Experience</h3>
               <p className="text-off-white text-sm">
                 Interactive web experiences, digital installations, and platforms designed to immerse audiences, not just inform them.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </div>

@@ -40,7 +40,7 @@ const Services: FC = () => {
           </div>
           <div>
             <p className="text-off-white">
-              We work across music, visual media, interactive digital experiences, brand strategy, and narrative IP — with the depth of a studio and the agility of a collaborator.
+              Most designers will give you a logo. We give you a world. Here's what that looks like in practice.
             </p>
           </div>
         </div>

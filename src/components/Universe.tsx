@@ -62,6 +62,9 @@ const Universe: FC = () => {
 
           {/* Right column - Three Sisters */}
           <div>
+            <p className="text-off-white font-cormorant text-lg leading-relaxed mb-10">
+              Every great artist has a mythology. This is ours — and it's how we think about yours.
+            </p>
             <p className="text-gold uppercase text-xs tracking-widest mb-8 font-cinzel">The Three Sisters</p>
 
             <div className="border border-border">

@@ -14,7 +14,7 @@ const About: FC = () => {
             </p>
 
             <p className="mb-6">
-              Lunacy Media is a creative studio founded by Kailash Nehru — artist, creative director, and world-builder. We develop original IP, craft multimedia storytelling projects, and design creative marketing experiences for artists, brands, and organizations that refuse to be forgettable.
+              Lunacy Media is a creative studio founded by Kailash Nehru — rapper, creative director, and world-builder rooted in Jamaican-Canadian culture and the mythology of the everyday. We work with independent artists and musicians who are building something real: visual identities that match the music, brand systems that grow with the work, and creative worlds that outlast any single release.
             </p>
 
             <p>

@@ -362,6 +362,10 @@ nav.scrolled {
   align-items: center;
   text-decoration: none;
   transition: opacity 0.3s ease;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .nav-logo-link:hover {
@@ -373,6 +377,10 @@ nav.scrolled {
   width: auto;
   display: block;
   transition: filter 0.3s ease;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .nav-logo:hover {

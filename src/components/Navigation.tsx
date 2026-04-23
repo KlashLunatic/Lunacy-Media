@@ -23,9 +23,9 @@ const Navigation: FC<NavigationProps> = ({ scrolled }) => {
           e.preventDefault();
           handleNavClick('hero');
         }}
-        className="nav-logo-link"
+        className="nav-logo-link flex items-center justify-center"
       >
-        <Logo width="80px" height="100px" className="nav-logo" />
+        <Logo width="80px" height="100px" className="nav-logo" style={{ filter: 'drop-shadow(0 0 0 transparent)' }} />
       </a>
 
       <ul className="nav-links hidden md:flex gap-12 list-none">

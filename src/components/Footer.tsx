@@ -14,7 +14,7 @@ const Footer: FC = () => {
         </p>
 
         <p className="text-xs font-cinzel tracking-widest text-muted uppercase">
-          © {currentYear} Lunacy Media
+          © {currentYear} Lunacy Media · Toronto, Ontario · lunacymedia.ca
         </p>
       </div>
     </footer>

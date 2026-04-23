@@ -77,7 +77,7 @@ const Hero: FC = () => {
 
         {/* Supporting line */}
         <p className="text-lg font-cormorant text-muted mb-10 max-w-2xl leading-relaxed">
-          We build brands, stories, and digital experiences that feel like worlds — not campaigns.
+          Built by an artist, for artists. We craft the visual identity, brand world, and creative direction that your music actually deserves.
         </p>
 
         {/* CTA Button - Enhanced prominence */}

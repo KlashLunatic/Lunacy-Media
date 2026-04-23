@@ -9,7 +9,7 @@ interface LogoProps {
 const Logo: FC<LogoProps> = ({ width = '80px', height = '100px', className = '' }) => {
   return (
     <img
-      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/lVeZNtlDodoCBAGY.svg"
+      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663032200270/lTUddYtpUxyNJxLH.svg"
       alt="Lunacy Media Logo"
       style={{ width, height }}
       className={className}

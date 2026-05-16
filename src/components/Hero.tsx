@@ -84,6 +84,7 @@ const Hero: FC = () => {
         <button
           onClick={handleScrollToWork}
           className="hero-cta-enhanced"
+          aria-label="View our selected work"
         >
           View the Work →
         </button>

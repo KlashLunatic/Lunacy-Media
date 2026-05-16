@@ -1,11 +1,18 @@
 import { Link } from 'wouter';
 import { ChevronRight, Sparkles } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
+import SEO from '../components/SEO';
 
 export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Lunacy Media | Creative Studio for Music, Storytelling & Digital Experiences | Toronto, Canada"
+        description="Lunacy Media is a Toronto-based creative studio specializing in brand strategy, original IP, multimedia storytelling, and immersive digital experiences. We build interconnected worlds across music, visual narrative, and design."
+        path="/"
+      />
+
       <HeroSection />
 
       {/* WHAT WE CREATE SECTION - Editorial minimalism */}
@@ -15,7 +22,7 @@ export default function Home() {
           <div className="text-center mb-section">
             <h2 className="text-accent glow-text-gold mb-8">WHAT WE CREATE</h2>
             <p className="text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed">
-              We architect experiences that transcend traditional creative services, building emotional ecosystems where brands and audiences connect.
+              From our Toronto studio, we architect experiences that transcend traditional creative services, building emotional ecosystems where brands and audiences connect across Canada and beyond.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-section">
@@ -85,7 +92,7 @@ export default function Home() {
                     <h3 className="text-4xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-700 mb-8">{project.title}</h3>
                     <p className="text-lg text-muted font-inter leading-relaxed font-light">{project.description}</p>
                   </div>
-                  <button className="inline-flex items-center gap-4 text-accent font-inter font-semibold hover:gap-6 transition-all duration-700 group-hover:text-off-white text-lg">
+                  <button className="inline-flex items-center gap-4 text-accent font-inter font-semibold hover:gap-6 transition-all duration-700 group-hover:text-off-white text-lg" aria-label={`Explore ${project.title} project`}>
                     Explore Project <ChevronRight size={22} className="group-hover:translate-x-2 transition-transform duration-500" />
                   </button>
                 </div>
@@ -235,10 +242,10 @@ export default function Home() {
             Whether you're launching a brand, scaling a business, or building a creative world from the ground up, Lunacy is ready to help bring it to life.
           </p>
           <div className="flex flex-col md:flex-row gap-10 justify-center pt-12">
-            <Link href="/contact" className="btn-primary">
+            <Link href="/contact" className="btn-primary" aria-label="Start a project with Lunacy Media">
               Start a Project <ChevronRight size={24} />
             </Link>
-            <Link href="/contact" className="btn-secondary">
+            <Link href="/contact" className="btn-secondary" aria-label="Book a consultation with Lunacy Media">
               Book a Consultation <ChevronRight size={24} />
             </Link>
           </div>

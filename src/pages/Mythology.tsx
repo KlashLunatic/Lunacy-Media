@@ -1,8 +1,15 @@
 import { Sparkles } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Mythology() {
   return (
     <div className="min-h-screen flex flex-col pt-16">
+      <SEO
+        title="Our Story | The Mythology of Lunacy Media"
+        description="Discover the origin story, core beliefs, and creative philosophy behind Lunacy Media. Founded by Kailash Nehru in Toronto, Canada — a studio where mythology meets strategy."
+        path="/mythology"
+      />
+
       {/* Hero - Enhanced */}
       <section className="section-padding-lg bg-gradient-to-b from-accent/5 to-void border-b border-subtle">
         <div className="container max-w-3xl mx-auto text-center space-y-8">

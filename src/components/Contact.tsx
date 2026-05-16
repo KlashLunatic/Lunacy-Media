@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Link } from 'wouter';
 
 const Contact: FC = () => {
   return (
@@ -19,15 +20,16 @@ const Contact: FC = () => {
             </div>
 
             <p className="text-off-white mb-12 font-cormorant text-lg leading-relaxed">
-              If you've been waiting for a creative partner who actually gets it — this is the conversation. We're currently accepting new clients. Tell us what you're building.
+              If you've been waiting for a creative partner who actually gets it — this is the conversation. We're currently accepting new clients in Toronto, across Canada, and worldwide. Tell us what you're building.
             </p>
 
-            <a
-              href="mailto:hello@lunacymedia.ca"
+            <Link
+              href="/contact"
               className="contact-cta-button"
+              aria-label="Start a conversation — go to contact form"
             >
               Start a Conversation →
-            </a>
+            </Link>
           </div>
 
           {/* Right column - Details */}
@@ -49,7 +51,7 @@ const Contact: FC = () => {
 
             <div className="border-b border-border py-4 fade-up">
               <p className="text-muted uppercase text-xs tracking-widest font-cinzel mb-2">Based In</p>
-              <p className="text-white italic font-cormorant text-lg">Canada</p>
+              <p className="text-white italic font-cormorant text-lg">Toronto, Ontario, Canada</p>
             </div>
 
             <div className="py-4 fade-up">

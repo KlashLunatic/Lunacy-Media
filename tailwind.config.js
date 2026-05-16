@@ -17,7 +17,7 @@ export default {
         'secondary-foreground': '#F5F5F5',
         border: '#333333',
         input: '#1A1A1A',
-        muted: '#666666',
+        muted: '#9a8e82',
         'muted-foreground': '#999999',
       },
       fontFamily: {

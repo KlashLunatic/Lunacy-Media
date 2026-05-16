@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Link } from 'wouter';
 import Logo from './Logo';
 
 interface NavigationProps {
@@ -6,89 +7,43 @@ interface NavigationProps {
 }
 
 const Navigation: FC<NavigationProps> = ({ scrolled }) => {
-  const handleNavClick = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-12 py-6 transition-all duration-300 ${
       scrolled ? 'bg-black/97 border-b border-border' : 'bg-transparent'
     }`} role="navigation" aria-label="Main navigation">
-      <a
-        href="#hero"
-        onClick={(e) => {
-          e.preventDefault();
-          handleNavClick('hero');
-        }}
+      <Link
+        href="/"
         className="nav-logo-link flex items-center justify-center"
-        aria-label="Lunacy Media - Home"
+        aria-label="Lunacy Media — Home"
       >
         <Logo width="80px" height="100px" className="nav-logo" />
-      </a>
+      </Link>
 
       <ul className="nav-links hidden md:flex gap-12 list-none">
         <li>
-          <a
-            href="#about"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('about');
-            }}
-            className="nav-link"
-          >
-            About
-          </a>
+          <Link href="/studio" className="nav-link" aria-label="Studio services">
+            Studio
+          </Link>
         </li>
         <li>
-          <a
-            href="#services"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('services');
-            }}
-            className="nav-link"
-          >
-            Services
-          </a>
-        </li>
-        <li>
-          <a
-            href="#work"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('work');
-            }}
-            className="nav-link"
-          >
+          <Link href="/work" className="nav-link" aria-label="View selected work">
             Work
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#universe"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('universe');
-            }}
-            className="nav-link"
-          >
-            Universe
-          </a>
+          <Link href="/worlds" className="nav-link" aria-label="Explore original worlds">
+            Worlds
+          </Link>
         </li>
         <li>
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('contact');
-            }}
-            className="nav-link"
-          >
+          <Link href="/mythology" className="nav-link" aria-label="Our mythology and story">
+            Mythology
+          </Link>
+        </li>
+        <li>
+          <Link href="/contact" className="nav-link" aria-label="Contact us">
             Contact
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

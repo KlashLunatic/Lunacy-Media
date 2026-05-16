@@ -37,6 +37,7 @@ export default function HeroSection() {
         <img 
           src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032200270/4xMWgJ9hUWH8ZnV46MUsJf/lunar-landscape-eo7yxwiznwxCrcRvGBiK2T.webp" 
           alt="" 
+          loading="lazy"
           className="w-full h-full object-cover"
         />
       </div>
@@ -121,6 +122,7 @@ export default function HeroSection() {
         <img 
           src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032200270/4xMWgJ9hUWH8ZnV46MUsJf/orbital-paths-7VDu6Ur8jjLmhmKgWNpxAq.webp" 
           alt="" 
+          loading="lazy"
           className="w-full h-full"
         />
       </div>
@@ -130,6 +132,7 @@ export default function HeroSection() {
         <img 
           src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032200270/4xMWgJ9hUWH8ZnV46MUsJf/constellation-pattern-5CcQs78ufeVD6JVFF4JTfP.webp" 
           alt="" 
+          loading="lazy"
           className="w-full h-full"
         />
       </div>

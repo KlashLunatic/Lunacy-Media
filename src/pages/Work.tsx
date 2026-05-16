@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
 import { ChevronRight, Sparkles } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Work() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -27,6 +28,12 @@ export default function Work() {
 
   return (
     <div className="min-h-screen flex flex-col pt-16">
+      <SEO
+        title="Selected Work | Lunacy Media Portfolio | Creative Projects & Case Studies"
+        description="Explore the Lunacy Media portfolio — brand identity systems, digital experiences, and original IP projects including Tammy, Obeah, and Mulligan. Creative work from Toronto, Canada."
+        path="/work"
+      />
+
       {/* Hero - Enhanced */}
       <section className="section-padding-lg bg-gradient-to-b from-accent/5 to-void border-b border-subtle">
         <div className="container max-w-3xl mx-auto text-center space-y-8">
@@ -42,11 +49,13 @@ export default function Work() {
       {/* Filter - Premium styling */}
       <section className="section-padding-sm bg-void border-b border-subtle">
         <div className="container">
-          <div className="flex flex-wrap gap-6 justify-center">
+          <div className="flex flex-wrap gap-6 justify-center" role="group" aria-label="Filter projects by category">
             {filters.map((filter) => (
               <button
                 key={filter.value}
                 onClick={() => setActiveFilter(filter.value)}
+                aria-pressed={activeFilter === filter.value}
+                aria-label={`Filter by ${filter.label}`}
                 className={`px-6 py-3 rounded-sm font-inter text-sm font-semibold tracking-wide transition-all duration-500 uppercase ${
                   activeFilter === filter.value
                     ? 'bg-gradient-to-r from-gold to-gold-dark text-void shadow-lg shadow-accent/40'
@@ -102,7 +111,7 @@ export default function Work() {
           <p className="text-xl text-muted font-inter font-light leading-relaxed">
             Let's discuss your project and explore how we can create something remarkable.
           </p>
-          <Link href="/contact" className="btn-primary inline-flex items-center gap-3">
+          <Link href="/contact" className="btn-primary inline-flex items-center gap-3" aria-label="Start a conversation with Lunacy Media">
             Start a Conversation <ChevronRight size={22} />
           </Link>
         </div>

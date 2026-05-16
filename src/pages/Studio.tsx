@@ -1,5 +1,6 @@
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'wouter';
+import SEO from '../components/SEO';
 
 export default function Studio() {
   const services = [
@@ -31,6 +32,12 @@ export default function Studio() {
 
   return (
     <div className="min-h-screen flex flex-col pt-16">
+      <SEO
+        title="About Lunacy Media | Creative Direction & Brand Strategy Studio | Toronto"
+        description="Lunacy Media is a Toronto-based creative studio offering brand architecture, digital experiences, content production, and creative consulting. Explore our services and process."
+        path="/studio"
+      />
+
       {/* Hero - Enhanced */}
       <section className="section-padding-lg bg-gradient-to-b from-accent/5 to-void border-b border-subtle">
         <div className="container max-w-3xl mx-auto text-center space-y-8">
@@ -38,7 +45,7 @@ export default function Studio() {
             Studio Services
           </h1>
           <p className="text-xl text-muted font-inter leading-relaxed font-light">
-            We offer comprehensive creative services designed to build your brand, amplify your message, and create lasting impact.
+            We offer comprehensive creative services from our Toronto studio, designed to build your brand, amplify your message, and create lasting impact for clients across Canada and globally.
           </p>
         </div>
       </section>
@@ -59,7 +66,7 @@ export default function Studio() {
                   <ul className="space-y-3">
                     {service.includes.map((item, j) => (
                       <li key={j} className="flex items-center gap-3 text-muted font-inter text-base">
-                        <span className="w-1.5 h-1.5 bg-accent rounded-full group-hover:animate-glow-pulse"></span>
+                        <span className="w-1.5 h-1.5 bg-accent rounded-full group-hover:animate-glow-pulse" aria-hidden="true"></span>
                         {item}
                       </li>
                     ))}
@@ -111,7 +118,7 @@ export default function Studio() {
           <p className="text-xl text-muted font-inter font-light leading-relaxed">
             Let's discuss your project and explore how Lunacy can help you build something extraordinary.
           </p>
-          <Link href="/contact" className="btn-primary inline-flex items-center gap-3">
+          <Link href="/contact" className="btn-primary inline-flex items-center gap-3" aria-label="Initiate a project with Lunacy Media">
             Initiate a Project <ChevronRight size={22} />
           </Link>
         </div>

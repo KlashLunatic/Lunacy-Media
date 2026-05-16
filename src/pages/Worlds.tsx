@@ -1,5 +1,6 @@
 import { Link } from 'wouter';
 import { ChevronRight, Sparkles } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Worlds() {
   const worlds = [
@@ -28,6 +29,12 @@ export default function Worlds() {
 
   return (
     <div className="min-h-screen flex flex-col pt-16">
+      <SEO
+        title="The Lunacy Universe | Original IP & World-Building"
+        description="Explore the original worlds of Lunacy Media — Tammy, Obeah, and Sonic Architecture. Immersive narratives, graphic novels, and multimedia universes built from Toronto, Canada."
+        path="/worlds"
+      />
+
       {/* Hero - Enhanced */}
       <section className="section-padding-lg bg-gradient-to-b from-accent/5 to-void border-b border-subtle">
         <div className="container max-w-3xl mx-auto text-center space-y-8">
@@ -35,7 +42,7 @@ export default function Worlds() {
             Original Worlds
           </h1>
           <p className="text-xl text-muted font-inter font-light leading-relaxed">
-            Lunacy develops original intellectual property—complete universes that exist across multiple mediums and continue to evolve.
+            Lunacy develops original intellectual property — complete universes that exist across multiple mediums and continue to evolve.
           </p>
         </div>
       </section>
@@ -57,7 +64,7 @@ export default function Worlds() {
                       <span className="text-sm font-inter text-accent font-semibold tracking-wide">{world.status}</span>
                     </div>
                   </div>
-                  <button className="btn-primary inline-flex items-center gap-3">
+                  <button className="btn-primary inline-flex items-center gap-3" aria-label={`${world.cta} — ${world.title}`}>
                     {world.cta} <ChevronRight size={22} />
                   </button>
                 </div>
@@ -97,7 +104,7 @@ export default function Worlds() {
               </div>
             ))}
           </div>
-          <Link href="/contact" className="btn-primary inline-flex items-center gap-3 mt-12">
+          <Link href="/contact" className="btn-primary inline-flex items-center gap-3 mt-12" aria-label="Discuss partnership opportunities">
             Discuss Opportunities <ChevronRight size={22} />
           </Link>
         </div>

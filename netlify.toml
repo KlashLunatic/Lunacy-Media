@@ -1,9 +1,9 @@
 [build]
-  command = "npm install && npm run build"
+  command = "npm ci && npm run build"
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "24"
+  NODE_VERSION = "22.12.0"
 
 # ============================================
 # REDIRECTS

@@ -1,12 +1,14 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
 :root {
   --void: #050506;
   --ink: #090a0f;
   --obsidian: #101117;
+  --slate: #1b2431;
   --silver: #e8edf2;
   --muted: #9da6b2;
+  --dim: #5f6876;
   --moon: #f4efe1;
   --gold: #d7b85b;
   --blue: #8fb8ff;
@@ -106,7 +108,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 
 .nav-link:hover { color: var(--moon); }
-
 .site-page { background: transparent; }
 
 .lunar-hero {
@@ -310,10 +311,7 @@ h3 {
   transition: clip-path 220ms ease;
 }
 
-.phase-menu {
-  position: absolute;
-  inset: 0;
-}
+.phase-menu { position: absolute; inset: 0; }
 
 .phase-node {
   position: absolute;
@@ -464,10 +462,7 @@ h3 {
   text-transform: uppercase;
 }
 
-.row-text {
-  color: var(--muted);
-  font-size: 0.98rem;
-}
+.row-text { color: var(--muted); font-size: 0.98rem; }
 
 .cosmic-band {
   background:
@@ -550,13 +545,8 @@ h3 {
 .text-accent, .text-gold { color: var(--gold); }
 .text-muted, .text-off-white { color: var(--muted); }
 
-@keyframes star-drift {
-  to { background-position: 160px 160px, 266px 312px; }
-}
-
-@keyframes rotate-slow {
-  to { transform: rotate(360deg); }
-}
+@keyframes star-drift { to { background-position: 160px 160px, 266px 312px; } }
+@keyframes rotate-slow { to { transform: rotate(360deg); } }
 
 @media (max-width: 980px) {
   .nav-links { display: none; }

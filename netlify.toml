@@ -5,6 +5,16 @@
 [build.environment]
   NODE_VERSION = "22.12.0"
 
+[[context.deploy-preview.plugins]]
+  package = "netlify-plugin-checklinks"
+  [context.deploy-preview.plugins.inputs]
+    todoPatterns = [".*"]
+
+[[context.branch-deploy.plugins]]
+  package = "netlify-plugin-checklinks"
+  [context.branch-deploy.plugins.inputs]
+    todoPatterns = [".*"]
+
 # ============================================
 # REDIRECTS
 # ============================================

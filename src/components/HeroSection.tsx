@@ -1,6 +1,7 @@
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'wouter';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 interface Particle {
   id: number;
@@ -72,29 +73,59 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-void opacity-40 pointer-events-none"></div>
 
       {/* Content - Editorial centered layout */}
-      <div className="container max-w-5xl mx-auto text-center space-y-20 relative z-10 px-6">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="container max-w-5xl mx-auto text-center space-y-20 relative z-10 px-6"
+      >
         {/* Main headline - Editorial scale and elegance */}
         <div className="space-y-16">
-          <div className="space-y-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
+            className="space-y-8"
+          >
             <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-cinzel font-black leading-none tracking-tighter">
               WHERE
               <br />
-              <span className="text-accent glow-text-gold animate-moon-glow inline-block">STORIES</span>
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                className="text-accent glow-text-gold animate-moon-glow inline-block"
+              >STORIES</motion.span>
               <br />
               BECOME
               <br />
-              <span className="text-accent glow-text-gold animate-moon-glow inline-block">WORLDS</span>
+              <motion.span 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 1 }}
+                className="text-accent glow-text-gold animate-moon-glow inline-block"
+              >WORLDS</motion.span>
             </h1>
-          </div>
+          </motion.div>
 
           {/* Subheadline - Editorial weight and spacing */}
-          <p className="text-lg md:text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="text-lg md:text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed font-light tracking-wide"
+          >
             Lunacy Media architects immersive brand universes, transformative campaigns, and original creative experiences that resonate emotionally and drive real impact.
-          </p>
+          </motion.p>
         </div>
 
         {/* CTA Buttons - Editorial prominence */}
-        <div className="flex flex-col md:flex-row gap-10 justify-center pt-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.4 }}
+          className="flex flex-col md:flex-row gap-10 justify-center pt-12"
+        >
           <Link href="/studio" className="btn-primary group">
             <span className="relative">
               WORK WITH US
@@ -109,7 +140,7 @@ export default function HeroSection() {
             </span>
             <ChevronRight size={24} className="group-hover:translate-x-2 transition-transform duration-300" />
           </Link>
-        </div>
+        </motion.div>
 
         {/* Scroll indicator - Subtle, editorial */}
         <div className="pt-24 animate-bounce">

@@ -1,10 +1,24 @@
 import { Link } from 'wouter';
 import { ChevronRight, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 import HeroSection from '../components/HeroSection';
 import SEO from '../components/SEO';
 
-export default function Home() {
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] }
+};
 
+const staggerContainer = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: { once: true },
+  transition: { staggerChildren: 0.2 }
+};
+
+export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
@@ -19,13 +33,25 @@ export default function Home() {
       <section className="section-padding-lg bg-void border-b border-subtle relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-accent-glow rounded-full blur-3xl opacity-15 animate-float-down"></div>
         <div className="container">
-          <div className="text-center mb-section">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-section"
+          >
             <h2 className="text-accent glow-text-gold mb-8">WHAT WE CREATE</h2>
             <p className="text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed">
               From our Toronto studio, we architect experiences that transcend traditional creative services, building emotional ecosystems where brands and audiences connect across Canada and beyond.
             </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-section">
+          </motion.div>
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-section"
+          >
             {[
               {
                 title: 'Brand Worlds',
@@ -40,7 +66,7 @@ export default function Home() {
                 description: 'We create premium websites, pitch decks, and conversion-focused brand assets.'
               }
             ].map((service, idx) => (
-              <div key={idx} className="space-y-12 text-center group">
+              <motion.div key={idx} variants={fadeInUp} className="space-y-12 text-center group">
                 <div className="h-64 bg-gradient-to-br from-purple-glow/20 to-accent-glow/10 rounded-sm flex items-center justify-center border border-subtle group-hover:border-accent transition-all duration-700 overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                   <Sparkles className="text-accent/30 group-hover:text-accent/70 transition-colors duration-700 relative z-10" size={64} />
@@ -49,9 +75,9 @@ export default function Home() {
                   <h3 className="text-3xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-700">{service.title}</h3>
                   <p className="text-lg text-muted font-inter leading-relaxed font-light">{service.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -59,13 +85,25 @@ export default function Home() {
       <section className="section-padding-lg bg-charcoal/30 border-b border-subtle relative overflow-hidden">
         <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-purple-glow rounded-full blur-3xl opacity-15 animate-float-up"></div>
         <div className="container">
-          <div className="text-center mb-section">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-section"
+          >
             <h2 className="text-accent glow-text-gold mb-8">FEATURED PROJECTS</h2>
             <p className="text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed">
               Immersive worlds and transformative brand experiences that define our creative practice.
             </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-section">
+          </motion.div>
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-section"
+          >
             {[
               {
                 title: 'Tammy',
@@ -80,7 +118,7 @@ export default function Home() {
                 description: 'Complete brand identity and campaign for creative collective.'
               }
             ].map((project, idx) => (
-              <div key={idx} className="group cursor-pointer">
+              <motion.div key={idx} variants={fadeInUp} className="group cursor-pointer">
                 <div className="aspect-video bg-gradient-to-br from-purple-glow/30 to-accent-glow/15 rounded-sm mb-16 flex items-center justify-center border border-subtle group-hover:border-accent transition-all duration-700 overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/8 to-purple/8 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                   <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-700">
@@ -96,9 +134,9 @@ export default function Home() {
                     Explore Project <ChevronRight size={22} className="group-hover:translate-x-2 transition-transform duration-500" />
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -108,7 +146,13 @@ export default function Home() {
           <div className="absolute top-1/3 right-0 w-96 h-96 bg-accent-glow rounded-full blur-3xl animate-glow-shift"></div>
           <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-purple-glow rounded-full blur-3xl animate-float-down" style={{ animationDelay: '2s' }}></div>
         </div>
-        <div className="container max-w-4xl mx-auto text-center space-y-16 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
+          className="container max-w-4xl mx-auto text-center space-y-16 relative z-10"
+        >
           <h2 className="text-5xl md:text-6xl font-cinzel font-bold leading-tight">
             We don't just market ideas.
             <br />
@@ -119,20 +163,32 @@ export default function Home() {
             <p>Our work lives at the intersection of culture, storytelling, design, and commerce — helping artists, founders, and organizations turn vision into impact.</p>
             <p>From brand worlds to investor decks, from websites to original media properties, every project is built with intention, emotion, and unforgettable presence.</p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* WHY CLIENTS WORK WITH US - Credibility section */}
       <section className="section-padding-lg bg-void border-b border-subtle relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-purple-glow rounded-full blur-3xl opacity-12 animate-float-up"></div>
         <div className="container">
-          <div className="text-center mb-section">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-section"
+          >
             <h2 className="text-accent glow-text-gold mb-8">WHY CLIENTS WORK WITH US</h2>
             <p className="text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed">
               We combine strategic thinking, creative excellence, and proven execution across every project.
             </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-section">
+          </motion.div>
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-section"
+          >
             {[
               {
                 title: 'Narrative-Driven Strategy',
@@ -147,7 +203,7 @@ export default function Home() {
                 description: 'Our work is designed to resonate emotionally and create lasting audience connection.'
               }
             ].map((reason, idx) => (
-              <div key={idx} className="space-y-12 text-center group">
+              <motion.div key={idx} variants={fadeInUp} className="space-y-12 text-center group">
                 <div className="h-64 bg-gradient-to-br from-accent-glow/20 to-purple-glow/10 rounded-sm flex items-center justify-center border border-subtle group-hover:border-accent transition-all duration-700 overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                   <Sparkles className="text-accent/30 group-hover:text-accent/70 transition-colors duration-700 relative z-10" size={64} />
@@ -156,9 +212,9 @@ export default function Home() {
                   <h3 className="text-3xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-700">{reason.title}</h3>
                   <p className="text-lg text-muted font-inter leading-relaxed font-light">{reason.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -166,13 +222,25 @@ export default function Home() {
       <section className="section-padding-lg bg-charcoal/30 border-b border-subtle relative overflow-hidden">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-accent-glow rounded-full blur-3xl opacity-12 animate-float-down"></div>
         <div className="container max-w-5xl mx-auto relative z-10">
-          <div className="text-center mb-section">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-section"
+          >
             <h2 className="text-accent glow-text-gold mb-8">OUR PROCESS</h2>
             <p className="text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed">
               A proven framework for transforming vision into reality through discovery, strategy, execution, and refinement.
             </p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-12">
+          </motion.div>
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-4 gap-12"
+          >
             {[
               {
                 step: '01',
@@ -195,15 +263,15 @@ export default function Home() {
                 description: 'We iterate based on feedback, ensuring the final deliverables exceed expectations and serve your goals.'
               }
             ].map((process, idx) => (
-              <div key={idx} className="space-y-10 group">
+              <motion.div key={idx} variants={fadeInUp} className="space-y-10 group">
                 <div className="space-y-6">
                   <div className="text-6xl font-cinzel font-bold text-accent/35 group-hover:text-accent/70 transition-colors duration-700">{process.step}</div>
                   <h3 className="text-2xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-700">{process.title}</h3>
                 </div>
                 <p className="text-base text-muted font-inter font-light leading-relaxed">{process.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -213,7 +281,13 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-glow rounded-full blur-3xl animate-glow-shift"></div>
           <div className="absolute top-1/3 right-1/3 w-80 h-80 bg-accent-glow rounded-full blur-3xl animate-float-up" style={{ animationDelay: '3s' }}></div>
         </div>
-        <div className="container max-w-4xl mx-auto text-center space-y-16 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="container max-w-4xl mx-auto text-center space-y-16 relative z-10"
+        >
           <h2 className="text-5xl md:text-6xl font-cinzel font-bold leading-tight">
             Built for brands that want
             <br />
@@ -224,7 +298,7 @@ export default function Home() {
             <p>Lunacy exists for visionaries who need more than content — they need presence, identity, and resonance.</p>
             <p>We create work that moves people emotionally while delivering real business outcomes.</p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* FINAL CTA SECTION - Conversion focus */}
@@ -232,7 +306,13 @@ export default function Home() {
         <div className="absolute inset-0 opacity-12">
           <div className="absolute top-1/2 right-0 w-96 h-96 bg-accent-glow rounded-full blur-3xl animate-glow-shift"></div>
         </div>
-        <div className="container max-w-4xl mx-auto text-center space-y-16 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="container max-w-4xl mx-auto text-center space-y-16 relative z-10"
+        >
           <h2 className="text-5xl md:text-6xl font-cinzel font-bold leading-tight">
             Let's build something
             <br />
@@ -249,7 +329,7 @@ export default function Home() {
               Book a Consultation <ChevronRight size={24} />
             </Link>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

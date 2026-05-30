@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
-import { ChevronRight, Sparkles } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
 
@@ -11,32 +11,38 @@ export default function Work() {
     { 
       title: 'Mulligan: The Couch', 
       category: 'original-ip', 
-      desc: 'Concept Album / Multimedia Art Project exploring trauma and identity through symbolic storytelling.' 
+      desc: 'Concept Album / Multimedia Art Project exploring trauma and identity through symbolic storytelling.',
+      image: '/assets/KaaluRam-CoverArt.jpg'
     },
     { 
       title: 'Obeah', 
       category: 'original-ip', 
-      desc: 'Contemporary Spiritual Mythology reinterpreting Caribbean and African traditions through fantasy.' 
+      desc: 'Contemporary Spiritual Mythology reinterpreting Caribbean and African traditions through fantasy.',
+      image: '/assets/Kali_Tattoo.png'
     },
     { 
       title: 'Tammy', 
       category: 'original-ip', 
-      desc: 'Interactive Narrative personifying propaganda as a living, self-aware character.' 
+      desc: 'Interactive Narrative personifying propaganda as a living, self-aware character.',
+      image: '/assets/IMG_0487.PNG'
     },
     { 
       title: 'Aurora Campaign', 
       category: 'digital', 
-      desc: 'Multi-channel digital experience and immersive brand storytelling.' 
+      desc: 'Multi-channel digital experience and immersive brand storytelling.',
+      image: '/assets/IMG_0085.PNG'
     },
     { 
       title: 'Brand Refresh', 
       category: 'branding', 
-      desc: 'Strategic identity evolution for visionaries needing more than just a logo.' 
+      desc: 'Strategic identity evolution for visionaries needing more than just a logo.',
+      image: '/assets/IMG_0093.PNG'
     },
     { 
       title: 'Web Platform', 
       category: 'digital', 
-      desc: 'Custom web application designed as a living, breathing digital world.' 
+      desc: 'Custom web application designed as a living, breathing digital world.',
+      image: '/assets/553ECC20-FDF7-430A-9CAF-06DC6644EDEA.png'
     },
   ];
 
@@ -117,18 +123,19 @@ export default function Work() {
                   transition={{ duration: 0.4 }}
                   className="group bg-charcoal/50 border border-subtle rounded-sm overflow-hidden hover:border-accent transition-all duration-500 cursor-pointer hover:shadow-lg hover:shadow-accent/20"
                 >
-                  <div className="aspect-video bg-gradient-to-br from-purple-glow/30 to-accent-glow/20 flex items-center justify-center group-hover:from-purple-glow/50 group-hover:to-accent-glow/40 transition-all duration-500 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="relative z-10 flex flex-col items-center gap-4">
-                      <Sparkles className="text-accent/50 group-hover:text-accent/100 transition-colors duration-500" size={56} />
-                      <p className="text-muted font-cinzel text-sm">[Project Image]</p>
-                    </div>
+                  <div className="aspect-video relative overflow-hidden bg-void">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent opacity-60"></div>
                   </div>
                   <div className="p-8 space-y-6">
                     <h3 className="text-2xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-500">
                       {project.title}
                     </h3>
-                    <p className="text-base text-muted font-inter font-light leading-relaxed">{project.desc}</p>
+                    <p className="text-base text-muted font-inter font-light leading-relaxed line-clamp-2">{project.desc}</p>
                     <div className="flex items-center gap-3 text-accent text-base font-inter font-semibold pt-4 group-hover:gap-4 transition-all duration-300">
                       View Case Study <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
                     </div>

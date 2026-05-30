@@ -30,28 +30,28 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-void pt-24 pb-32">
-      {/* Animated background gradient - Editorial minimalism */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-void to-charcoal/20"></div>
-
-      {/* Lunar landscape illustration - positioned at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-1/3 opacity-30 pointer-events-none">
-        <img 
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032200270/4xMWgJ9hUWH8ZnV46MUsJf/lunar-landscape-eo7yxwiznwxCrcRvGBiK2T.webp" 
-          alt="" 
-          loading="lazy"
-          className="w-full h-full object-cover"
-        />
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="w-full h-full object-cover opacity-40 grayscale"
+        >
+          <source src="/assets/hero-bg-1.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-void via-void/80 to-void"></div>
       </div>
 
       {/* Atmospheric glow orbs - Organic, floating */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden z-1">
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-purple-glow rounded-full blur-3xl opacity-30 animate-float-up" style={{ animationDelay: '0s' }}></div>
         <div className="absolute top-1/2 right-1/3 w-80 h-80 bg-accent-glow rounded-full blur-3xl opacity-25 animate-float-down" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-1/4 left-1/2 w-72 h-72 bg-purple-glow rounded-full blur-3xl opacity-20 animate-glow-shift" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Floating cosmic particles */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden z-2">
         {particles.map((particle) => (
           <div
             key={particle.id}
@@ -68,9 +68,6 @@ export default function HeroSection() {
           ></div>
         ))}
       </div>
-
-      {/* Mist/fog effect - Subtle, editorial */}
-      <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-void opacity-40 pointer-events-none"></div>
 
       {/* Content - Editorial centered layout */}
       <motion.div 
@@ -146,10 +143,10 @@ export default function HeroSection() {
         <div className="pt-24 animate-bounce">
           <div className="text-xs text-subtle font-inter tracking-widest uppercase">Scroll to explore</div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Orbital paths illustration - Subtle accent */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 opacity-15 pointer-events-none animate-orbit">
+      <div className="absolute top-1/4 right-0 w-96 h-96 opacity-15 pointer-events-none animate-orbit z-1">
         <img 
           src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032200270/4xMWgJ9hUWH8ZnV46MUsJf/orbital-paths-7VDu6Ur8jjLmhmKgWNpxAq.webp" 
           alt="" 
@@ -159,7 +156,7 @@ export default function HeroSection() {
       </div>
 
       {/* Constellation pattern - Top left accent */}
-      <div className="absolute top-0 left-0 w-48 h-48 opacity-20 pointer-events-none">
+      <div className="absolute top-0 left-0 w-48 h-48 opacity-20 pointer-events-none z-1">
         <img 
           src="https://d2xsxph8kpxj0f.cloudfront.net/310419663032200270/4xMWgJ9hUWH8ZnV46MUsJf/constellation-pattern-5CcQs78ufeVD6JVFF4JTfP.webp" 
           alt="" 
@@ -169,7 +166,7 @@ export default function HeroSection() {
       </div>
 
       {/* Subtle light rays - Editorial minimalism */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-1">
         <div className="absolute top-0 left-1/2 w-1 h-80 bg-gradient-to-b from-gold/20 to-transparent opacity-30 blur-xl transform -translate-x-1/2"></div>
       </div>
 

@@ -1,34 +1,50 @@
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'wouter';
+import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 
 export default function Studio() {
   const services = [
     {
-      title: 'Brand Architecture & Visual Identity',
-      description: 'We build complete brand systems that communicate your mythology. From strategic positioning to visual language, we create identities that resonate.',
-      includes: ['Strategic Positioning', 'Visual Identity System', 'Brand Guidelines', 'Logo Design'],
-      pricing: '$15K - $50K',
+      title: 'The Signal',
+      subtitle: 'Foundational Identity',
+      description: 'We build core brand systems that communicate your mythology. From strategic positioning to visual language, we create identities that resonate.',
+      includes: ['Strategic Positioning', 'Visual Identity System', 'Logo Design', 'Brand Guidelines'],
+      pricing: '$10K - $15K',
+      ideal: 'Early-stage founders & independent artists.',
     },
     {
-      title: 'Digital Experiences & Web Development',
-      description: 'Custom digital platforms designed to tell your story. We build websites, apps, and interactive experiences that engage and convert.',
-      includes: ['Web Design & Development', 'Interactive Experiences', 'User Experience Design', 'Technical Implementation'],
-      pricing: '$20K - $75K',
+      title: 'The Orbit',
+      subtitle: 'Strategic Worldbuilding',
+      description: 'Custom digital platforms and comprehensive brand systems designed to tell your story and engage your audience.',
+      includes: ['Brand Mythology', 'Full Visual System', 'Website Design & Development', 'Pitch Deck / Investor Materials'],
+      pricing: '$20K - $35K',
+      ideal: 'Established brands & creative collectives.',
     },
     {
-      title: 'Multidisciplinary Content Production',
-      description: 'From concept to execution. We produce music, video, photography, and written content that brings your brand universe to life.',
-      includes: ['Video Production', 'Photography', 'Music & Audio', 'Written Content'],
-      pricing: '$10K - $100K+',
+      title: 'The Universe',
+      subtitle: 'Full-Scale Ecosystem',
+      description: 'Original IP development and multi-channel campaigns that bring your entire brand universe to life.',
+      includes: ['Original IP Development', 'Multi-channel Campaign', 'Custom Web Platform', 'Content Production (Video/Audio)'],
+      pricing: '$50K - $100K+',
+      ideal: 'Organizations & IP Developers.',
     },
     {
-      title: 'Creative Consulting & Strategy',
+      title: 'Consulting',
+      subtitle: 'Strategic Direction',
       description: 'Strategic guidance for brands navigating transformation. We help you clarify vision, develop strategy, and execute with confidence.',
-      includes: ['Strategic Planning', 'Creative Direction', 'Brand Workshops', 'Ongoing Consultation'],
-      pricing: '$5K - $25K',
+      includes: ['Creative Direction', 'Brand Workshops', 'Narrative Strategy', 'Ongoing Consultation'],
+      pricing: '$5K - $10K / mo',
+      ideal: 'Long-term partners.',
     },
   ];
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.8 }
+  };
 
   return (
     <div className="min-h-screen flex flex-col pt-16">
@@ -40,14 +56,19 @@ export default function Studio() {
 
       {/* Hero - Enhanced */}
       <section className="section-padding-lg bg-gradient-to-b from-accent/5 to-void border-b border-subtle">
-        <div className="container max-w-3xl mx-auto text-center space-y-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="container max-w-3xl mx-auto text-center space-y-8"
+        >
           <h1 className="text-7xl md:text-8xl font-cinzel font-bold text-off-white glow-text-gold">
             Studio Services
           </h1>
           <p className="text-xl text-muted font-inter leading-relaxed font-light">
-            We offer comprehensive creative services from our Toronto studio, designed to build your brand, amplify your message, and create lasting impact for clients across Canada and globally.
+            We offer comprehensive creative services from our Toronto studio, designed to build your brand, amplify your message, and create lasting impact.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* Services Grid - Premium presentation */}
@@ -55,9 +76,21 @@ export default function Studio() {
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {services.map((service, i) => (
-              <div key={i} className="bg-charcoal/50 border border-subtle rounded-sm p-10 space-y-8 hover:border-accent transition-all duration-500 group hover:shadow-lg hover:shadow-accent/10">
+              <motion.div 
+                key={i} 
+                variants={fadeInUp}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
+                className="bg-charcoal/50 border border-subtle rounded-sm p-10 space-y-8 hover:border-accent transition-all duration-500 group hover:shadow-lg hover:shadow-accent/10"
+              >
                 <div>
-                  <h3 className="text-3xl font-cinzel font-bold text-off-white mb-6 group-hover:text-accent transition-colors duration-500">{service.title}</h3>
+                  <div className="flex justify-between items-start mb-6">
+                    <div>
+                      <h3 className="text-3xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-500">{service.title}</h3>
+                      <p className="text-sm text-accent font-inter tracking-widest uppercase font-semibold mt-1">{service.subtitle}</p>
+                    </div>
+                  </div>
                   <p className="text-lg text-muted font-inter font-light leading-relaxed">{service.description}</p>
                 </div>
                 
@@ -73,10 +106,11 @@ export default function Studio() {
                   </ul>
                 </div>
 
-                <div className="pt-6 border-t border-subtle">
+                <div className="pt-6 border-t border-subtle flex flex-col gap-2">
                   <p className="text-accent font-cinzel font-bold text-2xl">{service.pricing}</p>
+                  <p className="text-sm text-subtle font-inter italic">Ideal for: {service.ideal}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -88,7 +122,15 @@ export default function Studio() {
           <div className="absolute top-1/2 right-0 w-96 h-96 bg-accent-glow rounded-full blur-3xl animate-glow-shift"></div>
         </div>
         <div className="container max-w-3xl mx-auto relative z-10">
-          <h2 className="text-7xl md:text-8xl font-cinzel font-bold mb-20 text-center text-accent glow-text-gold">The Process</h2>
+          <motion.h2 
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="text-7xl md:text-8xl font-cinzel font-bold mb-20 text-center text-accent glow-text-gold"
+          >
+            The Process
+          </motion.h2>
           <div className="space-y-12">
             {[
               { step: '01', title: 'Discovery', desc: 'We listen deeply to understand your vision, values, and goals. This phase establishes the foundation for all creative work.' },
@@ -96,13 +138,20 @@ export default function Studio() {
               { step: '03', title: 'Creation', desc: 'Our team executes the vision with precision and artistry, bringing the strategy to life through multiple disciplines.' },
               { step: '04', title: 'Refinement', desc: 'We iterate based on feedback, ensuring the final deliverables exceed expectations and serve your goals.' },
             ].map((item, i) => (
-              <div key={i} className="flex gap-8 group">
+              <motion.div 
+                key={i} 
+                variants={fadeInUp}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
+                className="flex gap-8 group"
+              >
                 <div className="text-5xl font-cinzel font-bold text-accent/40 flex-shrink-0 group-hover:text-accent/80 transition-colors duration-500">{item.step}</div>
                 <div className="space-y-3 flex-grow border-l border-subtle/50 pl-8 group-hover:border-accent/30 transition-colors duration-500">
                   <h3 className="text-2xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-500">{item.title}</h3>
                   <p className="text-lg text-muted font-inter font-light leading-relaxed">{item.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -113,7 +162,13 @@ export default function Studio() {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-glow rounded-full blur-3xl animate-glow-shift"></div>
         </div>
-        <div className="container max-w-3xl mx-auto text-center space-y-12 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="container max-w-3xl mx-auto text-center space-y-12 relative z-10"
+        >
           <h2 className="text-6xl md:text-7xl font-cinzel font-bold text-off-white">Ready to Begin?</h2>
           <p className="text-xl text-muted font-inter font-light leading-relaxed">
             Let's discuss your project and explore how Lunacy can help you build something extraordinary.
@@ -121,7 +176,7 @@ export default function Studio() {
           <Link href="/contact" className="btn-primary inline-flex items-center gap-3" aria-label="Initiate a project with Lunacy Media">
             Initiate a Project <ChevronRight size={22} />
           </Link>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

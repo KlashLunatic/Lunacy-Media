@@ -8,19 +8,43 @@ export default function Work() {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const projects = [
-    { title: 'Mulligan', category: 'branding', desc: 'Complete brand identity system' },
-    { title: 'Aurora Campaign', category: 'digital', desc: 'Multi-channel digital experience' },
-    { title: 'Tammy Prototype', category: 'original-ip', desc: 'Interactive narrative prototype' },
-    { title: 'Obeah Vol. 1', category: 'original-ip', desc: 'Graphic novel publication' },
-    { title: 'Brand Refresh', category: 'branding', desc: 'Strategic identity evolution' },
-    { title: 'Web Platform', category: 'digital', desc: 'Custom web application' },
+    { 
+      title: 'Mulligan: The Couch', 
+      category: 'original-ip', 
+      desc: 'Concept Album / Multimedia Art Project exploring trauma and identity through symbolic storytelling.' 
+    },
+    { 
+      title: 'Obeah', 
+      category: 'original-ip', 
+      desc: 'Contemporary Spiritual Mythology reinterpreting Caribbean and African traditions through fantasy.' 
+    },
+    { 
+      title: 'Tammy', 
+      category: 'original-ip', 
+      desc: 'Interactive Narrative personifying propaganda as a living, self-aware character.' 
+    },
+    { 
+      title: 'Aurora Campaign', 
+      category: 'digital', 
+      desc: 'Multi-channel digital experience and immersive brand storytelling.' 
+    },
+    { 
+      title: 'Brand Refresh', 
+      category: 'branding', 
+      desc: 'Strategic identity evolution for visionaries needing more than just a logo.' 
+    },
+    { 
+      title: 'Web Platform', 
+      category: 'digital', 
+      desc: 'Custom web application designed as a living, breathing digital world.' 
+    },
   ];
 
   const filters = [
     { label: 'All Work', value: 'all' },
+    { label: 'Original IP', value: 'original-ip' },
     { label: 'Branding', value: 'branding' },
     { label: 'Digital', value: 'digital' },
-    { label: 'Original IP', value: 'original-ip' },
   ];
 
   const filtered = activeFilter === 'all' 

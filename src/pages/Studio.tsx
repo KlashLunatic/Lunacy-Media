@@ -8,34 +8,34 @@ export default function Studio() {
     {
       title: 'The Signal',
       subtitle: 'Foundational Identity',
-      description: 'We build core brand systems that communicate your mythology. From strategic positioning to visual language, we create identities that resonate.',
-      includes: ['Strategic Positioning', 'Visual Identity System', 'Logo Design', 'Brand Guidelines'],
-      pricing: '$10K - $15K',
-      ideal: 'Early-stage founders & independent artists.',
+      description: 'We build core visual systems for artists and creators. This package provides the essential "signal" needed to begin your public journey.',
+      includes: ['Logo / Wordmark', 'Moodboard + Visual Direction', 'Typography & Color Palette', 'Social Media Branding', 'Mini Brand Guide'],
+      pricing: '$1,500 – $4,000 CAD',
+      ideal: 'Independent artists, musicians, and creative entrepreneurs.',
     },
     {
       title: 'The Orbit',
-      subtitle: 'Strategic Worldbuilding',
-      description: 'Custom digital platforms and comprehensive brand systems designed to tell your story and engage your audience.',
-      includes: ['Brand Mythology', 'Full Visual System', 'Website Design & Development', 'Pitch Deck / Investor Materials'],
-      pricing: '$20K - $35K',
-      ideal: 'Established brands & creative collectives.',
+      subtitle: 'Narrative Brand System',
+      description: 'Where Lunacy differentiates. We build not just logos, but mythologies, symbolism, and immersive identity systems.',
+      includes: ['Full Visual Identity', 'Narrative / Worldbuilding Consultation', 'Brand Voice & Creative Direction', 'Pitch Deck Design', 'Website Concept & Layout'],
+      pricing: '$5,000 – $12,000 CAD',
+      ideal: 'Established creatives, collectives, and indie media projects.',
     },
     {
       title: 'The Universe',
-      subtitle: 'Full-Scale Ecosystem',
-      description: 'Original IP development and multi-channel campaigns that bring your entire brand universe to life.',
-      includes: ['Original IP Development', 'Multi-channel Campaign', 'Custom Web Platform', 'Content Production (Video/Audio)'],
-      pricing: '$50K - $100K+',
-      ideal: 'Organizations & IP Developers.',
+      subtitle: 'Full Creative Ecosystem',
+      description: 'A comprehensive multimedia rollout for funded projects and organizations looking to build a lasting creative world.',
+      includes: ['Full Campaign Direction', 'Multimedia Rollout', 'Interactive Concepts', 'Video/Photo Creative Direction', 'Custom Web Experience'],
+      pricing: '$15,000 – $35,000+ CAD',
+      ideal: 'Funded startups, arts organizations, and IP developers.',
     },
     {
       title: 'Consulting',
-      subtitle: 'Strategic Direction',
-      description: 'Strategic guidance for brands navigating transformation. We help you clarify vision, develop strategy, and execute with confidence.',
-      includes: ['Creative Direction', 'Brand Workshops', 'Narrative Strategy', 'Ongoing Consultation'],
-      pricing: '$5K - $10K / mo',
-      ideal: 'Long-term partners.',
+      subtitle: 'Creative Direction Retainers',
+      description: 'Ongoing strategic guidance and creative direction to help your brand or project maintain thematic cohesion and vision.',
+      includes: ['Ongoing Creative Direction', 'Strategy Sessions ($150-300)', 'Brand Workshops', 'Thematic Maintenance'],
+      pricing: '$750 – $3,000 / mo',
+      ideal: 'Artists and brands needing consistent direction.',
     },
   ];
 
@@ -49,8 +49,8 @@ export default function Studio() {
   return (
     <div className="min-h-screen flex flex-col pt-16">
       <SEO
-        title="About Lunacy Media | Creative Direction & Brand Strategy Studio | Toronto"
-        description="Lunacy Media is a Toronto-based creative studio offering brand architecture, digital experiences, content production, and creative consulting. Explore our services and process."
+        title="Studio | Creative Mythology & Narrative Design Studio | Toronto"
+        description="Lunacy Media is a Toronto-based creative mythology and narrative design studio. We build foundational identities, narrative brand systems, and full creative ecosystems."
         path="/studio"
       />
 
@@ -66,7 +66,7 @@ export default function Studio() {
             Studio Services
           </h1>
           <p className="text-xl text-muted font-inter leading-relaxed font-light">
-            We offer comprehensive creative services from our Toronto studio, designed to build your brand, amplify your message, and create lasting impact.
+            We are a creative mythology and narrative design studio. We invite you into our orbit to build undeniable work and lasting reputation.
           </p>
         </motion.div>
       </section>

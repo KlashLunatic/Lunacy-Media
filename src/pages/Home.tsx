@@ -22,8 +22,8 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Lunacy Media | Creative Studio for Music, Storytelling & Digital Experiences | Toronto, Canada"
-        description="Lunacy Media is a Toronto-based creative studio specializing in brand strategy, original IP, multimedia storytelling, and immersive digital experiences. We build interconnected worlds across music, visual narrative, and design."
+        title="Lunacy Media | Creative Mythology & Narrative Design Studio | Toronto"
+        description="Lunacy Media is a Toronto-based creative mythology and narrative design studio. We build foundational identities, narrative brand systems, and full creative ecosystems."
         path="/"
       />
 
@@ -40,9 +40,9 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-section"
           >
-            <h2 className="text-accent glow-text-gold mb-8">WHAT WE CREATE</h2>
+            <h2 className="text-accent glow-text-gold mb-8">OUR PRACTICE</h2>
             <p className="text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed">
-              From our Toronto studio, we architect experiences that transcend traditional creative services, building emotional ecosystems where brands and audiences connect across Canada and beyond.
+              We are a creative mythology and narrative design studio. We build undeniable work, cultivate relationships, and establish reputations through vision, symbolism, and conceptual depth.
             </p>
           </motion.div>
           <motion.div 
@@ -54,16 +54,16 @@ export default function Home() {
           >
             {[
               {
-                title: 'Brand Worlds',
-                description: 'We build mythologies, identities, and emotional ecosystems for brands and artists.'
+                title: 'Foundational Identity',
+                description: 'We build core visual systems that provide the essential signal needed for artists and creators to begin their journey.'
               },
               {
-                title: 'Campaign Systems',
-                description: 'We design launch campaigns, visual storytelling, and audience-building experiences.'
+                title: 'Narrative Brand Systems',
+                description: 'We build mythologies, symbolism, and thematic cohesion into immersive identity systems that resonate emotionally.'
               },
               {
-                title: 'Digital Presence',
-                description: 'We create premium websites, pitch decks, and conversion-focused brand assets.'
+                title: 'Creative Ecosystems',
+                description: 'We design full-scale multimedia rollouts, worldbuilding systems, and custom web experiences for funded projects.'
               }
             ].map((service, idx) => (
               <motion.div key={idx} variants={fadeInUp} className="space-y-12 text-center group">
@@ -92,9 +92,9 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-section"
           >
-            <h2 className="text-accent glow-text-gold mb-8">FEATURED PROJECTS</h2>
+            <h2 className="text-accent glow-text-gold mb-8">SELECTED CONSTELLATIONS</h2>
             <p className="text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed">
-              Immersive worlds and transformative brand experiences that define our creative practice.
+              Undeniable work that explores psychological truth, contemporary mythology, and interactive storytelling.
             </p>
           </motion.div>
           <motion.div 
@@ -106,16 +106,16 @@ export default function Home() {
           >
             {[
               {
-                title: 'Tammy',
-                description: 'Interactive narrative exploring identity and transformation.'
+                title: 'Mulligan: The Couch',
+                description: 'Concept album exploring trauma and identity through symbolic visual storytelling.'
               },
               {
                 title: 'Obeah',
-                description: 'Graphic novel blending Caribbean mythology with contemporary storytelling.'
+                description: 'Contemporary spiritual mythology reinterpreting Caribbean and African traditions.'
               },
               {
-                title: 'Mulligan',
-                description: 'Complete brand identity and campaign for creative collective.'
+                title: 'Tammy',
+                description: 'Interactive narrative personifying propaganda as a living, self-aware character.'
               }
             ].map((project, idx) => (
               <motion.div key={idx} variants={fadeInUp} className="group cursor-pointer">
@@ -159,9 +159,9 @@ export default function Home() {
             <span className="text-accent glow-text-gold">We build mythologies.</span>
           </h2>
           <div className="space-y-10 text-lg text-muted font-inter leading-relaxed font-light">
-            <p>At Lunacy Media, strategy meets imagination. We create brands, campaigns, and immersive experiences that feel alive.</p>
+            <p>At Lunacy Media, strategy meets imagination. We are an emerging cultural brand and narrative design studio.</p>
             <p>Our work lives at the intersection of culture, storytelling, design, and commerce — helping artists, founders, and organizations turn vision into impact.</p>
-            <p>From brand worlds to investor decks, from websites to original media properties, every project is built with intention, emotion, and unforgettable presence.</p>
+            <p>From brand worlds to creative direction, from websites to original media properties, every project is built with intention, emotion, and conceptual depth.</p>
           </div>
         </motion.div>
       </section>
@@ -177,9 +177,9 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-section"
           >
-            <h2 className="text-accent glow-text-gold mb-8">WHY CLIENTS WORK WITH US</h2>
+            <h2 className="text-accent glow-text-gold mb-8">WHY CLIENTS ENTER OUR ORBIT</h2>
             <p className="text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed">
-              We combine strategic thinking, creative excellence, and proven execution across every project.
+              We offer vision, symbolism, and emotional intelligence that corporate agencies can't replicate.
             </p>
           </motion.div>
           <motion.div 
@@ -191,16 +191,16 @@ export default function Home() {
           >
             {[
               {
-                title: 'Narrative-Driven Strategy',
-                description: 'We combine artistic storytelling with strategic business thinking.'
+                title: 'Mythic Storytelling',
+                description: 'We combine artistic instinct with symbolic depth to build identities that resonate.'
               },
               {
-                title: 'Multi-Disciplinary Execution',
-                description: 'From music and media to websites and investor materials, we build across mediums.'
+                title: 'Conceptual Depth',
+                description: 'Our work is rooted in psychological truth and cultural resonance, not just aesthetics.'
               },
               {
-                title: 'Culture-First Design',
-                description: 'Our work is designed to resonate emotionally and create lasting audience connection.'
+                title: 'Emerging Cultural Brand',
+                description: 'We are building a reputation for undeniable work and original creative systems.'
               }
             ].map((reason, idx) => (
               <motion.div key={idx} variants={fadeInUp} className="space-y-12 text-center group">
@@ -218,89 +218,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* OUR PROCESS - Strategic framework */}
-      <section className="section-padding-lg bg-charcoal/30 border-b border-subtle relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-accent-glow rounded-full blur-3xl opacity-12 animate-float-down"></div>
-        <div className="container max-w-5xl mx-auto relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-section"
-          >
-            <h2 className="text-accent glow-text-gold mb-8">OUR PROCESS</h2>
-            <p className="text-xl text-muted font-inter max-w-3xl mx-auto leading-relaxed">
-              A proven framework for transforming vision into reality through discovery, strategy, execution, and refinement.
-            </p>
-          </motion.div>
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-4 gap-12"
-          >
-            {[
-              {
-                step: '01',
-                title: 'Discover',
-                description: 'We listen deeply to understand your vision, values, and goals. This phase establishes the foundation for all creative work.'
-              },
-              {
-                step: '02',
-                title: 'Strategize',
-                description: 'We develop a strategic framework that guides all creative decisions, ensuring alignment with your objectives.'
-              },
-              {
-                step: '03',
-                title: 'Build',
-                description: 'Our team executes the vision with precision and artistry, bringing the strategy to life through multiple disciplines.'
-              },
-              {
-                step: '04',
-                title: 'Launch',
-                description: 'We iterate based on feedback, ensuring the final deliverables exceed expectations and serve your goals.'
-              }
-            ].map((process, idx) => (
-              <motion.div key={idx} variants={fadeInUp} className="space-y-10 group">
-                <div className="space-y-6">
-                  <div className="text-6xl font-cinzel font-bold text-accent/35 group-hover:text-accent/70 transition-colors duration-700">{process.step}</div>
-                  <h3 className="text-2xl font-cinzel font-bold text-off-white group-hover:text-accent transition-colors duration-700">{process.title}</h3>
-                </div>
-                <p className="text-base text-muted font-inter font-light leading-relaxed">{process.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* WHY LUNACY SECTION - Brand philosophy */}
-      <section className="section-padding-xl bg-gradient-dark relative overflow-hidden border-t border-subtle">
-        <div className="absolute inset-0 opacity-12">
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-glow rounded-full blur-3xl animate-glow-shift"></div>
-          <div className="absolute top-1/3 right-1/3 w-80 h-80 bg-accent-glow rounded-full blur-3xl animate-float-up" style={{ animationDelay: '3s' }}></div>
-        </div>
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="container max-w-4xl mx-auto text-center space-y-16 relative z-10"
-        >
-          <h2 className="text-5xl md:text-6xl font-cinzel font-bold leading-tight">
-            Built for brands that want
-            <br />
-            <span className="text-accent glow-text-gold">impact, not noise.</span>
-          </h2>
-          <div className="space-y-10 text-lg text-muted font-inter leading-relaxed font-light">
-            <p>We combine strategic thinking with artistic instinct.</p>
-            <p>Lunacy exists for visionaries who need more than content — they need presence, identity, and resonance.</p>
-            <p>We create work that moves people emotionally while delivering real business outcomes.</p>
-          </div>
-        </motion.div>
-      </section>
-
       {/* FINAL CTA SECTION - Conversion focus */}
       <section className="section-padding-lg bg-void border-t border-subtle relative overflow-hidden">
         <div className="absolute inset-0 opacity-12">
@@ -316,17 +233,17 @@ export default function Home() {
           <h2 className="text-5xl md:text-6xl font-cinzel font-bold leading-tight">
             Let's build something
             <br />
-            <span className="text-accent glow-text-gold">unforgettable.</span>
+            <span className="text-accent glow-text-gold">undeniable.</span>
           </h2>
           <p className="text-xl text-muted font-inter leading-relaxed font-light">
-            Whether you're launching a brand, scaling a business, or building a creative world from the ground up, Lunacy is ready to help bring it to life.
+            Whether you're an artist launching a project or a brand seeking a new mythology, we're ready to help you build it.
           </p>
           <div className="flex flex-col md:flex-row gap-10 justify-center pt-12">
             <Link href="/contact" className="btn-primary" aria-label="Start a project with Lunacy Media">
               Start a Project <ChevronRight size={24} />
             </Link>
-            <Link href="/contact" className="btn-secondary" aria-label="Book a consultation with Lunacy Media">
-              Book a Consultation <ChevronRight size={24} />
+            <Link href="/contact" className="btn-secondary" aria-label="Book a strategy session with Lunacy Media">
+              Book a Strategy Session <ChevronRight size={24} />
             </Link>
           </div>
         </motion.div>

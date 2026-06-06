@@ -13,6 +13,7 @@ const Studio = lazy(() => import('./pages/Studio'));
 const Work = lazy(() => import('./pages/Work'));
 const Worlds = lazy(() => import('./pages/Worlds'));
 const Mythology = lazy(() => import('./pages/Mythology'));
+const Journal = lazy(() => import('./pages/Journal'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
@@ -78,6 +79,11 @@ function App() {
               <Route path="/mythology">
                 <PageTransition>
                   <Mythology />
+                </PageTransition>
+              </Route>
+              <Route path="/archive">
+                <PageTransition>
+                  <Journal />
                 </PageTransition>
               </Route>
               <Route>

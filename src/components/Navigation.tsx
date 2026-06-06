@@ -15,6 +15,7 @@ const Navigation: FC<NavigationProps> = ({ scrolled }) => {
     { name: 'Work', href: '/work' },
     { name: 'Worlds', href: '/worlds' },
     { name: 'Mythology', href: '/mythology' },
+    { name: 'Archive', href: '/archive' },
     { name: 'Contact', href: '/contact' },
   ];
 

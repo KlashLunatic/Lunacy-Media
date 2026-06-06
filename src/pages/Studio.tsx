@@ -1,4 +1,4 @@
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Calendar } from 'lucide-react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
@@ -69,6 +69,32 @@ export default function Studio() {
             We are a creative mythology and narrative design studio. We invite you into our orbit to build undeniable work and lasting reputation.
           </p>
         </motion.div>
+      </section>
+
+      {/* Quick Entry - The First Signal Audit */}
+      <section className="py-12 bg-charcoal/30 border-b border-subtle">
+        <div className="container">
+          <motion.div 
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 border border-accent/20 rounded-sm bg-accent/5"
+          >
+            <div className="space-y-4 text-center md:text-left">
+              <h2 className="text-2xl font-cinzel font-bold text-off-white flex items-center gap-3 justify-center md:justify-start">
+                <Calendar className="text-accent" size={24} />
+                Book a Strategy Audit
+              </h2>
+              <p className="text-muted font-inter font-light">
+                Not sure where to start? Book a 30-minute session to audit your current vision and find your first signal.
+              </p>
+            </div>
+            <Link href="/contact" className="btn-primary whitespace-nowrap">
+              Schedule Session ($150) <ChevronRight size={20} />
+            </Link>
+          </motion.div>
+        </div>
       </section>
 
       {/* Services Grid - Premium presentation */}

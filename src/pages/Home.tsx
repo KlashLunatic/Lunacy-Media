@@ -3,24 +3,6 @@ import { Link } from 'wouter';
 import HeroSection from '../components/HeroSection';
 import SEO from '../components/SEO';
 
-const work = [
-  {
-    title: 'Mulligan',
-    type: 'Music / Trilogy',
-    text: 'A three-part musical odyssey through identity, memory, and legacy. Mulligan confronts wounds and second chances. Between the Last Letters lives in the space between endings and beginnings. Kalu Ram meditates on ancestry, power, and the stories we inherit.',
-  },
-  {
-    title: 'Obeah',
-    type: 'Manga',
-    text: 'Magic was never the mystery. History was. Set within Paranoia\'s world, Obeah reimagines folklore, slavery, trauma, and resistance through a supernatural lens.',
-  },
-  {
-    title: 'Tammy',
-    type: 'AR / VR Experience',
-    text: 'Step inside the mind of propaganda. Part interactive exhibit, part psychological experiment, Tammy is not a lesson. She is an encounter.',
-  },
-];
-
 const services = [
   ['01', 'Brand Strategy', 'Mythology-driven positioning, archetype identification, brand language, and cultural narrative development.'],
   ['02', 'Visual Identity', 'Logo systems, typography, color architecture, and visual language built to carry meaning across every medium.'],

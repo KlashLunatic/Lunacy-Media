@@ -118,7 +118,7 @@ export default function Home() {
           <MoonStar size={76} />
         </div>
         <div>
-          <p className="kicker">The Studio / The Founder</p>
+          <p className="kicker">About Me</p>
           <h2>Kailash, known as Klash, built Lunacy as a love letter to the inner child.</h2>
         </div>
         <div>

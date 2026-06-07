@@ -81,41 +81,15 @@ export default function Home() {
         </div>
         <div className="service-grid">
           <article className="service-panel" style={{ gridColumn: '1 / -1' }}>
-            <span>Founder</span>
-            <h3>Lunacy Media is a Toronto-based multidisciplinary creative studio founded by Kailash, artist, strategist, and worldbuilder operating under the name Klash.</h3>
+            <span>Studio</span>
+            <h3>Lunacy Media is a Toronto-based multidisciplinary creative studio built around mythology, strategy, music, visual storytelling, and interactive media.</h3>
             <p>
-              We exist at the intersection of mythology, brand strategy, music, visual storytelling, and interactive media. We do not separate these disciplines because the strongest work happens when they speak to each other. We believe the most powerful creative work happens when language, imagery, sound, and structure move as one system.
+              We do not separate these disciplines because the strongest work happens when they speak to each other. We believe the most powerful creative work happens when language, imagery, sound, and structure move as one system.
             </p>
             <p style={{ marginTop: '1rem' }}>
-              Lunacy was built for the ones with stories worth telling and no adequate container to hold them. We were built for artists, founders, and organizations who need meaning, not just assets.
+              Lunacy was built for the ones with stories worth telling and no adequate container to hold them. We are here for artists, founders, and organizations who need meaning, not just assets.
             </p>
           </article>
-        </div>
-      </section>
-
-      <section className="manifesto-section" id="founder">
-        <div className="manifesto-mark" aria-hidden="true">
-          <Telescope size={92} />
-          <Orbit size={160} />
-          <MoonStar size={76} />
-        </div>
-        <div>
-          <p className="kicker">About Me</p>
-          <h2>Kailash, known as Klash, built Lunacy as a love letter to the inner child.</h2>
-        </div>
-        <div>
-          <p>
-            The one who needed to be told his ideas were not crazy. That his whimsical dreams of a moonlit space for the mythical, magical, metaphysical, and marginalized were worth something. Worth everything.
-          </p>
-          <p style={{ marginTop: '1rem' }}>
-            Growing up, he was drawn to the stories beneath the surface. The symbols people carried without realizing it. The myths that shaped cultures. The monsters we feared. The dreams we buried. The questions that lingered long after everyone else seemed satisfied with the answers.
-          </p>
-          <p style={{ marginTop: '1rem' }}>
-            Where others saw fantasy, he saw meaning. Where others saw imagination, he saw possibility. Creativity, to him, has always been a survival mechanism.
-          </p>
-          <p style={{ marginTop: '1rem' }}>
-            What began as a personal pursuit became a larger mission. Artists, founders, and organizations were facing the same challenge: stories worth telling, but no language, no symbols, no world to hold them.
-          </p>
         </div>
       </section>
 

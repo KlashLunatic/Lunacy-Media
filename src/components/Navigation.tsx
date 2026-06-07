@@ -1,61 +1,34 @@
-import type { FC } from 'react';
-import { Link, useLocation } from 'wouter';
-import { motion } from 'framer-motion';
+import { Link } from 'wouter';
 import Logo from './Logo';
 
 interface NavigationProps {
   scrolled: boolean;
 }
 
-const Navigation: FC<NavigationProps> = ({ scrolled }) => {
-  const [location] = useLocation();
+const navItems = [
+  ['Studio', '/studio'],
+  ['Work', '/work'],
+  ['Worlds', '/worlds'],
+  ['Mythology', '/mythology'],
+  ['Contact', '/contact'],
+];
 
-  const navLinks = [
-    { name: 'Studio', href: '/studio' },
-    { name: 'Work', href: '/work' },
-    { name: 'Worlds', href: '/worlds' },
-    { name: 'Mythology', href: '/mythology' },
-    { name: 'Archive', href: '/archive' },
-    { name: 'Contact', href: '/contact' },
-  ];
-
+export default function Navigation({ scrolled }: NavigationProps) {
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-12 py-6 transition-all duration-300 ${
-      scrolled ? 'bg-black/97 border-b border-border' : 'bg-transparent'
-    }`} role="navigation" aria-label="Main navigation">
-      <Link
-        href="/"
-        className="nav-logo-link flex items-center justify-center"
-        aria-label="Lunacy Media — Home"
-      >
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Logo width="80px" height="100px" className="nav-logo" />
-        </motion.div>
+    <nav className={scrolled ? 'main-nav scrolled' : 'main-nav'} role="navigation" aria-label="Main navigation">
+      <Link href="/" className="nav-logo-link" aria-label="Lunacy Media home">
+        <Logo width="58px" height="72px" className="nav-logo" />
       </Link>
 
-      <ul className="nav-links hidden md:flex gap-12 list-none">
-        {navLinks.map((link) => (
-          <li key={link.href}>
-            <Link href={link.href}>
-              <a className={`nav-link relative py-2 ${location === link.href ? 'text-accent' : 'text-off-white hover:text-accent'} transition-colors duration-300`}>
-                {link.name}
-                {location === link.href && (
-                  <motion.div
-                    layoutId="nav-underline"
-                    className="absolute bottom-0 left-0 right-0 h-px bg-accent"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </a>
+      <ul className="nav-links">
+        {navItems.map(([label, href]) => (
+          <li key={href}>
+            <Link href={href} className="nav-link">
+              {label}
             </Link>
           </li>
         ))}
       </ul>
     </nav>
   );
-};
-
-export default Navigation;
+}

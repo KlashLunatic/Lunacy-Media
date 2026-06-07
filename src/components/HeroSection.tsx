@@ -3,7 +3,7 @@ import { ArrowUpRight, Moon, Sparkles } from 'lucide-react';
 import { Link } from 'wouter';
 
 const lunarPhases = [
-  { label: 'New Moon', theme: 'Strategy', path: '/studio', mask: '0%' },
+  { label: 'New Moon', theme: 'Nebula', path: '/studio', mask: '0%' },
   { label: 'Waxing Crescent', theme: 'Identity', path: '/work', mask: '18%' },
   { label: 'First Quarter', theme: 'Campaigns', path: '/studio', mask: '36%' },
   { label: 'Waxing Gibbous', theme: 'Web', path: '/work', mask: '54%' },

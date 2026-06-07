@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { ChevronRight, BookOpen } from 'lucide-react';
-import { Link } from 'wouter';
 import SEO from '../components/SEO';
 
 const fadeInUp = {

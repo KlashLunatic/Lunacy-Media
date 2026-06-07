@@ -1,4 +1,3 @@
-import { Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 

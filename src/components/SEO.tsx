@@ -11,6 +11,7 @@ const OG_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663032200270/4xMWg
 
 export default function SEO({ title, description, path }: SEOProps) {
   const canonicalUrl = `${BASE_URL}${path === '/' ? '' : path}`;
+  const defaultTitle = 'Lunacy Media | Mythology & Worldbuilding Studio';
 
   useEffect(() => {
     // Set document title
@@ -28,6 +29,7 @@ export default function SEO({ title, description, path }: SEOProps) {
     };
 
     // Standard meta
+    setMeta('name', 'title', title);
     setMeta('name', 'description', description);
 
     // Open Graph
@@ -54,9 +56,9 @@ export default function SEO({ title, description, path }: SEOProps) {
 
     // Cleanup: restore defaults when unmounting
     return () => {
-      document.title = 'Lunacy Media | Creative Studio for Music, Storytelling & Digital Experiences';
+      document.title = defaultTitle;
     };
-  }, [title, description, canonicalUrl]);
+  }, [title, description, canonicalUrl, defaultTitle]);
 
   return null;
 }

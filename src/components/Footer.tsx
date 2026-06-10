@@ -9,8 +9,8 @@ export default function Footer() {
       <Link href="/" aria-label="Lunacy Media home">
         <Logo width="58px" height="72px" className="footer-logo" />
       </Link>
-      <p>Your Forever Endeavour</p>
-      <p>Copyright {currentYear} Lunacy Media. Toronto, Canada.</p>
+      <p>Copyright {currentYear} Lunacy Media Inc.</p>
+      <p>The light of the moon is simply a reflection of the brightest star.</p>
     </footer>
   );
 }

@@ -1,83 +1,65 @@
-import { useState, type CSSProperties } from 'react';
-import { ArrowUpRight, Moon, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Moon } from 'lucide-react';
 import { Link } from 'wouter';
 
-const lunarPhases = [
-  { label: 'New Moon', theme: 'Nebula', path: '/studio', mask: '0%' },
-  { label: 'Waxing Crescent', theme: 'Identity', path: '/work', mask: '18%' },
-  { label: 'First Quarter', theme: 'Campaigns', path: '/studio', mask: '36%' },
-  { label: 'Waxing Gibbous', theme: 'Web', path: '/work', mask: '54%' },
-  { label: 'Full Moon', theme: 'Worlds', path: '/worlds', mask: '100%' },
-  { label: 'Waning Gibbous', theme: 'Mythology', path: '/mythology', mask: '54%' },
-  { label: 'Last Quarter', theme: 'Launch', path: '/contact', mask: '36%' },
-  { label: 'Waning Crescent', theme: 'Signal', path: '/contact', mask: '18%' },
+const phases = [
+  ['New Moon', 'Nebula', '/studio'],
+  ['Waxing Crescent', 'Identity', '/work'],
+  ['First Quarter', 'Campaigns', '/studio'],
+  ['Waxing Gibbous', 'Web', '/work'],
+  ['Full Moon', 'Worlds', '/worlds'],
+  ['Waning Gibbous', 'Mythology', '/mythology'],
+  ['Last Quarter', 'Launch', '/contact'],
+  ['Waning Crescent', 'Signal', '/contact'],
 ];
 
 export default function HeroSection() {
-  const [activePhase, setActivePhase] = useState(4);
-
   return (
-    <section className="lunar-hero" aria-labelledby="hero-title">
-      <div className="starfield" aria-hidden="true" />
-      <div className="moon-haze" aria-hidden="true" />
-
-      <div className="hero-shell">
-        <div className="hero-copy">
-          <p className="kicker">Toronto creative studio for mythic brands</p>
+    <section className="cap-hero" aria-labelledby="hero-title">
+      <div className="cap-hero-bg" aria-hidden="true" />
+      <div className="cap-hero-shell">
+        <div className="cap-hero-copy">
+          <p className="kicker">Studio overview and services</p>
           <h1 id="hero-title">
-            Lunacy Media builds brands that move like worlds.
+            The moon teaches us
+            <br />
+            that sometimes...
+            <br />
+            it's not just a phase.
           </h1>
           <p className="hero-lede">
-            Strategy, identity, campaigns, websites, and original media systems
-            for artists, founders, and organizations with a world to reveal.
+            Lunacy Media is a mythology and worldbuilding studio for artists, founders, and organizations who were never meant to be ordinary.
           </p>
-          <div className="hero-actions" aria-label="Primary actions">
-            <Link href="/studio" className="primary-action">
-              Start a Project
+          <div className="hero-actions">
+            <Link href="/contact" className="primary-action">
+              Begin with Nebula
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
             <Link href="/work" className="secondary-action">
               View Work
-              <Sparkles size={17} aria-hidden="true" />
+              <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
         </div>
 
-        <div className="lunar-menu-wrap" aria-label="Lunar cycle navigation">
-          <div className="orbit-ring orbit-ring-large" aria-hidden="true" />
-          <div className="orbit-ring orbit-ring-small" aria-hidden="true" />
-          <div className="hero-moon" aria-hidden="true">
-            <div
-              className="hero-moon-light"
-              style={{ '--moon-mask': lunarPhases[activePhase].mask } as CSSProperties}
-            />
+        <div className="cap-hero-menu" aria-label="Lunar cycle navigation">
+          <div className="cap-hero-moon" aria-hidden="true">
+            <div className="cap-hero-moon-core" />
           </div>
-
-          <div className="phase-menu">
-            {lunarPhases.map((phase, index) => (
-              <Link
-                key={phase.label}
-                href={phase.path}
-                className={`phase-node phase-node-${index + 1} ${activePhase === index ? 'active' : ''}`}
-                onMouseEnter={() => setActivePhase(index)}
-                onFocus={() => setActivePhase(index)}
-              >
-                <span className="phase-dot">
-                  <Moon size={16} aria-hidden="true" />
+          <div className="cap-hero-phases">
+            {phases.map(([label, theme, href]) => (
+              <Link href={href} className="cap-phase-link" key={label}>
+                <span className="cap-phase-dot">
+                  <Moon size={14} aria-hidden="true" />
                 </span>
-                <span className="phase-label">{phase.theme}</span>
+                <span className="cap-phase-label">{theme}</span>
+                <small>{label}</small>
               </Link>
             ))}
-          </div>
-
-          <div className="phase-caption">
-            <span>{lunarPhases[activePhase].label}</span>
-            <strong>{lunarPhases[activePhase].theme}</strong>
           </div>
         </div>
       </div>
 
-      <div className="hero-index" aria-label="Studio focus areas">
+      <div className="cap-hero-strip" aria-label="Focus areas">
         {['Brand Worlds', 'Campaign Systems', 'Digital Presence', 'Original IP'].map((item, index) => (
           <span key={item}>
             <small>0{index + 1}</small>

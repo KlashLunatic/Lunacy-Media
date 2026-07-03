@@ -62,11 +62,12 @@ export default function Home() {
       <HeroSection />
 
       <section className="index-section" id="who-we-are">
+        <span className="section-ghost" aria-hidden="true">01</span>
         <div className="section-heading">
           <p className="kicker">01 / Who We Are</p>
           <h2>Part creative studio, part storytelling laboratory, part worldbuilding workshop.</h2>
         </div>
-        <div className="service-grid">
+        <div className="service-grid who-grid">
           <article className="service-panel" style={{ gridColumn: '1 / -1' }}>
             <span>Founder</span>
             <h3>Lunacy Media is a Toronto-based multidisciplinary creative studio founded by Kailash, artist, strategist, and worldbuilder operating under the name Klash.</h3>
@@ -81,11 +82,12 @@ export default function Home() {
       </section>
 
       <section className="cosmic-band" aria-labelledby="framework-title">
+        <span className="section-ghost" aria-hidden="true">02</span>
         <div className="section-heading">
           <p className="kicker">02 / The Framework</p>
           <h2 id="framework-title">We work in three movements.</h2>
         </div>
-        <div className="service-grid">
+        <div className="service-grid framework-grid">
           {services.map(([number, title, subtitle, text, price]) => (
             <article className="service-panel" key={title}>
               <span>{number}</span>
@@ -99,6 +101,7 @@ export default function Home() {
       </section>
 
       <section className="index-section" aria-labelledby="audience-title">
+        <span className="section-ghost" aria-hidden="true">03</span>
         <div className="section-heading">
           <p className="kicker">03 / Who We Work With</p>
           <h2 id="audience-title">We work with the ones who already know.</h2>
@@ -111,7 +114,7 @@ export default function Home() {
             If you&apos;ve ever felt like the vision in your head has never fully existed in the world - that&apos;s why Lunacy exists.
           </p>
         </div>
-        <div className="service-grid">
+        <div className="service-grid audience-grid">
           {audience.map((item, index) => (
             <article className="service-panel fade-up audience-panel" key={item} style={{ transitionDelay: `${index * 80}ms` }}>
               <span>0{index + 1}</span>
@@ -130,6 +133,7 @@ export default function Home() {
       </section>
 
       <section className="manifesto-section">
+        <span className="section-ghost" aria-hidden="true">04</span>
         <div className="manifesto-mark" aria-hidden="true">
           <CircleDot size={92} />
           <Orbit size={160} />
@@ -147,7 +151,7 @@ export default function Home() {
       <section className="index-section" id="universe">
         <div className="service-grid">
           {universe.map((project) => (
-            <article className="service-panel" key={project.name}>
+            <article className="service-panel fade-up universe-panel" key={project.name}>
               <span>{project.number}</span>
               <h3>{project.name}</h3>
               <p>{project.tag}</p>
@@ -162,6 +166,7 @@ export default function Home() {
       </section>
 
       <section className="manifesto-section" id="founder">
+        <span className="section-ghost" aria-hidden="true">05</span>
         <div className="manifesto-mark" aria-hidden="true">
           <MoonStar size={92} />
           <Star size={160} />
@@ -210,6 +215,7 @@ export default function Home() {
       </section>
 
       <section className="manifesto-section">
+        <span className="section-ghost" aria-hidden="true">06</span>
         <div className="manifesto-mark" aria-hidden="true">
           <MoonStar size={92} />
           <Star size={160} />

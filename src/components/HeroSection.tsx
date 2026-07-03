@@ -15,6 +15,7 @@ const phases = [
 
 export default function HeroSection() {
   const [activePhase, setActivePhase] = useState(0);
+  const [scrollOffset, setScrollOffset] = useState(0);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -24,11 +25,26 @@ export default function HeroSection() {
     return () => window.clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 640px), (prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) {
+      return;
+    }
+
+    const handleScroll = () => {
+      setScrollOffset(Math.min(window.scrollY, 480));
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="cap-hero" aria-labelledby="hero-title">
       <div className="cap-hero-bg" aria-hidden="true" />
       <div className="cap-hero-shell">
-        <div className="cap-hero-copy">
+        <div className="cap-hero-copy" style={{ transform: `translate3d(0, ${scrollOffset * -0.12}px, 0)` }}>
           <p className="kicker">Your Forever Endeavour</p>
           <h1 id="hero-title">
             The moon teaches us
@@ -37,10 +53,10 @@ export default function HeroSection() {
             <br />
             it's not just a phase.
           </h1>
-          <p className="hero-lede" style={{ fontWeight: 700, color: 'var(--moon)', marginTop: '1rem', marginBottom: '-0.4rem' }}>
+          <p className="hero-lede hero-lede-strong" style={{ transform: `translate3d(0, ${scrollOffset * -0.08}px, 0)` }}>
             Brand identity, worldbuilding, and narrative strategy for artists, founders, and organizations who were never meant to be ordinary.
           </p>
-          <p className="hero-lede">
+          <p className="hero-lede" style={{ transform: `translate3d(0, ${scrollOffset * -0.06}px, 0)` }}>
             Lunacy Media is a mythology and worldbuilding studio for artists, founders, and organizations who were never meant to be ordinary.
           </p>
           <div className="hero-actions">

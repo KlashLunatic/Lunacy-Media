@@ -113,7 +113,7 @@ export default function Home() {
         </div>
         <div className="service-grid">
           {audience.map((item, index) => (
-            <article className="service-panel" key={item}>
+            <article className="service-panel fade-up audience-panel" key={item} style={{ transitionDelay: `${index * 80}ms` }}>
               <span>0{index + 1}</span>
               <h3>{item}</h3>
               <p>

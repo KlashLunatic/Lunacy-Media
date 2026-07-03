@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -33,7 +33,7 @@ body {
     linear-gradient(180deg, #080808 0%, #0b0b0b 50%, #080808 100%);
   color: var(--moon);
   font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  line-height: 1.5;
+  line-height: 1.75;
   overflow-x: hidden;
 }
 
@@ -206,28 +206,30 @@ p {
 h1,
 h2,
 h3 {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-weight: 300;
-  letter-spacing: -0.03em;
+  font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 h1 {
   max-width: 14ch;
   font-size: clamp(3.7rem, 8.9vw, 9.7rem);
-  line-height: 0.94;
+  line-height: 0.92;
 }
 
 h2 {
   max-width: 13ch;
   font-size: clamp(2.7rem, 6.8vw, 7rem);
-  line-height: 0.96;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
 }
 
 h3 {
   color: var(--moon);
   font-size: clamp(1.18rem, 1.9vw, 1.7rem);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .hero-lede {
@@ -461,11 +463,465 @@ h3 {
   font-size: 0.7rem;
 }
 
+.cap-section {
+  padding: 6rem clamp(1rem, 4vw, 3.5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.cap-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.cap-index,
+.cap-medium,
+.cap-tier-tag,
+.cap-universe-theme,
+.cap-process-tag {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cap-two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr);
+  gap: 2rem;
+}
+
+.cap-copy p,
+.cap-intro,
+.cap-tier-desc,
+.cap-universe-text,
+.cap-why-card p,
+.cap-process-copy p {
+  color: rgba(240, 236, 228, 0.72);
+  line-height: 1.85;
+  font-size: 1rem;
+}
+
+.cap-copy p + p {
+  margin-top: 1rem;
+}
+
+.cap-pull {
+  margin-top: 2rem;
+  padding-left: 1.2rem;
+  border-left: 1px solid var(--accent);
+  font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  color: var(--moon);
+}
+
+.cap-stat-grid,
+.cap-tier-grid,
+.cap-discipline-grid,
+.cap-universe-grid,
+.cap-why-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.cap-stat-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cap-stat-card,
+.cap-tier-card,
+.cap-discipline-card,
+.cap-universe-card,
+.cap-why-card,
+.cap-process-row {
+  background: var(--void);
+  padding: 2rem;
+}
+
+.cap-stat-card strong,
+.cap-ghost,
+.cap-process-num {
+  display: block;
+  font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  color: rgba(196, 168, 130, 0.18);
+  line-height: 1;
+}
+
+.cap-stat-card strong {
+  font-size: clamp(2.75rem, 4vw, 4.2rem);
+  margin-bottom: 0.75rem;
+}
+
+.cap-stat-card h3,
+.cap-discipline-card h3,
+.cap-why-card h3,
+.cap-process-copy h3 {
+  font-family: 'Syne', sans-serif;
+  font-style: normal;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+
+.cap-tier-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cap-tier-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.cap-ghost {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: clamp(4rem, 7vw, 6rem);
+}
+
+.cap-tier-name,
+.cap-universe-name {
+  font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(2.3rem, 4vw, 3.4rem);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.cap-tier-price {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  color: var(--moon);
+  margin: 1rem 0;
+}
+
+.cap-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.cap-list li {
+  position: relative;
+  padding-left: 1rem;
+  color: rgba(240, 236, 228, 0.78);
+  font-size: 0.95rem;
+}
+
+.cap-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.cap-intro {
+  max-width: 42rem;
+  margin-bottom: 2rem;
+}
+
+.cap-discipline-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cap-icon {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(196, 168, 130, 0.22);
+  border-radius: 999px;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.cap-universe-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cap-universe-card .cap-ghost {
+  top: auto;
+  bottom: 1rem;
+  right: 1.25rem;
+}
+
+.cap-universe-text {
+  max-width: 34rem;
+}
+
+.cap-sisters-bar {
+  margin-top: 1px;
+  background: var(--ink);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cap-sisters-names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cap-sisters-names .is-muted {
+  color: var(--dim);
+  text-decoration: line-through;
+  text-decoration-color: var(--accent);
+}
+
+.cap-process {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.cap-process-row {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.cap-process-num {
+  font-size: 2.5rem;
+}
+
+.cap-process-tag {
+  white-space: nowrap;
+}
+
+.cap-why-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cap-closing {
+  position: relative;
+  padding: 7rem clamp(1rem, 4vw, 3.5rem);
+  overflow: hidden;
+}
+
+.cap-closing-glow {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 42rem;
+  height: 42rem;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(196, 168, 130, 0.08), transparent 68%);
+  pointer-events: none;
+}
+
+.cap-closing-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 48rem;
+}
+
+.cap-quote {
+  font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+  line-height: 1.35;
+  color: var(--moon);
+  margin-bottom: 1rem;
+}
+
+.cap-signature,
+.cap-stars {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cap-signature {
+  margin-bottom: 2rem;
+}
+
+.cap-intro-tight {
+  max-width: 30rem;
+}
+
+.cap-stars {
+  display: inline-block;
+  margin: 1.5rem 0 2rem;
+}
+
+.cap-hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 8.5rem clamp(1rem, 4vw, 3.5rem) 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.cap-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.1;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  animation: grain-drift 14s steps(8) infinite;
+}
+
+.cap-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(196, 168, 130, 0.14), transparent 28rem),
+    radial-gradient(circle at 18% 18%, rgba(240, 236, 228, 0.06), transparent 20rem);
+  pointer-events: none;
+}
+
+.cap-hero-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.9fr);
+  gap: 3rem;
+  align-items: center;
+  min-height: calc(100vh - 12rem);
+}
+
+.cap-hero-copy {
+  position: relative;
+}
+
+.cap-hero-copy::before {
+  content: '';
+  position: absolute;
+  top: -4rem;
+  left: -4rem;
+  width: min(42rem, 90vw);
+  height: min(42rem, 90vw);
+  background: radial-gradient(circle, rgba(232, 228, 240, 0.06) 0%, rgba(232, 228, 240, 0.03) 30%, transparent 72%);
+  pointer-events: none;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.cap-hero-copy h1 {
+  max-width: 11ch;
+  font-size: clamp(4.2rem, 9.2vw, 10rem);
+  letter-spacing: 0.02em;
+}
+
+.cap-hero-menu {
+  position: relative;
+  min-height: 30rem;
+}
+
+.cap-hero-moon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 22rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(240, 236, 228, 0.24), transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(196, 168, 130, 0.25), transparent 60%),
+    linear-gradient(180deg, #1b1714, #080808);
+  box-shadow: inset -2rem -2rem 4rem rgba(0, 0, 0, 0.65), 0 0 4rem rgba(196, 168, 130, 0.12);
+}
+
+.cap-hero-moon-core {
+  position: absolute;
+  inset: 14% 14% 14% 14%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(240, 236, 228, 0.14), transparent 40%);
+  opacity: 0.85;
+}
+
+.cap-hero-phases {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  align-content: end;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(240, 236, 228, 0.08);
+}
+
+.cap-phase-link {
+  background: rgba(8, 8, 8, 0.7);
+  border: 1px solid rgba(240, 236, 228, 0.08);
+  padding: 0.8rem;
+  display: grid;
+  gap: 0.16rem;
+}
+
+.cap-phase-dot {
+  color: var(--accent);
+}
+
+.cap-phase-label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cap-phase-link small {
+  color: rgba(200, 194, 184, 0.45);
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+}
+
+.cap-hero-strip {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border-top: 1px solid rgba(240, 236, 228, 0.08);
+}
+
+.cap-hero-strip span {
+  background: rgba(8, 8, 8, 0.85);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cap-hero-strip small {
+  color: var(--accent);
+  font-family: 'Syne Mono', monospace;
+  letter-spacing: 0.16em;
+}
+
 .index-section,
 .cosmic-band,
 .manifesto-section {
   position: relative;
-  padding: clamp(5rem, 10vw, 9rem) clamp(1rem, 4vw, 3.5rem);
+  padding: clamp(7.5rem, 11vw, 10rem) clamp(1rem, 4vw, 3.5rem);
   border-bottom: 1px solid var(--line);
 }
 
@@ -475,6 +931,27 @@ h3 {
   gap: 2rem;
   align-items: start;
   margin-bottom: clamp(2rem, 6vw, 5rem);
+}
+
+.section-heading .kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.section-heading .kicker::before {
+  content: '';
+  width: 3rem;
+  height: 1px;
+  background: rgba(240, 236, 228, 0.14);
+}
+
+.section-heading .kicker {
+  color: rgba(200, 194, 184, 0.56);
+}
+
+.section-heading .kicker::first-letter {
+  color: var(--accent);
 }
 
 .work-list {
@@ -545,7 +1022,7 @@ h3 {
 }
 
 .service-panel span {
-  color: var(--accent);
+  color: rgba(196, 168, 130, 0.54);
   font-family: 'Syne Mono', monospace;
   font-size: 0.78rem;
   font-weight: 900;
@@ -559,8 +1036,24 @@ h3 {
 .service-panel p {
   margin-top: 1rem;
   color: var(--muted);
-  max-width: 22rem;
-  line-height: 1.7;
+  max-width: 65ch;
+  line-height: 1.78;
+}
+
+.cosmic-band .service-panel:nth-child(2) {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin: -1px;
+}
+
+.cosmic-band .service-panel:nth-child(3) {
+  border: 1px solid rgba(180, 170, 220, 0.3);
+  margin: -1px;
+  padding: clamp(1.45rem, 3.4vw, 2.45rem);
+  box-shadow: inset 0 0 0 1px rgba(180, 170, 220, 0.08);
+}
+
+.cosmic-band .service-panel:nth-child(3) p:last-child {
+  font-size: 1.12rem;
 }
 
 .manifesto-section {
@@ -572,7 +1065,7 @@ h3 {
 }
 
 .manifesto-section p:not(.kicker) {
-  max-width: 38rem;
+  max-width: 65ch;
   color: rgba(240, 236, 228, 0.74);
   font-size: clamp(1.08rem, 1.7vw, 1.45rem);
   line-height: 1.8;
@@ -609,8 +1102,9 @@ h3 {
 
 .site-footer {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1.5rem;
   padding: 1.5rem clamp(1rem, 4vw, 3.5rem);
   border-top: 1px solid var(--line);
@@ -623,6 +1117,83 @@ h3 {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.site-footer p:last-child {
+  width: 100%;
+  margin-top: 1.25rem;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.primary-action {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 24px rgba(196, 168, 130, 0.08);
+  animation: lunar-pulse 3s ease-in-out infinite;
+}
+
+.secondary-action {
+  border-color: rgba(240, 236, 228, 0.18);
+  background: transparent;
+}
+
+.audience-panel {
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+
+#universe .service-grid {
+  gap: 60px 1px;
+  background: transparent;
+  border: 0;
+}
+
+#universe .service-panel {
+  position: relative;
+  overflow: hidden;
+  min-height: 26rem;
+  border: 1px solid var(--line);
+}
+
+#universe .service-panel span {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.2rem;
+  font-size: clamp(4rem, 7vw, 6rem);
+  color: rgba(240, 236, 228, 0.1);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+#universe .service-panel h3 {
+  position: relative;
+  z-index: 1;
+}
+
+#universe .service-panel p:nth-of-type(1) {
+  margin-top: 0.8rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200, 194, 184, 0.55);
+}
+
+#universe .service-panel p:last-child {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(196, 168, 130, 0.6);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .container {
@@ -660,6 +1231,41 @@ h3 {
   }
 }
 
+@keyframes grain-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate3d(-1%, 1%, 0);
+  }
+
+  50% {
+    transform: translate3d(1%, -1%, 0);
+  }
+
+  75% {
+    transform: translate3d(0.5%, 1.2%, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes lunar-pulse {
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 20px rgba(196, 168, 130, 0.06);
+  }
+
+  50% {
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 0 28px rgba(196, 168, 130, 0.12);
+  }
+}
+
 @media (max-width: 980px) {
   .nav-links {
     display: none;
@@ -671,13 +1277,43 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .cap-two-col,
+  .cap-tier-grid,
+  .cap-discipline-grid,
+  .cap-universe-grid,
+  .cap-why-grid,
+  .cap-hero-shell {
+    grid-template-columns: 1fr;
+  }
+
   .hero-shell {
     min-height: auto;
+  }
+
+  .cap-process-row {
+    grid-template-columns: 1fr;
   }
 
   .lunar-menu-wrap {
     width: min(34rem, 100%);
     margin: 1rem auto 0;
+  }
+
+  .cap-hero-menu {
+    min-height: 24rem;
+  }
+
+  .cap-hero-moon {
+    width: 16rem;
+  }
+
+  .cap-hero-strip,
+  .cap-stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cap-hero-phases {
+    gap: 1.5rem;
   }
 
   .phase-node {
@@ -726,6 +1362,10 @@ h3 {
   .row-text {
     grid-column: 2 / -1;
   }
+
+  #universe .service-grid {
+    gap: 40px 1px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -735,6 +1375,14 @@ h3 {
 
   .lunar-hero {
     padding-top: 6.5rem;
+  }
+
+  .cap-hero {
+    padding-top: 6.5rem;
+  }
+
+  .cap-hero::before {
+    opacity: 0.06;
   }
 
   h1 {
@@ -767,6 +1415,27 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .cap-hero-strip,
+  .cap-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cap-hero-phases {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .cap-hero-menu {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .cap-hero-menu::-webkit-scrollbar {
+    display: none;
+  }
+
   .hero-index span,
   .service-panel,
   .hero-index span:nth-child(n + 3) {
@@ -786,5 +1455,53 @@ h3 {
   .site-footer {
     flex-direction: column;
     text-align: center;
+  }
+
+  .index-section,
+  .cosmic-band,
+  .manifesto-section {
+    padding-top: 80px;
+  }
+
+  .cosmic-band .service-grid {
+    gap: 24px;
+    background: transparent;
+    border: 0;
+  }
+
+  .cosmic-band .service-panel,
+  .cosmic-band .service-panel:last-child {
+    border: 1px solid var(--line);
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .cap-hero::before,
+  .primary-action,
+  .manifesto-mark svg:nth-child(2),
+  .starfield,
+  .starfield::before,
+  .starfield::after,
+  .orbit-ring-small {
+    animation: none !important;
+  }
+
+  .fade-up,
+  .fade-up.visible,
+  .primary-action,
+  .secondary-action,
+  .cta-button,
+  .cap-hero-moon-core {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .fade-up {
+    opacity: 1;
   }
 }

@@ -4,9 +4,10 @@ import HeroSection from '../components/HeroSection';
 import SEO from '../components/SEO';
 
 const services = [
-  ['I', 'Nebula', 'Creation - The Awakening', 'The moment of pure potential. Before anything is built, something must be seen. A focused engagement to surface what is already forming within your work, your brand, and your vision.', 'From $150'],
-  ['II', 'Neutron', 'Preservation - The Illumination', 'The concentrated core. What was sensed becomes structured, named, and durable. Identity built to hold weight - and hold attention.', 'From $2,500'],
-  ['III', 'Nova', 'Purification - The Conjure', 'The full reveal. What was seen is now made real - completely, permanently, undeniably. The complete ecosystem of identity, mythology, characters, and cultural strategy brought into existence.', 'From $10,000'],
+  ['I', 'Nebula', 'Creation · The Awakening', 'The moment of pure potential. Before anything is built, something must be seen. A focused engagement to surface what is already forming within your work, your brand, and your vision.', 'From $150'],
+  ['II', 'Neutron', 'Preservation · The Illumination', 'The concentrated core. What was sensed becomes structured, named, and durable. Identity built to hold weight — and hold attention.', 'From $2,500'],
+  ['III', 'Nova', 'Purification · The Conjure', 'The full reveal. What was seen is now made real — completely, permanently, undeniably. The complete ecosystem of identity, mythology, characters, and cultural strategy brought into existence.', 'From $10,000'],
+  ['IV', 'Orbit', 'Creative Direction Retainer · The ongoing cycle', 'Consistent creative direction for artists and brands that need an ongoing presence in the world.', 'From $750/month'],
 ];
 
 const audience = [
@@ -44,7 +45,7 @@ const universe = [
     number: 'IV',
     tag: 'Divination',
     name: 'The Tarot',
-    theme: 'Divination',
+    theme: 'Information',
     text: 'An entire mythology transformed into a divination system.',
   },
 ];
@@ -139,7 +140,7 @@ export default function Home() {
           <h2>This is not a portfolio. This is a universe.</h2>
         </div>
         <p>
-          Lunacy Media creates across music, manga, interactive experience, and divination - connected by a single mythological thread: The Sisters Grim.
+          Lunacy Media uses art and mixed media as a conduit to help create immersive worlds that evolve into legends told across time, format, and audience.
         </p>
       </section>
 
@@ -168,7 +169,7 @@ export default function Home() {
         </div>
         <div>
           <p className="kicker">05 / Founder</p>
-          <h2>Kailash</h2>
+          <h2>Klash</h2>
         </div>
         <div>
           <p style={{ color: 'var(--accent)', marginBottom: '1rem' }}>Founder, Lunacy Media</p>

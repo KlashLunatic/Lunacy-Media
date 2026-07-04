@@ -73,7 +73,7 @@ export default function Contact() {
                   <div>
                     <p className="text-sm font-inter text-accent mb-1 tracking-widest uppercase font-semibold">Email</p>
                     <p className="text-muted font-inter text-base">info@lunacymedia.ca</p>
-                    <p className="text-muted font-inter text-base mt-2">Prefer to skip the form? Email us directly at info@lunacymedia.ca</p>
+                    <p className="text-muted font-inter text-base mt-2">Prefer to skip the form? Send a note directly.</p>
                   </div>
                 </div>
               </div>

@@ -889,10 +889,72 @@ h3 {
   padding-top: 1rem;
 }
 
-.cap-hero-moon {
+.cap-lunar-system {
   position: absolute;
-  right: 0.5rem;
   top: 0.5rem;
+  right: 0.5rem;
+  display: grid;
+  width: min(24rem, 88vw);
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+.cap-lunar-system::before,
+.cap-lunar-system::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cap-lunar-system::before {
+  inset: 6%;
+  border: 1px solid rgba(232, 236, 242, 0.1);
+}
+
+.cap-lunar-system::after {
+  inset: 20%;
+  border: 1px dashed rgba(232, 236, 242, 0.08);
+}
+
+.cap-lunar-orbit {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  animation: lunar-orbit 36s linear infinite;
+}
+
+.cap-orbit-phase {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.9rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(238, 241, 245, 0.32);
+  border-radius: 50%;
+  background: rgba(238, 241, 245, 0.08);
+  box-shadow: inset -0.25rem 0 0 rgba(8, 8, 8, 0.72);
+  transform: translate(-50%, -50%) rotate(var(--phase-angle)) translateX(10.8rem) rotate(calc(var(--phase-angle) * -1));
+  transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease, opacity 220ms ease;
+}
+
+.cap-orbit-phase.is-active {
+  border-color: rgba(238, 241, 245, 0.78);
+  background: rgba(238, 241, 245, 0.45);
+  box-shadow: 0 0 18px rgba(238, 241, 245, 0.18), inset -0.18rem 0 0 rgba(8, 8, 8, 0.48);
+}
+
+.cap-orbit-phase-1 { --phase-angle: -90deg; opacity: 0.45; }
+.cap-orbit-phase-2 { --phase-angle: -45deg; opacity: 0.55; }
+.cap-orbit-phase-3 { --phase-angle: 0deg; opacity: 0.68; }
+.cap-orbit-phase-4 { --phase-angle: 45deg; opacity: 0.8; }
+.cap-orbit-phase-5 { --phase-angle: 90deg; opacity: 1; }
+.cap-orbit-phase-6 { --phase-angle: 135deg; opacity: 0.8; }
+.cap-orbit-phase-7 { --phase-angle: 180deg; opacity: 0.68; }
+.cap-orbit-phase-8 { --phase-angle: 225deg; opacity: 0.55; }
+
+.cap-hero-moon {
+  position: relative;
   width: 22rem;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -1466,6 +1528,12 @@ h3 {
   }
 }
 
+@keyframes lunar-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 980px) {
   .main-nav {
     padding-top: 0.9rem;
@@ -1504,12 +1572,22 @@ h3 {
   }
 
   .cap-hero-menu {
-    min-height: 24rem;
+    min-height: 26rem;
+  }
+
+  .cap-lunar-system {
+    right: 50%;
+    width: min(19rem, 76vw);
+    transform: translateX(50%);
   }
 
   .cap-hero-moon {
     width: 16rem;
     right: 0;
+  }
+
+  .cap-orbit-phase {
+    transform: translate(-50%, -50%) rotate(var(--phase-angle)) translateX(min(8.5rem, 35vw)) rotate(calc(var(--phase-angle) * -1));
   }
 
   .cap-hero-strip,
@@ -1592,14 +1670,30 @@ h3 {
 
   .cap-hero {
     padding-top: 6.5rem;
+    padding-bottom: 1rem;
+    min-height: auto;
   }
 
   .cap-hero-shell {
     gap: 2rem;
+    min-height: auto;
   }
 
   .cap-hero-copy h1 {
     max-width: 9.5ch;
+    font-size: clamp(2.85rem, 15vw, 4.8rem);
+    line-height: 0.98;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-lede {
+    max-width: 100%;
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .hero-lede-strong {
+    margin-bottom: 0;
   }
 
   .cap-hero::before {
@@ -1643,12 +1737,32 @@ h3 {
 
   .cap-hero-strip,
   .cap-stat-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .cap-hero-phases {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    position: relative;
+    inset: auto;
+    display: flex;
+    gap: 0.85rem;
+    align-content: initial;
+    margin-top: 1.25rem;
+    padding: 0 0 0.8rem;
+    overflow-x: auto;
+    border-top: 0;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .cap-hero-phases::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cap-phase-link {
+    min-width: 9.5rem;
+    padding: 0.75rem 0;
+    scroll-snap-align: start;
   }
 
   .cap-hero-strip span {
@@ -1656,14 +1770,38 @@ h3 {
   }
 
   .cap-hero-menu {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    min-height: auto;
+    padding-top: 0;
+    overflow: visible;
   }
 
-  .cap-hero-menu::-webkit-scrollbar {
-    display: none;
+  .cap-lunar-system {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: min(16rem, 76vw);
+    margin: 0 auto;
+    transform: none;
+  }
+
+  .cap-hero-moon {
+    width: min(12.75rem, 62vw);
+  }
+
+  .cap-orbit-phase {
+    width: 0.72rem;
+    transform: translate(-50%, -50%) rotate(var(--phase-angle)) translateX(min(7rem, 34vw)) rotate(calc(var(--phase-angle) * -1));
+  }
+
+  .hero-actions {
+    gap: 0.7rem;
+  }
+
+  .primary-action,
+  .secondary-action,
+  .cta-button {
+    width: 100%;
+    min-height: 3rem;
   }
 
   .hero-index span,
@@ -1741,6 +1879,7 @@ h3 {
   .cap-hero::before,
   .primary-action,
   .manifesto-mark svg:nth-child(2),
+  .cap-lunar-orbit,
   .starfield,
   .starfield::before,
   .starfield::after,

@@ -72,13 +72,23 @@ export default function HeroSection() {
         </div>
 
         <div className="cap-hero-menu" aria-label="Lunar cycle navigation">
-          <div className="cap-hero-moon" aria-hidden="true">
-            <div
-              className="cap-hero-moon-core"
-              style={{
-                clipPath: `inset(0 ${Math.max(0, 100 - activePhase * 14)}% 0 0 round 999px)`,
-              }}
-            />
+          <div className="cap-lunar-system" aria-hidden="true">
+            <div className="cap-lunar-orbit">
+              {phases.map(([label], index) => (
+                <span
+                  className={`cap-orbit-phase cap-orbit-phase-${index + 1}${index === activePhase ? ' is-active' : ''}`}
+                  key={label}
+                />
+              ))}
+            </div>
+            <div className="cap-hero-moon">
+              <div
+                className="cap-hero-moon-core"
+                style={{
+                  clipPath: `inset(0 ${Math.max(0, 100 - activePhase * 14)}% 0 0 round 999px)`,
+                }}
+              />
+            </div>
           </div>
           <div className="cap-hero-phases">
             {phases.map(([label, theme, href], index) => (

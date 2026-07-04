@@ -69,7 +69,7 @@ export default function Home() {
         </div>
         <div className="service-grid who-grid">
           <article className="service-panel" style={{ gridColumn: '1 / -1' }}>
-            <span>Founder</span>
+            <span>Studio</span>
             <h3>Lunacy Media is a Toronto-based multidisciplinary creative studio founded by Kailash, artist, strategist, and worldbuilder operating under the name Klash.</h3>
             <p>
               We exist at the intersection of mythology, brand strategy, music, visual storytelling, and interactive media. We do not separate these disciplines because the strongest work happens when they speak to each other. We believe the most powerful creative work happens when language, imagery, sound, and structure move as one system.
@@ -173,7 +173,7 @@ export default function Home() {
           <Square size={76} />
         </div>
         <div>
-          <p className="kicker">05 / Founder</p>
+          <p className="kicker">05 / About</p>
           <h2>Klash</h2>
         </div>
         <div>

@@ -884,9 +884,9 @@ h3 {
 }
 
 .cap-hero-copy h1 {
-  max-width: 10.5ch;
-  font-size: clamp(4.4rem, 9vw, 9.6rem);
-  letter-spacing: 0.02em;
+  max-width: 11.5ch;
+  font-size: clamp(3.7rem, 8vw, 8.6rem);
+  letter-spacing: 0;
 }
 
 .cap-hero-copy .kicker {
@@ -1092,7 +1092,7 @@ h3 {
   grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
   gap: 2rem;
   align-items: start;
-  margin-bottom: clamp(2rem, 6vw, 5rem);
+  margin-bottom: clamp(1.75rem, 4vw, 3.2rem);
 }
 
 .section-heading .kicker {
@@ -1253,32 +1253,52 @@ h3 {
 
 .framework-grid {
   background: transparent;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1.5rem, 2vw, 2rem);
   align-items: start;
 }
 
 .framework-grid .service-panel {
-  background: transparent;
-  border-top: 1px solid rgba(232, 236, 242, 0.08);
-  padding: 1.4rem 0 0;
-  min-height: auto;
+  min-height: 24rem;
+  border: 1px solid rgba(232, 236, 242, 0.1);
+  background:
+    linear-gradient(145deg, rgba(238, 241, 245, 0.045), transparent 48%),
+    #09090b;
+  padding: clamp(1.3rem, 2.5vw, 2rem);
 }
 
 .framework-grid .service-panel h3 {
-  margin-top: 4.5rem;
+  margin-top: clamp(3.2rem, 5vw, 4.5rem);
+  font-size: clamp(1.75rem, 2.4vw, 2.35rem);
 }
 
 .framework-grid .service-panel p {
-  max-width: 28ch;
+  max-width: 36ch;
 }
 
 .framework-grid .service-panel:hover {
-  background: transparent;
+  background:
+    linear-gradient(145deg, rgba(238, 241, 245, 0.06), transparent 48%),
+    #0c0d10;
+}
+
+.cosmic-band .framework-grid .service-panel,
+.cosmic-band .framework-grid .service-panel:nth-child(2),
+.cosmic-band .framework-grid .service-panel:nth-child(3),
+.cosmic-band .framework-grid .service-panel:last-child {
+  border: 1px solid rgba(232, 236, 242, 0.1);
+  margin: 0;
+  padding: clamp(1.3rem, 2.5vw, 2rem);
+  box-shadow: inset 0 0 0 1px rgba(167, 179, 197, 0.04);
+  background:
+    linear-gradient(145deg, rgba(238, 241, 245, 0.045), transparent 48%),
+    #09090b;
 }
 
 .service-deliverables {
-  padding-top: 1rem;
-  border-top: 1px solid rgba(232, 236, 242, 0.08);
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(238, 241, 245, 0.14);
+  background: rgba(238, 241, 245, 0.055);
   font-family: 'Syne Mono', monospace;
   font-size: 0.68rem;
   letter-spacing: 0.12em;
@@ -1733,14 +1753,21 @@ h3 {
   }
 
   .cap-hero-copy h1 {
-    max-width: 11ch;
-    font-size: clamp(4rem, 11vw, 7.5rem);
+    max-width: 11.5ch;
+    font-size: clamp(3.45rem, 9.4vw, 6.6rem);
+    letter-spacing: 0;
+  }
+
+  .cap-hero-copy,
+  .hero-lede {
+    transform: none !important;
   }
 
   .cap-hero-menu {
     width: min(46rem, 100%);
     min-height: 28rem;
     margin-inline: auto;
+    order: 2;
   }
 
   .cap-lunar-system {
@@ -1764,6 +1791,10 @@ h3 {
 
   .manifesto-section {
     min-height: auto;
+  }
+
+  .framework-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1951,7 +1982,7 @@ h3 {
   .index-section,
   .cosmic-band,
   .manifesto-section {
-    padding-block: clamp(5.5rem, 11vw, 8rem);
+    padding-block: clamp(4.6rem, 9vw, 6.5rem);
   }
 
   .work-dossier {
@@ -2025,10 +2056,11 @@ h3 {
   }
 
   .cap-hero-copy h1 {
-    max-width: 10.5ch;
-    font-size: clamp(2.65rem, 13.5vw, 4.2rem);
+    max-width: 100%;
+    font-size: clamp(2.35rem, 11.6vw, 3.7rem);
     line-height: 1;
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
+    overflow-wrap: normal;
   }
 
   .hero-lede {
@@ -2102,12 +2134,16 @@ h3 {
     scrollbar-width: none;
   }
 
+  .cap-hero-phases:hover .cap-phase-link {
+    opacity: 1;
+  }
+
   .cap-hero-phases::-webkit-scrollbar {
     display: none;
   }
 
   .cap-phase-link {
-    min-width: 9.5rem;
+    min-width: min(9.5rem, 72vw);
     padding: 0.75rem 0;
     scroll-snap-align: start;
   }
@@ -2188,7 +2224,7 @@ h3 {
 
   .section-heading {
     gap: 1.25rem;
-    margin-bottom: 2.25rem;
+    margin-bottom: 1.65rem;
   }
 
   .section-heading .kicker {
@@ -2262,7 +2298,7 @@ h3 {
   }
 
   .framework-grid {
-    gap: 1.6rem;
+    gap: 1rem;
   }
 
   .engine-grid,
@@ -2307,6 +2343,18 @@ h3 {
     border-inline: 0;
     margin: 0;
     padding-inline: 0;
+  }
+
+  .cosmic-band .framework-grid .service-panel,
+  .cosmic-band .framework-grid .service-panel:nth-child(2),
+  .cosmic-band .framework-grid .service-panel:nth-child(3),
+  .cosmic-band .framework-grid .service-panel:last-child {
+    border: 1px solid var(--line);
+    margin: 0;
+    padding: 1.15rem;
+    background:
+      linear-gradient(145deg, rgba(238, 241, 245, 0.045), transparent 48%),
+      #09090b;
   }
 
   .cosmic-band .service-panel,
@@ -2359,7 +2407,7 @@ h3 {
   }
 
   .cap-hero-copy h1 {
-    font-size: clamp(2.35rem, 12.8vw, 3.45rem);
+    font-size: clamp(2.15rem, 11.6vw, 3.05rem);
   }
 
   .cap-lunar-system {

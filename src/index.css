@@ -37,6 +37,13 @@ body {
   overflow-x: hidden;
 }
 
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -88,6 +95,10 @@ p {
   gap: 2rem;
   padding: 1rem clamp(1rem, 4vw, 3.5rem) 0.9rem;
   transition: background 220ms ease, border-color 220ms ease, backdrop-filter 220ms ease;
+}
+
+.nav-logo-link {
+  flex: 0 0 auto;
 }
 
 .main-nav.scrolled {
@@ -1610,6 +1621,14 @@ h3 {
   padding-block: 6rem;
 }
 
+.section-padding-lg {
+  padding: clamp(5.25rem, 9vw, 8rem) clamp(1rem, 4vw, 3.5rem);
+}
+
+.section-padding-sm {
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 3.5rem);
+}
+
 .bg-black,
 .bg-void,
 .bg-charcoal,
@@ -1697,13 +1716,116 @@ h3 {
   }
 }
 
+@media (max-width: 1180px) {
+  .cap-hero {
+    min-height: auto;
+    padding-top: 8rem;
+  }
+
+  .cap-hero-shell {
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 6vw, 4rem);
+    min-height: auto;
+  }
+
+  .cap-hero-copy {
+    max-width: 48rem;
+  }
+
+  .cap-hero-copy h1 {
+    max-width: 11ch;
+    font-size: clamp(4rem, 11vw, 7.5rem);
+  }
+
+  .cap-hero-menu {
+    width: min(46rem, 100%);
+    min-height: 28rem;
+    margin-inline: auto;
+  }
+
+  .cap-lunar-system {
+    right: 50%;
+    width: min(21rem, 58vw);
+    transform: translateX(50%);
+  }
+
+  .cap-hero-moon {
+    width: min(18rem, 44vw);
+  }
+
+  .cap-orbit-phase {
+    transform: translate(-50%, -50%) rotate(var(--phase-angle)) translateX(min(9.4rem, 27vw)) rotate(calc(var(--phase-angle) * -1));
+  }
+
+  .section-heading,
+  .manifesto-section {
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto-section {
+    min-height: auto;
+  }
+}
+
 @media (max-width: 980px) {
   .main-nav {
-    padding-top: 0.9rem;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.9rem clamp(1rem, 4vw, 2rem);
   }
 
   .nav-links {
+    display: flex;
+    width: 100%;
+    gap: 1.25rem;
+    overflow-x: auto;
+    padding: 0.25rem 0 0.15rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-links::-webkit-scrollbar {
     display: none;
+  }
+
+  .nav-links li {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .nav-link {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    white-space: nowrap;
+  }
+
+  .md\:grid-cols-4,
+  .md\:grid-cols-3,
+  .lg\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .md\:col-span-1,
+  .md\:col-span-3 {
+    grid-column: auto !important;
+  }
+
+  .md\:gap-16 {
+    gap: 3rem !important;
+  }
+
+  .text-7xl,
+  .text-8xl,
+  .md\:text-8xl {
+    font-size: clamp(3.4rem, 10vw, 6rem) !important;
+    line-height: 0.98 !important;
+  }
+
+  .text-6xl,
+  .md\:text-7xl {
+    font-size: clamp(2.8rem, 8vw, 5.2rem) !important;
+    line-height: 1.02 !important;
   }
 
   .hero-shell,
@@ -1826,6 +1948,12 @@ h3 {
     font-size: clamp(6rem, 12vw, 10rem);
   }
 
+  .index-section,
+  .cosmic-band,
+  .manifesto-section {
+    padding-block: clamp(5.5rem, 11vw, 8rem);
+  }
+
   .work-dossier {
     grid-template-columns: 1fr;
   }
@@ -1838,7 +1966,48 @@ h3 {
 
 @media (max-width: 640px) {
   .main-nav {
-    padding-block: 0.8rem;
+    gap: 0.55rem;
+    padding: 0.65rem 1rem 0.7rem;
+  }
+
+  .nav-logo {
+    width: 44px !important;
+    height: auto !important;
+  }
+
+  .nav-links {
+    gap: 0.9rem;
+  }
+
+  .nav-link {
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+  }
+
+  .text-xl {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+  }
+
+  .text-5xl,
+  .text-6xl,
+  .text-7xl,
+  .text-8xl,
+  .md\:text-6xl,
+  .md\:text-7xl,
+  .md\:text-8xl {
+    font-size: clamp(2.35rem, 11.5vw, 4rem) !important;
+    line-height: 1.02 !important;
+    max-width: 100%;
+  }
+
+  .max-w-3xl,
+  .max-w-4xl {
+    max-width: 100% !important;
+  }
+
+  .space-y-12 > * + * {
+    margin-top: 2.25rem !important;
   }
 
   .lunar-hero {
@@ -1846,20 +2015,19 @@ h3 {
   }
 
   .cap-hero {
-    padding-top: 6.5rem;
-    padding-bottom: 1rem;
+    padding: 7.35rem 1rem 1rem;
     min-height: auto;
   }
 
   .cap-hero-shell {
-    gap: 2rem;
+    gap: 1.8rem;
     min-height: auto;
   }
 
   .cap-hero-copy h1 {
-    max-width: 9.5ch;
-    font-size: clamp(2.85rem, 15vw, 4.8rem);
-    line-height: 0.98;
+    max-width: 10.5ch;
+    font-size: clamp(2.65rem, 13.5vw, 4.2rem);
+    line-height: 1;
     letter-spacing: 0.01em;
   }
 
@@ -1958,13 +2126,13 @@ h3 {
     position: relative;
     right: auto;
     top: auto;
-    width: min(16rem, 76vw);
+    width: min(15.5rem, 78vw);
     margin: 0 auto;
     transform: none;
   }
 
   .cap-hero-moon {
-    width: min(12.75rem, 62vw);
+    width: min(11.75rem, 58vw);
   }
 
   .cap-orbit-phase {
@@ -1981,6 +2149,8 @@ h3 {
   .cta-button {
     width: 100%;
     min-height: 3rem;
+    padding-inline: 1rem;
+    text-align: center;
   }
 
   .hero-index span,
@@ -2002,12 +2172,18 @@ h3 {
   .site-footer {
     flex-direction: column;
     text-align: center;
+    align-items: center;
   }
 
   .index-section,
   .cosmic-band,
   .manifesto-section {
-    padding: 72px 1rem;
+    padding: 64px 1rem;
+  }
+
+  .container {
+    width: min(100%, calc(100% - 2rem));
+    padding-block: 3.5rem;
   }
 
   .section-heading {
@@ -2139,6 +2315,11 @@ h3 {
     margin: 0;
   }
 
+  .engine-grid .service-panel,
+  .proof-grid .service-panel {
+    min-height: auto;
+  }
+
   #universe .service-grid {
     gap: 48px;
   }
@@ -2157,6 +2338,60 @@ h3 {
     to {
       transform: translate(-50%, -50%) rotate(360deg) translateX(4rem);
     }
+  }
+}
+
+@media (max-width: 420px) {
+  .main-nav {
+    padding-inline: 0.85rem;
+  }
+
+  .nav-links {
+    gap: 0.75rem;
+  }
+
+  .nav-link {
+    font-size: 0.58rem;
+  }
+
+  .cap-hero {
+    padding-top: 7rem;
+  }
+
+  .cap-hero-copy h1 {
+    font-size: clamp(2.35rem, 12.8vw, 3.45rem);
+  }
+
+  .cap-lunar-system {
+    width: min(13.5rem, 76vw);
+  }
+
+  .cap-hero-moon {
+    width: min(10.4rem, 56vw);
+  }
+
+  .cap-orbit-phase {
+    width: 0.62rem;
+    transform: translate(-50%, -50%) rotate(var(--phase-angle)) translateX(min(6rem, 32vw)) rotate(calc(var(--phase-angle) * -1));
+  }
+
+  .cap-hero-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .cap-hero-strip span {
+    border-right: 0;
+    border-bottom: 1px solid rgba(232, 236, 242, 0.08);
+  }
+
+  .cap-hero-strip span:last-child {
+    border-bottom: 0;
+  }
+
+  .index-section,
+  .cosmic-band,
+  .manifesto-section {
+    padding-inline: 0.85rem;
   }
 }
 

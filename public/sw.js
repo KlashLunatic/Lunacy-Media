@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lunacy-shell-v1';
+const CACHE_NAME = 'lunacy-shell-v2';
 const APP_SHELL = ['/', '/site.webmanifest', '/pwa-icon.svg', '/pwa-icon-192.png', '/pwa-icon-512.png', '/favicon.svg'];
 
 self.addEventListener('install', (event) => {

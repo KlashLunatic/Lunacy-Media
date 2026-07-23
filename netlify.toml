@@ -86,6 +86,18 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "application/manifest+json; charset=utf-8"
+
+[[headers]]
   for = "*.svg"
   [headers.values]
     Cache-Control = "public, max-age=604800"

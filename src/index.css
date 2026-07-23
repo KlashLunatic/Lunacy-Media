@@ -17,16 +17,21 @@
 
 * {
   box-sizing: border-box;
+  min-width: 0;
 }
 
 html {
   scroll-behavior: smooth;
   background: var(--void);
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  width: 100%;
+  max-width: 100%;
   background:
     radial-gradient(circle at 78% 8%, rgba(167, 179, 197, 0.12), transparent 28rem),
     radial-gradient(circle at 14% 16%, rgba(238, 241, 245, 0.045), transparent 22rem),
@@ -64,6 +69,16 @@ h2,
 h3,
 p {
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+a,
+button,
+label {
+  overflow-wrap: break-word;
 }
 
 .skip-to-content {
@@ -1739,7 +1754,7 @@ h3 {
 @media (max-width: 1180px) {
   .cap-hero {
     min-height: auto;
-    padding-top: 8rem;
+    padding-top: 7rem;
   }
 
   .cap-hero-shell {
@@ -1754,7 +1769,7 @@ h3 {
 
   .cap-hero-copy h1 {
     max-width: 11.5ch;
-    font-size: clamp(3.45rem, 9.4vw, 6.6rem);
+    font-size: clamp(3.25rem, 8.6vw, 5.8rem);
     letter-spacing: 0;
   }
 
@@ -1800,14 +1815,26 @@ h3 {
 
 @media (max-width: 980px) {
   .main-nav {
+    position: sticky;
+    top: 0;
+    flex-wrap: wrap;
     align-items: flex-start;
     gap: 0.7rem;
     padding: 0.9rem clamp(1rem, 4vw, 2rem);
+    border-bottom: 1px solid var(--line);
+    background: rgba(8, 8, 8, 0.92);
+    backdrop-filter: blur(18px);
+  }
+
+  .nav-logo-link {
+    width: 100%;
   }
 
   .nav-links {
     display: flex;
-    width: 100%;
+    flex: 1 1 100%;
+    width: calc(100vw - 2rem);
+    max-width: 100%;
     gap: 1.25rem;
     overflow-x: auto;
     padding: 0.25rem 0 0.15rem;
@@ -1844,6 +1871,10 @@ h3 {
 
   .md\:gap-16 {
     gap: 3rem !important;
+  }
+
+  .pt-16 {
+    padding-top: 0 !important;
   }
 
   .text-7xl,
@@ -1888,22 +1919,29 @@ h3 {
   }
 
   .cap-hero-menu {
-    min-height: 26rem;
+    display: grid;
+    gap: 1.5rem;
+    min-height: auto;
+    padding-top: 0;
+    overflow: visible;
   }
 
   .cap-lunar-system {
-    right: 50%;
-    width: min(19rem, 76vw);
-    transform: translateX(50%);
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(18rem, 70vw);
+    margin: 0 auto;
+    transform: none;
   }
 
   .cap-hero-moon {
-    width: 16rem;
+    width: min(14.5rem, 52vw);
     right: 0;
   }
 
   .cap-orbit-phase {
-    transform: translate(-50%, -50%) rotate(var(--phase-angle)) translateX(min(8.5rem, 35vw)) rotate(calc(var(--phase-angle) * -1));
+    transform: translate(-50%, -50%) rotate(var(--phase-angle)) translateX(min(8rem, 32vw)) rotate(calc(var(--phase-angle) * -1));
   }
 
   .cap-hero-strip,
@@ -1912,7 +1950,27 @@ h3 {
   }
 
   .cap-hero-phases {
-    gap: 1.5rem;
+    position: relative;
+    inset: auto;
+    display: flex;
+    gap: 0.85rem;
+    align-content: initial;
+    padding: 0 0 0.8rem;
+    overflow-x: auto;
+    border-top: 0;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .cap-hero-phases:hover .cap-phase-link {
+    opacity: 1;
+  }
+
+  .cap-phase-link {
+    min-width: min(10rem, 56vw);
+    padding: 0.75rem 0;
+    scroll-snap-align: start;
   }
 
   .phase-node {
@@ -1951,8 +2009,8 @@ h3 {
   }
 
   .service-panel:nth-child(3) {
-    grid-column: 1 / -1;
-    border-bottom: 0;
+    grid-column: auto;
+    border-bottom: 1px solid var(--line);
   }
 
   .framework-grid .service-panel:nth-child(3),
@@ -2046,7 +2104,7 @@ h3 {
   }
 
   .cap-hero {
-    padding: 7.35rem 1rem 1rem;
+    padding: 2.25rem 1rem 1rem;
     min-height: auto;
   }
 
@@ -2057,8 +2115,8 @@ h3 {
 
   .cap-hero-copy h1 {
     max-width: 100%;
-    font-size: clamp(2.35rem, 11.6vw, 3.7rem);
-    line-height: 1;
+    font-size: clamp(2.05rem, 10.5vw, 3.25rem);
+    line-height: 1.04;
     letter-spacing: 0;
     overflow-wrap: normal;
   }
@@ -2143,7 +2201,7 @@ h3 {
   }
 
   .cap-phase-link {
-    min-width: min(9.5rem, 72vw);
+    min-width: min(9.25rem, 72vw);
     padding: 0.75rem 0;
     scroll-snap-align: start;
   }
@@ -2162,18 +2220,18 @@ h3 {
     position: relative;
     right: auto;
     top: auto;
-    width: min(15.5rem, 78vw);
+    width: min(14.25rem, 74vw);
     margin: 0 auto;
     transform: none;
   }
 
   .cap-hero-moon {
-    width: min(11.75rem, 58vw);
+    width: min(10.85rem, 56vw);
   }
 
   .cap-orbit-phase {
     width: 0.72rem;
-    transform: translate(-50%, -50%) rotate(var(--phase-angle)) translateX(min(7rem, 34vw)) rotate(calc(var(--phase-angle) * -1));
+    transform: translate(-50%, -50%) rotate(var(--phase-angle)) translateX(min(6.5rem, 32vw)) rotate(calc(var(--phase-angle) * -1));
   }
 
   .hero-actions {
@@ -2345,6 +2403,11 @@ h3 {
     padding-inline: 0;
   }
 
+  .framework-grid .service-panel,
+  .framework-grid .service-panel:last-child {
+    padding-inline: 1.15rem;
+  }
+
   .cosmic-band .framework-grid .service-panel,
   .cosmic-band .framework-grid .service-panel:nth-child(2),
   .cosmic-band .framework-grid .service-panel:nth-child(3),
@@ -2403,19 +2466,19 @@ h3 {
   }
 
   .cap-hero {
-    padding-top: 7rem;
+    padding-top: 2rem;
   }
 
   .cap-hero-copy h1 {
-    font-size: clamp(2.15rem, 11.6vw, 3.05rem);
+    font-size: clamp(1.95rem, 10.4vw, 2.85rem);
   }
 
   .cap-lunar-system {
-    width: min(13.5rem, 76vw);
+    width: min(12.5rem, 72vw);
   }
 
   .cap-hero-moon {
-    width: min(10.4rem, 56vw);
+    width: min(9.7rem, 54vw);
   }
 
   .cap-orbit-phase {
